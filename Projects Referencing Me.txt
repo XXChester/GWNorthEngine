@@ -1,0 +1,19 @@
+﻿Any changes to major functionality will mean the below projects will need to be retested.
+==============
+Team folder:
+==============
+-BuildingBasicEngineFunctionality
+-ScriptingIntegration
+
+========================
+Jason's personal work:
+========================
+
+===========================
+Brandon's personal work:
+===========================
+-BuildMyProjects	****Solution that houses all of my projects and team projects and used when there is a major change to the engine to make sure nothing is effected
+-TargettingRingPOC
+-TemplateDrawingPOC
+-SpriteWars
+-Flowers

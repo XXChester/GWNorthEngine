@@ -1,0 +1,19 @@
+﻿		#region Class variables
+
+		#endregion Class variables
+
+		#region Class propeties
+
+		#endregion Class properties
+
+		#region Constructor
+
+		#endregion Constructor
+
+		#region Support methods
+
+		#endregion Support methods
+		
+		#region Destructor
+
+		#endregion Destructor
