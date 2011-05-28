@@ -135,8 +135,6 @@ namespace GWNorthEngine.Model {
 		/// <param name="elapsed">Time since the last time the method was called</param>
 		public virtual void update(float elapsed) {
 			this.timeAlive += elapsed;
-			float relativeAge = this.timeAlive / this.timeToLive;
-			this.position = .5f * this.acceleration * relativeAge * relativeAge + this.direction * relativeAge + this.originalPosition;
 		}
 
 		/// <summary>

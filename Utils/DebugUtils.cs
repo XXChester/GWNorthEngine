@@ -58,6 +58,28 @@ namespace GWNorthEngine.Utils {
 		}
 
 		/// <summary>
+		/// Draws a bounding sphere
+		/// </summary>
+		/// <param name="spriteBatch">SpriteBatch object used to draw the sphere</param>
+		/// <param name="boundingSphere">BoundingSPhere object to draw</param>
+		/// <param name="debugColour">Colour to draw the sphere in</param>
+		public void drawBoundingSphere(SpriteBatch spriteBatch, BoundingSphere boundingSphere, Color debugColour) {
+			drawBoundingSphere(spriteBatch, boundingSphere, debugColour, this.lineTexture);
+		}
+
+		/// <summary>
+		/// Draws a bounding sphere
+		/// </summary>
+		/// <param name="spriteBatch">SpriteBatch object used to draw the sphere</param>
+		/// <param name="boundingSphere">BoundingSPhere object to draw</param>
+		/// <param name="debugColour">Colour to draw the sphere in</param>
+		/// <param name="lineTexture">Texture2D used for drawing the bounding sphere</param>
+		public static void drawBoundingSphere(SpriteBatch spriteBatch, BoundingSphere boundingSphere, Color debugColour, Texture2D lineTexture) {
+			Vector2 position = new Vector2(boundingSphere.Center.X, boundingSphere.Center.Y);
+			spriteBatch.Draw(lineTexture, position, null, debugColour, 0f, new Vector2(boundingSphere.Radius, boundingSphere.Radius), 1f, SpriteEffects.None, 1f);
+		}
+
+		/// <summary>
 		/// Draws a rectangle using Line2D's
 		/// </summary>
 		/// <param name="spriteBatch">SpriteBatch object used to draw the bounding box</param>

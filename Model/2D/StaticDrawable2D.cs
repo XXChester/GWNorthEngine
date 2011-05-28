@@ -23,7 +23,10 @@ namespace GWNorthEngine.Model {
 		#endregion Class variables
 
 		#region Class propeties
-
+		/// <summary>
+		/// Gets or sets the Texture of the static drawable object
+		/// </summary>
+		public Texture2D Texture { get { return this.texture; } set { this.texture = value; } }
 		#endregion Class properties
 
 		#region Constructor

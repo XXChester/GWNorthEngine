@@ -34,8 +34,9 @@ namespace GWNorthEngine.Utils {
 		/// </summary>
 		/// <param name="device">GraphicsDevice object</param>
 		/// <param name="radius">Radius of the circle</param>
+		/// /// <param name="colour">Colour of the texture</param>
 		/// <returns>Newly created Texture2D object</returns>
-		public static Texture2D create2DRingTexture(GraphicsDevice device, int radius) {
+		public static Texture2D create2DRingTexture(GraphicsDevice device, int radius, Color colour) {
 			// taken from an answer at http://stackoverflow.com/questions/2983809/how-to-draw-circle-with-specific-color-in-xna
 			int outerRadius = radius * 2 + 2; // So circle doesn't go out of bounds
 			Texture2D texture = new Texture2D(device, outerRadius, outerRadius);

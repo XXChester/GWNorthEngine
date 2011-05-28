@@ -96,6 +96,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\AStar\FScoreComparator.cs" />
+    <Compile Include="AI\AStar\MazeSolver.cs" />
+    <Compile Include="AI\AStar\PathFinder.cs" />
+    <Compile Include="AI\AStar\PathNode.cs" />
+    <Compile Include="AI\AStar\Walker.cs" />
     <Compile Include="Engine\BaseRenderer.cs" />
     <Compile Include="Engine\FrameRate.cs" />
     <Compile Include="Engine\RunningMode.cs" />
@@ -124,6 +129,7 @@
     <Compile Include="Scripting\Model\ScriptException.cs" />
     <Compile Include="Scripting\ScriptManager.cs" />
     <Compile Include="Scripting\Utils\ScriptUtils.cs" />
+    <Compile Include="Utils\CollisionUtils.cs" />
     <Compile Include="Utils\DebugUtils.cs" />
     <Compile Include="Utils\EnumUtils.cs" />
     <Compile Include="Utils\PickingUtils.cs" />

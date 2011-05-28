@@ -146,7 +146,7 @@ namespace GWNorthEngine.Model {
 		/// <param name="spriteBatch">SpriteBatch object used to render the sprite</param>
 		/// <param name="frame">Specific frame to render the sprite at</param>
 		public virtual void render(SpriteBatch spriteBatch, int frame) {
-			spriteBatch.Draw(this.texture, this.position, this.frames[frame], this.lightColour, this.rotation, this.origin, this.scale, base.spriteEffect, this.layer);
+			spriteBatch.Draw(this.texture, this.position, this.frames[frame], base.lightColour, base.rotation, base.origin, base.scale, base.spriteEffect, base.layer);
 		}
 		#endregion Support methods
 
