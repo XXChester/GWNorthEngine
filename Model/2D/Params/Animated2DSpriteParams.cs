@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
 namespace GWNorthEngine.Model.Params {
 	/// <summary>
 	/// Object containing the data required to build a sprite
@@ -16,9 +15,7 @@ namespace GWNorthEngine.Model.Params {
 		private ContentManager content;
 		private string texturesName;
 		private Texture2D texture2D;
-		private float frameRate;
-		private int totalFrameCount;
-		private AnimationManager.AnimationState animationState;
+		private BaseAnimationManagerParams animationParams;
 		private Animated2DSprite.LoadingType loadingType;
 		private int framesStartWidth;
 		private int framesStartHeight;
@@ -40,18 +37,6 @@ namespace GWNorthEngine.Model.Params {
 		/// Gets or sets the texture for a sprite for externally loaded sprites
 		/// </summary>
 		public Texture2D Texture2D { get { return this.texture2D; } set { this.texture2D = value; } }
-		/// <summary>
-		/// Gets or sets the starting frame rate in which the sprite is to be animated at
-		/// </summary>
-		public float FrameRate { get { return this.frameRate; } set { this.frameRate = value; } }
-		/// <summary>
-		/// Gets or sets the total numebr of frames for the sprite
-		/// </summary>
-		public int TotalFrameCount { get { return this.totalFrameCount; } set { this.totalFrameCount = value; } }
-		/// <summary>
-		/// Gets or sets the starting animation state of the sprite
-		/// </summary>
-		public AnimationManager.AnimationState AnimationState { get { return this.animationState; } set { this.animationState = value; } }
 		/// <summary>
 		/// Gets or sets the loading type of the sprite
 		/// </summary>
@@ -76,6 +61,10 @@ namespace GWNorthEngine.Model.Params {
 		/// Gets or Sets the distance between the frames in the sprite sheet to load.  ***NOT REQUIRED FOR INTERNALLY LOADED SPRITES***
 		/// </summary>
 		public int SpaceBetweenFrames { get { return this.spaceBetweenFrames; } set { this.spaceBetweenFrames = value; } }
+		/// <summary>
+		/// Gets or sets the BaseAnimationManagerParams object for the sprite
+		/// </summary>
+		public BaseAnimationManagerParams AnimationParams { get { return this.animationParams; } set { this.animationParams = value; } }
 		#endregion Class properties
 
 		#region Constructor
@@ -86,7 +75,7 @@ namespace GWNorthEngine.Model.Params {
 		/// </summary>
 		public Animated2DSpriteParams() {
 			// defaults
-			this.animationState = AnimationManager.AnimationState.Paused;
+			this.AnimationParams = new BaseAnimationManagerParams();
 			this.loadingType = Animated2DSprite.LoadingType.WholeSheetReadFramesFromFile;
 		}
 		#endregion Constructor

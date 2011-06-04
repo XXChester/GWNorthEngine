@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using GWNorthEngine.Model.Params;
 namespace GWNorthEngine.Model {
 	/// <summary>
 	/// Animation manager class which handles the animation steps for anything animated
@@ -66,15 +66,13 @@ namespace GWNorthEngine.Model {
 
 		#region Constructor
 		/// <summary>
-		/// Builds an AnimationManager based on the animation state
+		/// Builds an AnimationManager based on the AnimationManagerParams object passed in
 		/// </summary>
-		/// <param name="animationState">Start animation state of the object</param>
-		/// <param name="frameRate">Starting frame rate of the object</param>
-		/// <param name="maxFrameCount">Used in reverse playing scenarios; it sets the first frame to the end</param>
-		public AnimationManager(AnimationState animationState, float frameRate, int maxFrameCount) {
-			this.animationState = animationState;
-			this.frameRate = frameRate;
-			resetAnimation(maxFrameCount);
+		/// <param name="parms">BaseAnimationManagerParams object containing the data required to load the Animation Manager object</param>
+		public AnimationManager(BaseAnimationManagerParams parms) {
+			this.animationState = parms.AnimationState;
+			this.frameRate = parms.FrameRate;
+			resetAnimation(parms.TotalFrameCount - 1);// comes in as an array size so - 1
 		}
 		#endregion Constructor
 

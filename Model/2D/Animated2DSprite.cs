@@ -65,8 +65,8 @@ namespace GWNorthEngine.Model {
 				parms.Texture2D = texture2D;
 			}
 
-			initSprite(parms.Position, parms.Origin, parms.Rotation, parms.Scale, parms.Layer, parms.Texture2D, parms.TotalFrameCount, parms.FrameRate, parms.LightColour,
-				parms.AnimationState, parms.LoadingType, parms.FramesStartWidth, parms.FramesStartHeight, parms.FramesWidth, parms.FramesHeight, parms.SpaceBetweenFrames);
+			initSprite(parms.Position, parms.Origin, parms.Rotation, parms.Scale, parms.Layer, parms.Texture2D, parms.LightColour, parms.LoadingType, parms.FramesStartWidth, 
+				parms.FramesStartHeight, parms.FramesWidth, parms.FramesHeight, parms.SpaceBetweenFrames, parms.AnimationParams);
 		}
 		#endregion Constructor
 
@@ -80,18 +80,16 @@ namespace GWNorthEngine.Model {
 		/// <param name="scale">X,Y scale of the sprite</param>
 		/// <param name="depth">Layer to draw the sprite at</param>
 		/// <param name="texture">Texture2D use to render the sprite</param>
-		/// <param name="totalFrameCount">Total number of frames the sprite has</param>
-		/// <param name="frameRate">Rate at which we animate the sprite</param>
 		/// <param name="lightColour">Colour to render to the sprite in</param>
-		/// <param name="animationState">Animation state to start the sprite in</param>
 		/// <param name="loadingType">Way to load the sprite</param>
 		/// <param name="framesStartWidth">Starting x point of the sprite in the sprite sheet</param>
 		/// <param name="framesStartHeight">Starting y point of the sprite in the sprite sheet</param>
 		/// <param name="frameWidth">X size of a sprites single frame</param>
 		/// <param name="frameHeight">Y size of a sprites single frame</param>
 		/// <param name="spaceBetweenFrames">Space between the frames in the sprite sheet</param>
-		private void initSprite(Vector2 position, Vector2 origin, float rotation, Vector2 scale, float depth, Texture2D texture, int totalFrameCount, float frameRate, Color lightColour,
-			AnimationManager.AnimationState animationState, Animated2DSprite.LoadingType loadingType, int framesStartWidth, int framesStartHeight, int frameWidth, int frameHeight, int spaceBetweenFrames) {
+		/// <param name="animationParams">BaseAnimationManagerParams object containing the animation information for the sprite</param>
+		private void initSprite(Vector2 position, Vector2 origin, float rotation, Vector2 scale, float depth, Texture2D texture, Color lightColour, Animated2DSprite.LoadingType loadingType, 
+			int framesStartWidth, int framesStartHeight, int frameWidth, int frameHeight, int spaceBetweenFrames, BaseAnimationManagerParams animationParams) {
 			this.position = position;
 			this.origin = origin;
 			this.rotation = rotation;
@@ -99,12 +97,12 @@ namespace GWNorthEngine.Model {
 			this.layer = depth;
 			this.texture = texture;
 			this.lightColour = lightColour;
-			this.animationManager = new AnimationManager(animationState, frameRate, totalFrameCount -1);
+			this.animationManager = new AnimationManager(animationParams);
 
 			//setup the frames
-			this.frames = new Rectangle[totalFrameCount];
+			this.frames = new Rectangle[animationParams.TotalFrameCount];
 			if (loadingType == LoadingType.WholeSheetReadFramesFromFile) {
-				frameWidth = this.texture.Width / totalFrameCount;
+				frameWidth = this.texture.Width / animationParams.TotalFrameCount;
 				frameHeight = this.texture.Height;
 			}
 			// load the frames
