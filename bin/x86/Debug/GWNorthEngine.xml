@@ -44,11 +44,28 @@
             SpriteEffects to render the sprite with
             </summary>
         </member>
+        <member name="F:GWNorthEngine.Model.Base2DSpriteDrawable.originalLightColour">
+            <summary>
+            Original colour the sprite was rendered in
+            </summary>
+        </member>
         <member name="M:GWNorthEngine.Model.Base2DSpriteDrawable.#ctor(GWNorthEngine.Model.Params.Base2DSpriteDrawableParams)">
             <summary>
             Builds a basic SpriteBatch drawable item
             </summary>
             <param name="parms">BaseSpriteDrawableParams object</param>
+        </member>
+        <member name="M:GWNorthEngine.Model.Base2DSpriteDrawable.scaleAsLifeProgresses(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Scales the object over time
+            </summary>
+            <param name="scaleBy"></param>
+        </member>
+        <member name="M:GWNorthEngine.Model.Base2DSpriteDrawable.rotateAsLifeProgresses(System.Single)">
+            <summary>
+            Rotates the object over time
+            </summary>
+            <param name="rotationSpeed"></param>
         </member>
         <member name="M:GWNorthEngine.Model.Base2DSpriteDrawable.update(System.Single)">
             <summary>
@@ -147,7 +164,7 @@
         </member>
         <member name="M:GWNorthEngine.Tools.Translator.translateTileValueToAStarType(System.Int32)">
             <summary>
-            Translates am int representation of a TilePlacer.TileValue to an AI.AStar.PathFinder.TypeOfSpace value
+            Translates an int representation of a TilePlacer.TileValue to an AI.AStar.PathFinder.TypeOfSpace value
             </summary>
             <param name="value">Tile placer value</param>
             <returns>AStar representation of the value passed in</returns>
@@ -414,6 +431,36 @@
             Can generate moves in any direction
             </summary>
         </member>
+        <member name="T:GWNorthEngine.Tools.TilePlacer.TileValues">
+            <summary>
+            Constant values for the TilePlacer tool
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.Tools.TilePlacer.TileValues.Unknown">
+            <summary>
+            Unknown tile value meaning the tile was left empty
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.Tools.TilePlacer.TileValues.BackGround">
+            <summary>
+            Background tile
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.Tools.TilePlacer.TileValues.NoMovements">
+            <summary>
+            Tile that you cannot pass through
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.Tools.TilePlacer.TileValues.StandOns">
+            <summary>
+            Tiles that you stand on
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.Tools.TilePlacer.TileValues.Climbers">
+            <summary>
+            Tiles that you can climb
+            </summary>
+        </member>
         <member name="T:GWNorthEngine.Scripting.ScriptManager">
             <summary>
             Singleton class that handles the recieving of input and disbatching it to the proper registered objects
@@ -599,21 +646,6 @@
             Time the particle dies at
             </summary>
         </member>
-        <member name="F:GWNorthEngine.Model.BaseParticle2D.position">
-            <summary>
-            Position of the particle
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.Model.BaseParticle2D.scale">
-            <summary>
-            Scale of the particle
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.Model.BaseParticle2D.origin">
-            <summary>
-            Sprites origin used for rotation
-            </summary>
-        </member>
         <member name="F:GWNorthEngine.Model.BaseParticle2D.originalPosition">
             <summary>
             Original position of the particle
@@ -627,16 +659,6 @@
         <member name="F:GWNorthEngine.Model.BaseParticle2D.direction">
             <summary>
             Direction the particle is headed in
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.Model.BaseParticle2D.lightColour">
-            <summary>
-            Colour to render the particle in
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.Model.BaseParticle2D.layer">
-            <summary>
-            Layer the particle is to be rendered at
             </summary>
         </member>
         <member name="F:GWNorthEngine.Model.BaseParticle2D.texture">
@@ -692,21 +714,6 @@
             Gets or sets the directional value of the particle
             </summary>
         </member>
-        <member name="P:GWNorthEngine.Model.BaseParticle2D.Position">
-            <summary>
-            Gets or sets the position of the sprite
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.BaseParticle2D.Scale">
-            <summary>
-            Gets or sets the scale of the sprite
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.BaseParticle2D.LightColour">
-            <summary>
-            Gets or sets the Colour in which the sprite is to be rendered in
-            </summary>
-        </member>
         <member name="P:GWNorthEngine.Model.BaseParticle2D.Texture">
             <summary>
             Gets or sets the texture for the particle
@@ -724,6 +731,32 @@
             <param name="actorsPosition">Actors position. Could be mouse position, XBox controllers stick position etc</param>
             <param name="buttonsRectangle">rectangle to check for collision</param>
             <returns></returns>
+        </member>
+        <member name="T:GWNorthEngine.Model.Params.BaseAnimationManagerParams">
+            <summary>
+            Object containing the required data to build the AnimationManager object
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Model.Params.BaseAnimationManagerParams.#ctor">
+            <summary>
+            Builds the default settings for setting up the AnimationManager object. The default settings are below;
+            AnimationState:		Paused
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.BaseAnimationManagerParams.FrameRate">
+            <summary>
+            Gets or sets the rate in which the object animates at
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.BaseAnimationManagerParams.TotalFrameCount">
+            <summary>
+            Gets or sets the total animation frame count
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.BaseAnimationManagerParams.AnimationState">
+            <summary>
+            Gets or sets the AnimationState of the object
+            </summary>
         </member>
         <member name="T:GWNorthEngine.Model.Params.TexturedButtonParams">
             <summary>
@@ -1417,14 +1450,6 @@
             Object containing the data required to build a base 2D particle
             </summary>
         </member>
-        <member name="M:GWNorthEngine.Model.Params.BaseParticle2DParams.#ctor">
-            <summary>
-            Defines a new SpriteParams object with the defaults set. The defaults are listed below;
-            LightColour:	Colour.White
-            Scale:			Vector2(1f,1f)
-            Layer:			0f
-            </summary>
-        </member>
         <member name="P:GWNorthEngine.Model.Params.BaseParticle2DParams.TimeToLive">
             <summary>
             Gets or sets the maximum time the particle can live for
@@ -1438,31 +1463,6 @@
         <member name="P:GWNorthEngine.Model.Params.BaseParticle2DParams.Direction">
             <summary>
             Gets or sets the directional value of the particle
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.BaseParticle2DParams.Origin">
-            <summary>
-            Gets or sets the starting origin of the particle
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.BaseParticle2DParams.Position">
-            <summary>
-            Gets or sets the starting position of the sprite
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.BaseParticle2DParams.Scale">
-            <summary>
-            Gets or Sets the startign scale of the sprite
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.BaseParticle2DParams.Layer">
-            <summary>
-            Gets or sets the starting layer to render the sprite at
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.BaseParticle2DParams.LightColour">
-            <summary>
-            Gets or sets the starting colour in which to render the sprite in
             </summary>
         </member>
         <member name="P:GWNorthEngine.Model.Params.BaseParticle2DParams.Texture">

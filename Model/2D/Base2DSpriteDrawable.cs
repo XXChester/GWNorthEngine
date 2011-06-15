@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using GWNorthEngine.Model.Params;
+using GWNorthEngine.Utils;
 namespace GWNorthEngine.Model {
 	/// <summary>
 	/// Models the basis of every SpriteBatch drawable object
@@ -44,6 +45,10 @@ namespace GWNorthEngine.Model {
 		/// SpriteEffects to render the sprite with
 		/// </summary>
 		protected SpriteEffects spriteEffect;
+		/// <summary>
+		/// Original colour the sprite was rendered in
+		/// </summary>
+		public Color originalLightColour;
 		#endregion Class variables
 
 		#region Class propeties
@@ -77,6 +82,7 @@ namespace GWNorthEngine.Model {
 			this.origin = parms.Origin;
 			this.scale = parms.Scale;
 			this.lightColour = parms.LightColour;
+			this.originalLightColour = parms.LightColour;
 			this.spriteEffect = parms.SpriteEffect;
 		}
 		#endregion Constructor
@@ -86,6 +92,22 @@ namespace GWNorthEngine.Model {
 		#endregion Initialization
 
 		#region Support method
+		/// <summary>
+		/// Scales the object over time
+		/// </summary>
+		/// <param name="scaleBy"></param>
+		public virtual void scaleAsLifeProgresses(Vector2 scaleBy) {
+			this.scale += scaleBy;
+		}
+
+		/// <summary>
+		/// Rotates the object over time
+		/// </summary>
+		/// <param name="rotationSpeed"></param>
+		public virtual void rotateAsLifeProgresses(float rotationSpeed) {
+			this.rotation += rotationSpeed;
+		}
+
 		/// <summary>
 		/// Abstract method that forces the children objects to implement update
 		/// </summary>
