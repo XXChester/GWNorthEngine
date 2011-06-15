@@ -646,11 +646,6 @@
             Time the particle dies at
             </summary>
         </member>
-        <member name="F:GWNorthEngine.Model.BaseParticle2D.originalPosition">
-            <summary>
-            Original position of the particle
-            </summary>
-        </member>
         <member name="F:GWNorthEngine.Model.BaseParticle2D.acceleration">
             <summary>
             Acceleration of the particle
@@ -664,6 +659,11 @@
         <member name="F:GWNorthEngine.Model.BaseParticle2D.texture">
             <summary>
             Texture of the particle
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.Model.BaseParticle2D.originalPosition">
+            <summary>
+            Original position of the particle
             </summary>
         </member>
         <member name="M:GWNorthEngine.Model.BaseParticle2D.#ctor(GWNorthEngine.Model.Params.BaseParticle2DParams)">
@@ -697,11 +697,6 @@
         <member name="P:GWNorthEngine.Model.BaseParticle2D.TimeToLive">
             <summary>
             Gets or sets the maximum time the particle can live for
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.BaseParticle2D.OriginalPosition">
-            <summary>
-            Gets or sets the original position of the particle
             </summary>
         </member>
         <member name="P:GWNorthEngine.Model.BaseParticle2D.Acceleration">

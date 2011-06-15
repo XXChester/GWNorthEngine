@@ -21,10 +21,6 @@ namespace GWNorthEngine.Model {
 		/// </summary>
 		protected float timeToLive;
 		/// <summary>
-		/// Original position of the particle
-		/// </summary>
-		protected Vector2 originalPosition;
-		/// <summary>
 		/// Acceleration of the particle
 		/// </summary>
 		protected Vector2 acceleration;
@@ -36,6 +32,10 @@ namespace GWNorthEngine.Model {
 		/// Texture of the particle
 		/// </summary>
 		protected Texture2D texture;
+		/// <summary>
+		/// Original position of the particle
+		/// </summary>
+		protected readonly Vector2 originalPosition;
 		#endregion Class variables
 
 		#region Class propeties
@@ -47,10 +47,6 @@ namespace GWNorthEngine.Model {
 		/// Gets or sets the maximum time the particle can live for
 		/// </summary>
 		public float TimeToLive { get { return this.timeToLive; } set { this.timeToLive = value; } }
-		/// <summary>
-		/// Gets or sets the original position of the particle
-		/// </summary>
-		public Vector2 OriginalPosition { get { return this.originalPosition; } set { this.originalPosition = value; } }
 		/// <summary>
 		/// Gets or sets the acceleration of the particle
 		/// </summary>

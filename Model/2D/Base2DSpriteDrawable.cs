@@ -48,7 +48,7 @@ namespace GWNorthEngine.Model {
 		/// <summary>
 		/// Original colour the sprite was rendered in
 		/// </summary>
-		public Color originalLightColour;
+		protected readonly Color originalLightColour;
 		#endregion Class variables
 
 		#region Class propeties
