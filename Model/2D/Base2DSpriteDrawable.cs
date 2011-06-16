@@ -18,6 +18,10 @@ namespace GWNorthEngine.Model {
 	public abstract class Base2DSpriteDrawable {
 		#region Class variables
 		/// <summary>
+		/// Used by the scalingPulse(...) effect to determine which way it is scaling
+		/// </summary>
+		private bool positivePulse;
+		/// <summary>
 		/// Position of the sprite
 		/// </summary>
 		protected Vector2 position;
@@ -106,6 +110,26 @@ namespace GWNorthEngine.Model {
 		/// <param name="rotationSpeed"></param>
 		public virtual void rotateAsLifeProgresses(float rotationSpeed) {
 			this.rotation += rotationSpeed;
+		}
+
+		/// <summary>
+		/// Pulse effect by scaling the object between to pre-defined scales
+		/// </summary>
+		/// <param name="startScale">Lowest scale value we want to shrink too</param>
+		/// <param name="endScale">Highest scale value we want to grow to</param>
+		/// <param name="scaleSpeed">Speed in which we want to pulse at</param>
+		public virtual void scalingPulse(float startScale, float endScale, Vector2 scaleSpeed) {
+			if (this.positivePulse) {
+				scaleAsLifeProgresses(scaleSpeed);
+				if (this.Scale.X >= endScale) {
+					this.positivePulse = false;
+				}
+			} else {
+				scaleAsLifeProgresses(-scaleSpeed);
+				if (this.Scale.X <= startScale) {
+					this.positivePulse = true;
+				}
+			}
 		}
 
 		/// <summary>
