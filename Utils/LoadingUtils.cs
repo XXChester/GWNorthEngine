@@ -26,6 +26,18 @@ namespace GWNorthEngine.Utils {
 			texture.Name = textureName;
 			return texture;
 		}
+		
+		/// <summary>
+		/// Loads a SpriteFont via the ContentManager and assigns the font a name for debugging purposes
+		/// </summary>
+		/// <param name="content">ContentManager object</param>
+		/// <param name="spriteFontName">Name of the sprite font</param>
+		/// <returns>Texture2D object</returns>
+		public static SpriteFont loadSpriteFont(ContentManager content, string spriteFontName) {
+			SpriteFont font = content.Load<SpriteFont>(spriteFontName);
+			//TODO: Custom crap...no name field for fonts =/
+			return font;
+		}
 
 		/// <summary>
 		/// Loads a SoundEffect via the ContentManager and assigns the sound effect a name for debugging purposes

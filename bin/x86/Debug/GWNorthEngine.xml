@@ -1768,6 +1768,14 @@
             <param name="textureName">Name of the texture</param>
             <returns>Texture2D object</returns>
         </member>
+        <member name="M:GWNorthEngine.Utils.LoadingUtils.loadSpriteFont(Microsoft.Xna.Framework.Content.ContentManager,System.String)">
+            <summary>
+            Loads a SpriteFont via the ContentManager and assigns the font a name for debugging purposes
+            </summary>
+            <param name="content">ContentManager object</param>
+            <param name="spriteFontName">Name of the sprite font</param>
+            <returns>Texture2D object</returns>
+        </member>
         <member name="M:GWNorthEngine.Utils.LoadingUtils.loadSoundEffect(Microsoft.Xna.Framework.Content.ContentManager,System.String)">
             <summary>
             Loads a SoundEffect via the ContentManager and assigns the sound effect a name for debugging purposes
