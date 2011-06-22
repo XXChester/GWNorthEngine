@@ -135,6 +135,7 @@
     <Compile Include="Utils\CollisionUtils.cs" />
     <Compile Include="Utils\DebugUtils.cs" />
     <Compile Include="Utils\EnumUtils.cs" />
+    <Compile Include="Utils\LoadingUtils.cs" />
     <Compile Include="Utils\PickingUtils.cs" />
     <Compile Include="Model\2D\TexturedButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
