@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 using GWNorthEngine.Model.Params;
+using GWNorthEngine.Utils;
 
 namespace GWNorthEngine.Model {
 	/// <summary>
@@ -61,7 +62,7 @@ namespace GWNorthEngine.Model {
 		public Animated2DSprite(Animated2DSpriteParams parms)
 			: base(parms) {
 			if (parms.Texture2D == null && parms.TexturesName != null) {
-				Texture2D texture2D = parms.Content.Load<Texture2D>(parms.TexturesName);
+				Texture2D texture2D = LoadingUtils.loadTexture2D(parms.Content, parms.TexturesName);
 				parms.Texture2D = texture2D;
 			}
 

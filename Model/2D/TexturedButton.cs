@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using GWNorthEngine.Model.Params;
+using GWNorthEngine.Utils;
 namespace GWNorthEngine.Model {
 	/// <summary>
 	/// Textured button
@@ -19,8 +20,8 @@ namespace GWNorthEngine.Model {
 		/// <param name="parms">TexturedButtonParams object containing the data required to build the TexturedButton</param>
 		public TexturedButton(TexturedButtonParams parms)
 			: base(parms) {
-			this.regularTexture = parms.Content.Load<Texture2D>(parms.RegularTextureFileName);
-			this.mouseOverTexture = parms.Content.Load<Texture2D>(parms.MouseOverTextureFileName);
+			this.regularTexture = LoadingUtils.loadTexture2D(parms.Content, parms.RegularTextureFileName);
+			this.mouseOverTexture = LoadingUtils.loadTexture2D(parms.Content, parms.MouseOverTextureFileName);
 			this.activeTexture = this.regularTexture;
 		}
 		#endregion Construct
