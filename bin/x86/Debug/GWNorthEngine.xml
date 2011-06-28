@@ -1936,9 +1936,9 @@
             Header that denotes the start of a tile
             </summary>
         </member>
-        <member name="F:GWNorthEngine.Tools.TilePlacer.Constants.XML_TILE_NAME">
+        <member name="F:GWNorthEngine.Tools.TilePlacer.Constants.XML_TILE_INDEX">
             <summary>
-            Name of the tile
+            Index of the tile
             </summary>
         </member>
         <member name="F:GWNorthEngine.Tools.TilePlacer.Constants.XML_TILE_FILE_NAME">

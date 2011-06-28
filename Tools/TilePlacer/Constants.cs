@@ -33,9 +33,9 @@ namespace GWNorthEngine.Tools.TilePlacer {
 		/// </summary>
 		public const string XML_HEADER_TILE = "Tile";
 		/// <summary>
-		/// Name of the tile
+		/// Index of the tile
 		/// </summary>
-		public const string XML_TILE_NAME = "Name";
+		public const string XML_TILE_INDEX = "Index";
 		/// <summary>
 		/// Filename of the tile
 		/// </summary>
