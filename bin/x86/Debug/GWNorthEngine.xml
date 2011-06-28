@@ -1671,6 +1671,24 @@
             Loads a TilePlacer map file
             </summary>
         </member>
+        <member name="M:GWNorthEngine.Tools.TilePlacer.MapLoader.loadMapMetadata(System.Xml.XmlDocument,System.Int32@,System.Int32@)">
+            <summary>
+            Loads the metadata information from an XmlDocument
+            </summary>
+            <param name="map">XmlDocument containing the metadata information</param>
+            <param name="height">Height of the map</param>
+            <param name="width">Width of the map</param>
+        </member>
+        <member name="M:GWNorthEngine.Tools.TilePlacer.MapLoader.loadMap(Microsoft.Xna.Framework.Content.ContentManager,System.Xml.XmlDocument,System.Int32,GWNorthEngine.Tools.TilePlacer.MapTile[0:,0:]@,GWNorthEngine.Tools.TilePlacer.TileValues[0:,0:]@)">
+            <summary>
+            Loads the tiles of a map
+            </summary>
+            <param name="content">ContentManager used to load textures for the map</param>
+            <param name="map">XmlDocument object containing the tile information</param>
+            <param name="width">Width of the map</param>
+            <param name="mapTiles">MapTiles[,] loaded via the xml</param>
+            <param name="tileValues">TileValues[,] loaded via the xml</param>
+        </member>
         <member name="M:GWNorthEngine.Tools.TilePlacer.MapLoader.load(Microsoft.Xna.Framework.Content.ContentManager,System.String)">
             <summary>
             Loads a TilePlacer map from the file system
