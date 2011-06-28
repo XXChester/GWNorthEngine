@@ -130,6 +130,7 @@
     <Compile Include="Scripting\Model\ScriptException.cs" />
     <Compile Include="Scripting\ScriptManager.cs" />
     <Compile Include="Scripting\Utils\ScriptUtils.cs" />
+    <Compile Include="Tools\TilePlacer\Constants.cs" />
     <Compile Include="Tools\TilePlacer\LoadResult.cs" />
     <Compile Include="Tools\TilePlacer\MapLoader.cs" />
     <Compile Include="Tools\TilePlacer\MapTile.cs" />
