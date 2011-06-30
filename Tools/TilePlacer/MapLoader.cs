@@ -112,13 +112,8 @@ namespace GWNorthEngine.Tools.TilePlacer {
 						} else {
 							texture = textureList[texturesIndex];
 						}
-						if (tileNumber >= width) {
-							x = (tileNumber % width);
-							y = (tileNumber / width);
-						} else {
-							x = tileNumber;
-							y = 0;
-						}
+						x = tileNumber % width;
+						y = tileNumber / width;
 						pieceIndex = new Point(x, y);
 						mapTile = new MapTile(pieceIndex, texture, pieceType, new Vector2(1f));
 						mapTiles[pieceIndex.Y, pieceIndex.X] = mapTile;
