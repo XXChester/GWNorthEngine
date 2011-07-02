@@ -101,7 +101,13 @@
     <Compile Include="AI\AStar\PathFinder.cs" />
     <Compile Include="AI\AStar\PathNode.cs" />
     <Compile Include="AI\AStar\Walker.cs" />
+    <Compile Include="Audio\Params\BaseSoundEngineParams.cs" />
+    <Compile Include="Audio\Params\SFXEngineParams.cs" />
+    <Compile Include="Audio\SFXEngine.cs" />
+    <Compile Include="Audio\SFXInstanceWrapper.cs" />
+    <Compile Include="Audio\SoundEngine.cs" />
     <Compile Include="Engine\BaseRenderer.cs" />
+    <Compile Include="Engine\Params\BaseRendererParams.cs" />
     <Compile Include="Engine\FrameRate.cs" />
     <Compile Include="Engine\RunningMode.cs" />
     <Compile Include="Model\2D\Animated2DSprite.cs" />
@@ -117,7 +123,6 @@
     <Compile Include="Model\2D\Button.cs" />
     <Compile Include="Model\2D\Line2D.cs" />
     <Compile Include="Model\Params\BaseAnimationManagerParams.cs" />
-    <Compile Include="Model\Params\BaseRendererParams.cs" />
     <Compile Include="Model\2D\Base2DSpriteDrawable.cs" />
     <Compile Include="Model\2D\Params\Base2DSpriteDrawableParams.cs" />
     <Compile Include="Model\2D\Params\Animated2DSpriteParams.cs" />

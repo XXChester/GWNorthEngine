@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GWNorthEngine.Engine;
-namespace GWNorthEngine.Model.Params {
+namespace GWNorthEngine.Engine.Params {
 	/// <summary>
 	/// Object containing the data required to build the BaseRenderer
 	/// </summary>
