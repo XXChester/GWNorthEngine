@@ -64,7 +64,7 @@ namespace GWNorthEngine.Audio {
 		/// <param name="pitch">Pitch to play the sound effect at</param>
 		public void playSoundEffect(SoundEffect sfx, float volume, float pan, float pitch) {
 			// in certain scenarios some SFXs have to be played differently so we pass in vol, pan and pitch
-			if (base.Muted) {
+			if (!base.Muted) {
 				// create an instance of the SFX to play, do not actually play the sfx sense we may crash or exit in the middle of the audio and need to stop the audio
 				// if we do not do this the client will receive an exception up to the UI because the audio will keep trying to play
 				SoundEffectInstance instance = sfx.CreateInstance();
@@ -96,20 +96,18 @@ namespace GWNorthEngine.Audio {
 		/// Monitors current SoundEffectInstances and flags them for cleanup if they have finished playing
 		/// </summary>
 		public void update() {
-			if (base.Muted) {
-				if (this.activeInstances != null) {
-					List<int> instancesUpForRemoval = new List<int>();
-					for (int i = 0; i < this.activeInstances.Count; i++) {
-						if (this.activeInstances[i].Instance.State == SoundState.Stopped) {
-							instancesUpForRemoval.Add(i);
-						}
+			if (this.activeInstances != null) {
+				List<int> instancesUpForRemoval = new List<int>();
+				for (int i = 0; i < this.activeInstances.Count; i++) {
+					if (this.activeInstances[i].Instance.State == SoundState.Stopped) {
+						instancesUpForRemoval.Add(i);
 					}
+				}
 
-					// remove flagged instances
-					for (int i = instancesUpForRemoval.Count - 1; i >= 0; i--) {
-						this.activeInstances[instancesUpForRemoval[i]].Instance.Dispose();
-						this.activeInstances.RemoveAt(instancesUpForRemoval[i]);
-					}
+				// remove flagged instances
+				for (int i = instancesUpForRemoval.Count - 1; i >= 0; i--) {
+					this.activeInstances[instancesUpForRemoval[i]].Instance.Dispose();
+					this.activeInstances.RemoveAt(instancesUpForRemoval[i]);
 				}
 			}
 		}

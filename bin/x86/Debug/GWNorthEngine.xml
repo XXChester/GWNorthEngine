@@ -1991,7 +1991,7 @@
             <summary>
             Builds the default settings for setting up a BaseSoundEngine. The default settings are listed below
             Volume:		100%(1f)
-            Enabled:	True
+            Muted:	false
             </summary>
         </member>
         <member name="P:GWNorthEngine.Audio.Params.BaseSoundEngineParams.Volume">

@@ -23,11 +23,11 @@ namespace GWNorthEngine.Audio.Params {
 		/// <summary>
 		/// Builds the default settings for setting up a BaseSoundEngine. The default settings are listed below
 		/// Volume:		100%(1f)
-		/// Enabled:	True
+		/// Muted:	false
 		/// </summary>
 		public BaseSoundEngineParams() {
 			this.Volume = 1f;
-			this.Muted = true;
+			this.Muted = false;
 		}
 		#endregion Constructor
 	}
