@@ -14,9 +14,10 @@ namespace GWNorthEngine.Utils {
 	/// Contains helper methods for loading data from the file system
 	/// </summary>
 	public static class LoadingUtils {
-		
+
+		#region Visual
 		/// <summary>
-		/// Loads a texture via the ContentManager and assigns the texture a name for debugging purposes
+		/// Loads a texture via the ContentManager and assigns the texture custom data for debugging purposes
 		/// </summary>
 		/// <param name="content">ContentManager object</param>
 		/// <param name="textureName">Name of the texture</param>
@@ -28,7 +29,7 @@ namespace GWNorthEngine.Utils {
 		}
 		
 		/// <summary>
-		/// Loads a SpriteFont via the ContentManager and assigns the font a name for debugging purposes
+		/// Loads a SpriteFont via the ContentManager and assigns the font custom data for debugging purposes
 		/// </summary>
 		/// <param name="content">ContentManager object</param>
 		/// <param name="spriteFontName">Name of the sprite font</param>
@@ -38,9 +39,11 @@ namespace GWNorthEngine.Utils {
 			//TODO: Custom crap...no name field for fonts =/
 			return font;
 		}
+		#endregion Visual
 
+		#region Audio
 		/// <summary>
-		/// Loads a SoundEffect via the ContentManager and assigns the sound effect a name for debugging purposes
+		/// Loads a SoundEffect via the ContentManager and assigns the sound effect custom data for debugging purposes
 		/// </summary>
 		/// <param name="content">ContentManager object</param>
 		/// <param name="soundEffectName">Name of the sound effect</param>
@@ -50,6 +53,19 @@ namespace GWNorthEngine.Utils {
 			sfx.Name = soundEffectName;
 			return sfx;
 		}
+
+		/// <summary>
+		/// Loads a Song via the ContentManager and assugbs the song custom data for debugging purposes
+		/// </summary>
+		/// <param name="content">ContentManager object</param>
+		/// <param name="songName">Name of the song</param>
+		/// <returns></returns>
+		public static Song loadSong(ContentManager content, string songName) {
+			Song song = content.Load<Song>(songName);
+			//TODO: Custom crap....name field is readonly
+			return song;
+		}
+		#endregion Audio
 
 	}
 }

@@ -16,7 +16,7 @@ namespace GWNorthEngine.Audio.Params {
 		/// <summary>
 		/// Gets or sets whether audio is to be played
 		/// </summary>
-		public bool Enabled { get; set; }
+		public bool Muted { get; set; }
 		#endregion Class properties
 
 		#region Constructor
@@ -27,7 +27,7 @@ namespace GWNorthEngine.Audio.Params {
 		/// </summary>
 		public BaseSoundEngineParams() {
 			this.Volume = 1f;
-			this.Enabled = true;
+			this.Muted = true;
 		}
 		#endregion Constructor
 	}

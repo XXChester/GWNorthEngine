@@ -101,7 +101,11 @@
     <Compile Include="AI\AStar\PathFinder.cs" />
     <Compile Include="AI\AStar\PathNode.cs" />
     <Compile Include="AI\AStar\Walker.cs" />
+    <Compile Include="Audio\BaseWrapper.cs" />
+    <Compile Include="Audio\MusicEngine.cs" />
+    <Compile Include="Audio\MusicWrapper.cs" />
     <Compile Include="Audio\Params\BaseSoundEngineParams.cs" />
+    <Compile Include="Audio\Params\MusicEngineParams.cs" />
     <Compile Include="Audio\Params\SFXEngineParams.cs" />
     <Compile Include="Audio\SFXEngine.cs" />
     <Compile Include="Audio\SFXInstanceWrapper.cs" />

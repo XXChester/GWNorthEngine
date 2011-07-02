@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using GWNorthEngine.Audio.Params;
 namespace GWNorthEngine.Audio {
@@ -10,17 +11,21 @@ namespace GWNorthEngine.Audio {
 	/// </summary>
 	public abstract class BaseSoundEngine {
 		#region Class variables
+		private float volume;
 		#endregion Class variables
 
 		#region Class properties
 		/// <summary>
 		/// Gets or sets the volume to play the audio at
 		/// </summary>
-		public float Volume { get; set; }
+		public virtual float Volume {
+			get { return this.volume; }
+			set { this.volume = MathHelper.Clamp(value, 0f, 1f); }
+		}
 		/// <summary>
 		/// Gets or sets whether to play audio or not
 		/// </summary>
-		public bool Enabled { get; set; }
+		public virtual bool Muted { get; set; }
 		#endregion Class properties
 
 		#region Constructor
@@ -30,16 +35,12 @@ namespace GWNorthEngine.Audio {
 		/// <param name="parms"></param>
 		public BaseSoundEngine(BaseSoundEngineParams parms) {
 			this.Volume = parms.Volume;
-			this.Enabled = parms.Enabled;
+			this.Muted = parms.Muted;
 		}
 		#endregion Constructor
 
 		#region Support methods
-		/// <summary>
-		/// Stops the specified audio from playing
-		/// </summary>
-		/// <param name="name">Name of the audio file to stop playing</param>
-		public abstract void stop(string name);
+
 		#endregion Support methods
 
 		#region Destructor

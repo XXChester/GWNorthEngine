@@ -4,21 +4,20 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Audio;
 namespace GWNorthEngine.Audio {
-	internal class SFXInstanceWrapper {
+	internal class SFXInstanceWrapper : BaseWrapper {
 		#region Class properties
 		public SoundEffectInstance Instance { get; set; }
-		public string Name { get; set; }
 		#endregion Class properties
 
 		#region Constructor
-		internal SFXInstanceWrapper(SoundEffectInstance sfxInstance, string name) {
+		internal SFXInstanceWrapper(SoundEffectInstance sfxInstance, string name) 
+			:base(name) {
 			this.Instance = sfxInstance;
-			this.Name = name;
 		}
 		#endregion Constructor
 
 		#region Destructor
-		public void dispose() {
+		public override void dispose() {
 			if (!this.Instance.IsDisposed) {
 				if (this.Instance.State != SoundState.Stopped) {
 					this.Instance.Stop();

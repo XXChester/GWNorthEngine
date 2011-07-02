@@ -64,7 +64,7 @@ namespace GWNorthEngine.Audio {
 		/// <param name="pitch">Pitch to play the sound effect at</param>
 		public void playSoundEffect(SoundEffect sfx, float volume, float pan, float pitch) {
 			// in certain scenarios some SFXs have to be played differently so we pass in vol, pan and pitch
-			if (base.Enabled) {
+			if (base.Muted) {
 				// create an instance of the SFX to play, do not actually play the sfx sense we may crash or exit in the middle of the audio and need to stop the audio
 				// if we do not do this the client will receive an exception up to the UI because the audio will keep trying to play
 				SoundEffectInstance instance = sfx.CreateInstance();
@@ -80,7 +80,7 @@ namespace GWNorthEngine.Audio {
 		/// Stops all sound effects that match the name passed in and are not already stopped
 		/// </summary>
 		/// <param name="name">Name of the sound effect we are trying to stop</param>
-		public override void stop(string name) {
+		public void stop(string name) {
 			if (this.activeInstances != null) {
 				foreach (SFXInstanceWrapper wrapper in this.activeInstances) {
 					if (name.Equals(wrapper.Name)) {
@@ -96,7 +96,7 @@ namespace GWNorthEngine.Audio {
 		/// Monitors current SoundEffectInstances and flags them for cleanup if they have finished playing
 		/// </summary>
 		public void update() {
-			if (base.Enabled) {
+			if (base.Muted) {
 				if (this.activeInstances != null) {
 					List<int> instancesUpForRemoval = new List<int>();
 					for (int i = 0; i < this.activeInstances.Count; i++) {

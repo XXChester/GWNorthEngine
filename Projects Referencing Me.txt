@@ -4,6 +4,7 @@ Team folder:
 ==============
 -BuildingBasicEngineFunctionality
 -ScriptingIntegration
+-AudioPlayer
 
 ========================
 Jason's personal work:
