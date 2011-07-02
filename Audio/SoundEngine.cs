@@ -18,7 +18,7 @@ namespace GWNorthEngine.Audio {
 		/// <summary>
 		/// Gets or sets the volume to play the audio at
 		/// </summary>
-		public virtual float Volume {
+		public float Volume {
 			get { return this.volume; }
 			set { this.volume = MathHelper.Clamp(value, 0f, 1f); }
 		}
