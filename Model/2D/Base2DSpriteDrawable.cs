@@ -72,6 +72,10 @@ namespace GWNorthEngine.Model {
 		/// Gets or sets the Colour in which the sprite is to be rendered in
 		/// </summary>
 		public virtual Color LightColour { get { return this.lightColour; } set { this.lightColour = value; } }
+		/// <summary>
+		/// Gets or sets the Origin in which the sprite is rendered around
+		/// </summary>
+		public Vector2 Origin { get { return this.origin; } set { this.origin = value; } }
 		#endregion Class properties
 
 		#region Constructor
