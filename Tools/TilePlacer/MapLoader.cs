@@ -71,9 +71,7 @@ namespace GWNorthEngine.Tools.TilePlacer {
 			Texture2D texture = null;
 			TileValues pieceType;
 			Point pieceIndex;
-			List<Texture2D> textureList = new List<Texture2D>();
 			int tileNumber;
-			int texturesIndex;
 			int x, y;
 			string textureName;
 			XmlNode tileNode;
@@ -82,7 +80,6 @@ namespace GWNorthEngine.Tools.TilePlacer {
 			XmlNodeList childNodes;
 			for (int i = 0; i < tileNodes.Count; i++) {
 				tileNode = tileNodes[i];
-				texturesIndex = -1;
 				tileNumber = -1;
 				if (tileNode != null) {
 					tileNumber = -1;
@@ -106,12 +103,6 @@ namespace GWNorthEngine.Tools.TilePlacer {
 							}
 						}
 						texture = LoadingUtils.loadTexture2D(content, textureName);
-						texturesIndex = textureList.IndexOf(texture);
-						if (texturesIndex == -1) {
-							textureList.Add(texture);
-						} else {
-							texture = textureList[texturesIndex];
-						}
 						x = tileNumber % width;
 						y = tileNumber / width;
 						pieceIndex = new Point(x, y);
