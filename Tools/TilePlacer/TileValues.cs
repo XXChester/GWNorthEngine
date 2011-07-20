@@ -27,6 +27,6 @@ namespace GWNorthEngine.Tools.TilePlacer {
 		/// <summary>
 		/// Tiles that you can climb
 		/// </summary>
-		Climbers = 2
+		Climbers = 3
 	}
 }

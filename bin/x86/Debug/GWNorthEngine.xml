@@ -600,6 +600,32 @@
             Can generate moves in any direction
             </summary>
         </member>
+        <member name="T:GWNorthEngine.Utils.StringUtils">
+            <summary>
+            Helper methods for manipulating string values
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Utils.StringUtils.scrubPathAndExtFromFileName(System.String)">
+            <summary>
+            Stribs the file path and extension (if they exist) off of a file name
+            </summary>
+            <param name="fileName">filename to alter</param>
+            <returns>filename with the path and extension ripped off if they were present</returns>
+        </member>
+        <member name="M:GWNorthEngine.Utils.StringUtils.scrubPathFromFileName(System.String)">
+            <summary>
+            Scrubs the directory information off of a file name
+            </summary>
+            <param name="fileName">filename to alter</param>
+            <returns>filename with the path ripped off if it were present</returns>
+        </member>
+        <member name="M:GWNorthEngine.Utils.StringUtils.scrubExtensionFromFilename(System.String)">
+            <summary>
+            Scrubs the file extension from a file name
+            </summary>
+            <param name="fileName">filename to alter</param>
+            <returns>filename with the extension ripped off if it were present</returns>
+        </member>
         <member name="T:GWNorthEngine.Tools.TilePlacer.TileValues">
             <summary>
             Constant values for the TilePlacer tool
@@ -2231,32 +2257,6 @@
             <summary>
             Gets or sets the Texture of the static drawable object
             </summary>
-        </member>
-        <member name="T:GWNorthEngine.Utils.StringUtils">
-            <summary>
-            Helper methods for manipulating string values
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.Utils.StringUtils.scrubPathAndExtFromFileName(System.String)">
-            <summary>
-            Stribs the file path and extension (if they exist) off of a file name
-            </summary>
-            <param name="fileName">filename to alter</param>
-            <returns>filename with the path and extension ripped off if they were present</returns>
-        </member>
-        <member name="M:GWNorthEngine.Utils.StringUtils.scrubPathFromFileName(System.String)">
-            <summary>
-            Scrubs the directory information off of a file name
-            </summary>
-            <param name="fileName">filename to alter</param>
-            <returns>filename with the path ripped off if it were present</returns>
-        </member>
-        <member name="M:GWNorthEngine.Utils.StringUtils.scrubExtensionFromFilename(System.String)">
-            <summary>
-            Scrubs the file extension from a file name
-            </summary>
-            <param name="fileName">filename to alter</param>
-            <returns>filename with the extension ripped off if it were present</returns>
         </member>
     </members>
 </doc>
