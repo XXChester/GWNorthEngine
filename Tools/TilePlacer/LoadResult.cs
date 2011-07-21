@@ -25,13 +25,9 @@ namespace GWNorthEngine.Tools.TilePlacer {
 		/// </summary>
 		public int Width { get; set; }
 		/// <summary>
-		/// Gets or sets the MapTile array representation of the map
+		/// Gets or sets the Layers of the map
 		/// </summary>
-		public MapTile[,] MapTiles { get; set; }
-		/// <summary>
-		/// Gets or sets the TileValues array representation of the map
-		/// </summary>
-		public TileValues[,] TileValues { get; set; }
+		public Layer[] Layers { get; set; }
 		#endregion Class properties
 
 		#region Class constructor
@@ -40,13 +36,11 @@ namespace GWNorthEngine.Tools.TilePlacer {
 		/// </summary>
 		/// <param name="height">Height of the map</param>
 		/// <param name="width">Width of the map</param>
-		/// <param name="mapTiles">MapTile objects that make the map</param>
-		/// <param name="tileValues">TileValues of the types of tiles that make up the map</param>
-		public LoadResult(int height, int width, MapTile[,] mapTiles, TileValues[,] tileValues) {
+		/// <param name="layers">Layers of MapTile objects that make the map</param>
+		public LoadResult(int height, int width, Layer[] layers) {
 			this.Height = height;
 			this.Width = width;
-			this.MapTiles = mapTiles;
-			this.TileValues = tileValues;
+			this.Layers = layers;
 		}
 		#endregion Class constructor
 	}

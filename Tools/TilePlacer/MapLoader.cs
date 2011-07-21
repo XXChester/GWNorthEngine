@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Xml;
+using System.Xml.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -59,59 +60,53 @@ namespace GWNorthEngine.Tools.TilePlacer {
 		}
 
 		/// <summary>
-		/// Loads the tiles of a map
+		/// Loads a layer from the xml
 		/// </summary>
-		/// <param name="content">ContentManager used to load textures for the map</param>
-		/// <param name="map">XmlDocument object containing the tile information</param>
-		/// <param name="width">Width of the map</param>
-		/// <param name="mapTiles">MapTiles[,] loaded via the xml</param>
-		/// <param name="tileValues">TileValues[,] loaded via the xml</param>
-		private static void loadMap(ContentManager content, XmlDocument map, int width, ref MapTile[,] mapTiles, ref TileValues[,] tileValues) {
+		/// <param name="content">ContentManager object to load textures</param>
+		/// <param name="xmlLayer">XML of the layer to load</param>
+		/// <param name="height">Height of the layer</param>
+		/// <param name="width">Width of the layer</param>
+		/// <returns>Layer object</returns>
+		private static Layer loadLayer(ContentManager content, XElement xmlLayer, int height, int width) {
+			Layer layer = null;
+			string tileFileName;
+			int tileIndex;
+			MapTile[,] mapTiles = new MapTile[height, width];
+			TileValues[,] tileValues = new TileValues[height, width];
 			MapTile mapTile = null;
 			Texture2D texture = null;
 			TileValues pieceType;
 			Point pieceIndex;
-			int tileNumber;
 			int x, y;
-			string textureName;
-			XmlNode tileNode;
-			XmlNode childNode;
-			XmlNodeList tileNodes = map.GetElementsByTagName(Constants.XML_HEADER_TILE);
-			XmlNodeList childNodes;
-			for (int i = 0; i < tileNodes.Count; i++) {
-				tileNode = tileNodes[i];
-				tileNumber = -1;
-				if (tileNode != null) {
-					tileNumber = -1;
-					textureName = null;
-					pieceType = TileValues.Unknown;
-					// go through his children
-					childNodes = tileNode.ChildNodes;
-					if (childNodes != null) {
-						for (int j = 0; j < childNodes.Count; j++) {
-							childNode = childNodes[j];
-							switch (childNode.Name) {
-								case Constants.XML_TILE_FILE_NAME:
-									textureName = childNode.FirstChild.Value.Remove(childNode.FirstChild.Value.IndexOf('.'));
-									break;
-								case Constants.XML_TILE_INDEX:
-									tileNumber = Int32.Parse(childNode.FirstChild.Value);
-									break;
-								case Constants.XML_TILE_VALUE:
-									pieceType = EnumUtils.numberToEnum<TileValues>(Int32.Parse(childNode.FirstChild.Value));
-									break;
-							}
-						}
-						texture = LoadingUtils.loadTexture2D(content, textureName);
-						x = tileNumber % width;
-						y = tileNumber / width;
-						pieceIndex = new Point(x, y);
-						mapTile = new MapTile(pieceIndex, texture, pieceType, new Vector2(1f));
-						mapTiles[pieceIndex.Y, pieceIndex.X] = mapTile;
-						tileValues[pieceIndex.Y, pieceIndex.X] = pieceType;
+			foreach (XElement xmlTile in xmlLayer.Elements(Constants.XML_HEADER_TILE)) {
+				pieceType = TileValues.Unknown;
+				tileFileName = null;
+				tileIndex = -1;
+				foreach (XElement tileData in xmlTile.Nodes()) {
+					switch (tileData.Name.ToString()) {
+						case Constants.XML_TILE_FILE_NAME:
+							tileFileName = tileData.Value.Remove(tileData.Value.IndexOf('.'));
+							break;
+						case Constants.XML_TILE_INDEX:
+							tileIndex = int.Parse(tileData.Value);
+							break;
+						case Constants.XML_TILE_VALUE:
+							pieceType = EnumUtils.numberToEnum<TileValues>(int.Parse(tileData.Value));
+							break;
 					}
 				}
+				if (tileIndex != -1 && tileFileName != null && pieceType != TileValues.Unknown) {
+					texture = LoadingUtils.loadTexture2D(content, tileFileName);
+					x = tileIndex % width;
+					y = tileIndex / width;
+					pieceIndex = new Point(x, y);
+					mapTile = new MapTile(pieceIndex, texture, pieceType, new Vector2(1f));
+					mapTiles[pieceIndex.Y, pieceIndex.X] = mapTile;
+					tileValues[pieceIndex.Y, pieceIndex.X] = pieceType;
+				}
 			}
+			layer = new Layer(mapTiles, tileValues);
+			return layer;
 		}
 
 		/// <summary>
@@ -121,23 +116,31 @@ namespace GWNorthEngine.Tools.TilePlacer {
 		/// <param name="mapName">Name of the map to load</param>
 		/// <returns>LoadResult object containing the data that resulted from the loading of the map</returns>
 		public static LoadResult load(ContentManager content, string mapName) {
-			LoadResult loadResult = null;
 			XmlDocument map = new XmlDocument();
 			map.Load(mapName);
 			int height = -1;
 			int width = -1;
-			
+
 			// load the meta information
 			loadMapMetadata(map, ref height, ref width);
-			MapTile[,] mapTiles = new MapTile[height, width];
-			TileValues[,] tileValues = new TileValues[height, width];
-			
-			// load the tiles
-			loadMap(content, map, width, ref mapTiles, ref tileValues);
-			
-			// populate our result object
-			loadResult = new LoadResult(height, width, mapTiles, tileValues);
-			return loadResult;
+
+			// load our layers
+			XElement rootElement = XElement.Load(mapName);
+			List<Layer> layers = null;
+			Layer layer = null;
+			foreach (XElement xmlLayer in rootElement.Elements(Constants.XML_HEADER_LAYER)) {
+				layer = loadLayer(content, xmlLayer, height, width);
+				if (layer != null) {
+					if (layers == null) {
+						layers = new List<Layer>();
+					}
+					layers.Add(layer);
+				}
+			}
+			if (layers != null) {
+				return new LoadResult(height, width, layers.ToArray()); ;
+			}
+			return new LoadResult(height, width, null);
 		}
 
 		/// <summary>

@@ -973,14 +973,13 @@
             Models the data that is a direct result from loading a TilePlacer map
             </summary>
         </member>
-        <member name="M:GWNorthEngine.Tools.TilePlacer.LoadResult.#ctor(System.Int32,System.Int32,GWNorthEngine.Tools.TilePlacer.MapTile[0:,0:],GWNorthEngine.Tools.TilePlacer.TileValues[0:,0:])">
+        <member name="M:GWNorthEngine.Tools.TilePlacer.LoadResult.#ctor(System.Int32,System.Int32,GWNorthEngine.Tools.TilePlacer.Layer[])">
             <summary>
             Constructs a LoadResult object
             </summary>
             <param name="height">Height of the map</param>
             <param name="width">Width of the map</param>
-            <param name="mapTiles">MapTile objects that make the map</param>
-            <param name="tileValues">TileValues of the types of tiles that make up the map</param>
+            <param name="layers">Layers of MapTile objects that make the map</param>
         </member>
         <member name="P:GWNorthEngine.Tools.TilePlacer.LoadResult.Height">
             <summary>
@@ -992,14 +991,9 @@
             Gets or sets the width of the map
             </summary>
         </member>
-        <member name="P:GWNorthEngine.Tools.TilePlacer.LoadResult.MapTiles">
+        <member name="P:GWNorthEngine.Tools.TilePlacer.LoadResult.Layers">
             <summary>
-            Gets or sets the MapTile array representation of the map
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Tools.TilePlacer.LoadResult.TileValues">
-            <summary>
-            Gets or sets the TileValues array representation of the map
+            Gets or sets the Layers of the map
             </summary>
         </member>
         <member name="T:GWNorthEngine.Model.Params.BaseAnimationManagerParams">
@@ -2070,15 +2064,15 @@
             <param name="height">Height of the map</param>
             <param name="width">Width of the map</param>
         </member>
-        <member name="M:GWNorthEngine.Tools.TilePlacer.MapLoader.loadMap(Microsoft.Xna.Framework.Content.ContentManager,System.Xml.XmlDocument,System.Int32,GWNorthEngine.Tools.TilePlacer.MapTile[0:,0:]@,GWNorthEngine.Tools.TilePlacer.TileValues[0:,0:]@)">
+        <member name="M:GWNorthEngine.Tools.TilePlacer.MapLoader.loadLayer(Microsoft.Xna.Framework.Content.ContentManager,System.Xml.Linq.XElement,System.Int32,System.Int32)">
             <summary>
-            Loads the tiles of a map
+            Loads a layer from the xml
             </summary>
-            <param name="content">ContentManager used to load textures for the map</param>
-            <param name="map">XmlDocument object containing the tile information</param>
-            <param name="width">Width of the map</param>
-            <param name="mapTiles">MapTiles[,] loaded via the xml</param>
-            <param name="tileValues">TileValues[,] loaded via the xml</param>
+            <param name="content">ContentManager object to load textures</param>
+            <param name="xmlLayer">XML of the layer to load</param>
+            <param name="height">Height of the layer</param>
+            <param name="width">Width of the layer</param>
+            <returns>Layer object</returns>
         </member>
         <member name="M:GWNorthEngine.Tools.TilePlacer.MapLoader.load(Microsoft.Xna.Framework.Content.ContentManager,System.String)">
             <summary>
@@ -2256,6 +2250,33 @@
         <member name="P:GWNorthEngine.Model.StaticDrawable2D.Texture">
             <summary>
             Gets or sets the Texture of the static drawable object
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.Tools.TilePlacer.Layer">
+            <summary>
+            Models the data that makes up a layer of a full map
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Tools.TilePlacer.Layer.#ctor(GWNorthEngine.Tools.TilePlacer.MapTile[0:,0:],GWNorthEngine.Tools.TilePlacer.TileValues[0:,0:])">
+            <summary>
+            Constructs a Layer based off the xml loaded via the MapLoader
+            </summary>
+            <param name="tiles">Array of MapTile objects loaded from the xml</param>
+            <param name="tileValues">Array of TileValues loaded from the xml</param>
+        </member>
+        <member name="M:GWNorthEngine.Tools.TilePlacer.Layer.dispose">
+            <summary>
+            Cleans up the tiles
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Tools.TilePlacer.Layer.Tiles">
+            <summary>
+            Gets or sets the tiles used to draw the map
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Tools.TilePlacer.Layer.TileValues">
+            <summary>
+            Gets or sets the tile values used to determine the tile type
             </summary>
         </member>
     </members>
