@@ -13,10 +13,6 @@ namespace GWNorthEngine.Tools.TilePlacer {
 		/// Gets or sets the tiles used to draw the map
 		/// </summary>
 		public MapTile[,] Tiles { get; set; }
-		/// <summary>
-		/// Gets or sets the tile values used to determine the tile type
-		/// </summary>
-		public TileValues[,] TileValues { get; set; }
 		#endregion Class properties
 
 		#region Constructor
@@ -24,10 +20,8 @@ namespace GWNorthEngine.Tools.TilePlacer {
 		/// Constructs a Layer based off the xml loaded via the MapLoader
 		/// </summary>
 		/// <param name="tiles">Array of MapTile objects loaded from the xml</param>
-		/// <param name="tileValues">Array of TileValues loaded from the xml</param>
-		public Layer(MapTile[,] tiles, TileValues[,] tileValues) {
+		public Layer(MapTile[,] tiles) {
 			this.Tiles = tiles;
-			this.TileValues = tileValues;
 		}
 		#endregion Constructor
 

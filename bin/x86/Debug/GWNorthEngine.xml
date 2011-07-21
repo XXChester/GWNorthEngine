@@ -2257,12 +2257,11 @@
             Models the data that makes up a layer of a full map
             </summary>
         </member>
-        <member name="M:GWNorthEngine.Tools.TilePlacer.Layer.#ctor(GWNorthEngine.Tools.TilePlacer.MapTile[0:,0:],GWNorthEngine.Tools.TilePlacer.TileValues[0:,0:])">
+        <member name="M:GWNorthEngine.Tools.TilePlacer.Layer.#ctor(GWNorthEngine.Tools.TilePlacer.MapTile[0:,0:])">
             <summary>
             Constructs a Layer based off the xml loaded via the MapLoader
             </summary>
             <param name="tiles">Array of MapTile objects loaded from the xml</param>
-            <param name="tileValues">Array of TileValues loaded from the xml</param>
         </member>
         <member name="M:GWNorthEngine.Tools.TilePlacer.Layer.dispose">
             <summary>
@@ -2272,11 +2271,6 @@
         <member name="P:GWNorthEngine.Tools.TilePlacer.Layer.Tiles">
             <summary>
             Gets or sets the tiles used to draw the map
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Tools.TilePlacer.Layer.TileValues">
-            <summary>
-            Gets or sets the tile values used to determine the tile type
             </summary>
         </member>
     </members>

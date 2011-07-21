@@ -72,7 +72,6 @@ namespace GWNorthEngine.Tools.TilePlacer {
 			string tileFileName;
 			int tileIndex;
 			MapTile[,] mapTiles = new MapTile[height, width];
-			TileValues[,] tileValues = new TileValues[height, width];
 			MapTile mapTile = null;
 			Texture2D texture = null;
 			TileValues pieceType;
@@ -102,10 +101,9 @@ namespace GWNorthEngine.Tools.TilePlacer {
 					pieceIndex = new Point(x, y);
 					mapTile = new MapTile(pieceIndex, texture, pieceType, new Vector2(1f));
 					mapTiles[pieceIndex.Y, pieceIndex.X] = mapTile;
-					tileValues[pieceIndex.Y, pieceIndex.X] = pieceType;
 				}
 			}
-			layer = new Layer(mapTiles, tileValues);
+			layer = new Layer(mapTiles);
 			return layer;
 		}
 
