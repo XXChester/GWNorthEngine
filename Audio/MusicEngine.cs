@@ -11,16 +11,34 @@ namespace GWNorthEngine.Audio {
 	public class MusicEngine : BaseSoundEngine {
 		#region Class variables
 		private List<MusicWrapper> playList;
-		private int trackNumber;
+		/// <summary>
+		/// This should only be used within the music engine and NEVER for an update, use the TrackNumber property for updates
+		/// </summary>
+		private int internalTrackNumber;
 		#endregion Class variables
 
 		#region Class properties
+		/// <summary>
+		/// Gets the track number we are sitting at
+		/// </summary>
+		public int TrackNumber {
+			get { return this.internalTrackNumber; }
+			private set {
+				if (value == this.playList.Count) {
+					this.internalTrackNumber = 0;
+				} else if (value < 0) {
+					this.internalTrackNumber = this.playList.Count - 1;
+				} else {
+					this.internalTrackNumber = value;
+				}
+			}
+		}
 		/// <summary>
 		/// Gets the current track that is playing
 		/// </summary>
 		public Song currentTrack {
 			get {
-				return this.playList[this.trackNumber].Song;
+				return this.playList[this.internalTrackNumber].Song;
 			}
 		}
 
@@ -55,7 +73,7 @@ namespace GWNorthEngine.Audio {
 		public MusicEngine(MusicEngineParams parms)
 			: base(parms) {
 			this.playList = new List<MusicWrapper>();
-			this.trackNumber = parms.StartTrack;
+			this.internalTrackNumber = parms.StartTrack;
 			add(parms.PlayList);
 
 			MediaPlayer.Volume = base.Volume;
@@ -71,7 +89,7 @@ namespace GWNorthEngine.Audio {
 		/// Adds a Song object to the play list
 		/// </summary>
 		/// <param name="song">Song object to add</param>
-		public void add(Song song) {
+		public virtual void add(Song song) {
 			this.playList.Add(new MusicWrapper(song));
 		}
 
@@ -79,7 +97,7 @@ namespace GWNorthEngine.Audio {
 		/// Adds a list of Song objects to the play list
 		/// </summary>
 		/// <param name="playList"></param>
-		public void add(List<Song> playList) {
+		public virtual void add(List<Song> playList) {
 			if (playList != null) {
 				foreach (Song song in playList) {
 					add(song);
@@ -90,39 +108,31 @@ namespace GWNorthEngine.Audio {
 		/// <summary>
 		/// Plays the next track in the play list
 		/// </summary>
-		public void playNextTrack() {
-			if (this.trackNumber == this.playList.Count - 1) {
-				this.trackNumber = 0;
-			} else {
-				this.trackNumber++;
-			}
+		public virtual void playNextTrack() {
+			this.TrackNumber++;
 			play();
 		}
 
 		/// <summary>
 		/// Plays the previous track in the play list
 		/// </summary>
-		public void playPreviousTrack() {
-			if (this.trackNumber == 0) {
-				this.trackNumber = this.playList.Count - 1;
-			} else {
-				this.trackNumber--;
-			}
+		public virtual void playPreviousTrack() {
+			this.TrackNumber--;
 			play();
 		}
 
 		/// <summary>
 		/// Plays whichever track is up
 		/// </summary>
-		public void play() {
+		public virtual void play() {
 				stop();
-				MediaPlayer.Play(this.playList[this.trackNumber].Song);
+				MediaPlayer.Play(this.playList[this.internalTrackNumber].Song);
 		}
 
 		/// <summary>
 		/// Stops the current track
 		/// </summary>
-		public void stop() {
+		public virtual void stop() {
 			if (MediaPlayer.State != MediaState.Stopped) {
 				MediaPlayer.Stop();
 			}
@@ -131,7 +141,7 @@ namespace GWNorthEngine.Audio {
 		/// <summary>
 		/// Pauses the current track
 		/// </summary>
-		public void pause() {
+		public virtual void pause() {
 			if (MediaPlayer.State != MediaState.Paused) {
 				MediaPlayer.Pause();
 			}
@@ -140,9 +150,19 @@ namespace GWNorthEngine.Audio {
 		/// <summary>
 		/// Unpauses the current track
 		/// </summary>
-		public void unpause() {
+		public virtual void unpause() {
 			if (MediaPlayer.State == MediaState.Paused) {
 				MediaPlayer.Resume();
+			}
+		}
+
+		/// <summary>
+		/// Progresses the sound track alongs its path at the end of a sound
+		/// </summary>
+		public virtual void update() {
+			if (MediaPlayer.PlayPosition == this.currentTrack.Duration) {
+				this.TrackNumber++;
+				play();
 			}
 		}
 		#endregion Support methods

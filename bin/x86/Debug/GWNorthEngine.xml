@@ -1640,6 +1640,11 @@
             Music engine, handles playing a play list
             </summary>
         </member>
+        <member name="F:GWNorthEngine.Audio.MusicEngine.internalTrackNumber">
+            <summary>
+            This should only be used within the music engine and NEVER for an update, use the TrackNumber property for updates
+            </summary>
+        </member>
         <member name="M:GWNorthEngine.Audio.MusicEngine.#ctor(GWNorthEngine.Audio.Params.MusicEngineParams)">
             <summary>
             Builds a MusicEngine based on the data passed in via the parameter object
@@ -1688,9 +1693,19 @@
             Unpauses the current track
             </summary>
         </member>
+        <member name="M:GWNorthEngine.Audio.MusicEngine.update">
+            <summary>
+            Progresses the sound track alongs its path at the end of a sound
+            </summary>
+        </member>
         <member name="M:GWNorthEngine.Audio.MusicEngine.dispose">
             <summary>
             Cleans up resources used by the music engine
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Audio.MusicEngine.TrackNumber">
+            <summary>
+            Gets the track number we are sitting at
             </summary>
         </member>
         <member name="P:GWNorthEngine.Audio.MusicEngine.currentTrack">
@@ -1998,6 +2013,27 @@
             UnloadContent will be called once per game and is the place to unload all content
             </summary>
         </member>
+        <member name="T:GWNorthEngine.Tools.TilePlacer.Layer">
+            <summary>
+            Models the data that makes up a layer of a full map
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Tools.TilePlacer.Layer.#ctor(GWNorthEngine.Tools.TilePlacer.MapTile[0:,0:])">
+            <summary>
+            Constructs a Layer based off the xml loaded via the MapLoader
+            </summary>
+            <param name="tiles">Array of MapTile objects loaded from the xml</param>
+        </member>
+        <member name="M:GWNorthEngine.Tools.TilePlacer.Layer.dispose">
+            <summary>
+            Cleans up the tiles
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Tools.TilePlacer.Layer.Tiles">
+            <summary>
+            Gets or sets the tiles used to draw the map
+            </summary>
+        </member>
         <member name="T:GWNorthEngine.Scripting.Utils.ScriptUtils">
             <summary>
             Helpful methods for scripting
@@ -2250,27 +2286,6 @@
         <member name="P:GWNorthEngine.Model.StaticDrawable2D.Texture">
             <summary>
             Gets or sets the Texture of the static drawable object
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.Tools.TilePlacer.Layer">
-            <summary>
-            Models the data that makes up a layer of a full map
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.Tools.TilePlacer.Layer.#ctor(GWNorthEngine.Tools.TilePlacer.MapTile[0:,0:])">
-            <summary>
-            Constructs a Layer based off the xml loaded via the MapLoader
-            </summary>
-            <param name="tiles">Array of MapTile objects loaded from the xml</param>
-        </member>
-        <member name="M:GWNorthEngine.Tools.TilePlacer.Layer.dispose">
-            <summary>
-            Cleans up the tiles
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Tools.TilePlacer.Layer.Tiles">
-            <summary>
-            Gets or sets the tiles used to draw the map
             </summary>
         </member>
     </members>

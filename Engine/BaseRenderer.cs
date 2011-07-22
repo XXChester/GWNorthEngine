@@ -157,6 +157,8 @@ namespace GWNorthEngine.Engine {
 		/// </summary>
 		protected override void UnloadContent() {
 			this.scriptConsoleRunning = false;
+			Content.Unload();//incase we didn't dispose something ourself
+			Content.Dispose();
 		}
 		#endregion Support methods
 	}

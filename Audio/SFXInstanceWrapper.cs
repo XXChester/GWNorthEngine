@@ -22,7 +22,8 @@ namespace GWNorthEngine.Audio {
 				if (this.Instance.State != SoundState.Stopped) {
 					this.Instance.Stop();
 				}
-				this.Instance.Dispose();
+				//Commented out dispose to fix a MemmoryAccessViolation bug in the XNA Framwork. Have to let the ContentManager handle the cleanup of sfx's
+				//this.Instance.Dispose();
 			}
 		}
 		#endregion Destructor
