@@ -23,7 +23,7 @@ namespace GWNorthEngine.Tools.TilePlacer {
 		/// <summary>
 		/// Tiles that you stand on
 		/// </summary>
-		StandOns = 2,
+		SpawnPoint = 2,
 		/// <summary>
 		/// Tiles that you can climb
 		/// </summary>
