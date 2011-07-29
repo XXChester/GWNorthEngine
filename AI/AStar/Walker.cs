@@ -17,7 +17,7 @@ namespace GWNorthEngine.AI.AStar {
 		/// <param name="width">Width of the board</param>
 		/// <param name="allowedToCutCorners">Ability to cut across corners</param>
 		public Walker(int height, int width, bool allowedToCutCorners)
-			:base(height, width, RestrictionType.All) {
+			:base(height, width, RestrictionType.None) {
 			// used for on the fly processing
 			this.allowedToCutCorners = allowedToCutCorners;
 		}
@@ -28,7 +28,7 @@ namespace GWNorthEngine.AI.AStar {
 		/// <param name="board">A* representation of the board</param>
 		/// <param name="allowedToCutCorners">Ability to cut across corners</param>
 		public Walker(TypeOfSpace[,] board, bool allowedToCutCorners)
-			: base(board, RestrictionType.All) {
+			: base(board, RestrictionType.None) {
 			// used for static processing
 			this.allowedToCutCorners = allowedToCutCorners;
 			base.getStartAndEnd();
@@ -49,7 +49,6 @@ namespace GWNorthEngine.AI.AStar {
 		protected override void findPath(PathNode parent, int parentsIndex) {
 			// find our surronding points
 			int x, y, cornerCheckX, cornerCheckY;
-			int newG;
 			int startDistance, endDistance;
 			PathNode existingNode = null;
 			PathNode newNode = null;
@@ -60,12 +59,9 @@ namespace GWNorthEngine.AI.AStar {
 				x = parent.Position.X + base.directions[i, 1];
 				if (x > -1 && y > -1 && x < base.WIDTH && y < base.HEIGHT && base.board[y, x] != PathFinder.TypeOfSpace.Unwalkable) {
 					newPosition = new Point(x, y);
-					if (i < 4) {
-						getDistance(newPosition, out startDistance, out endDistance);
-						newNode = new PathNode(parent, newPosition, startDistance, endDistance);
-					} else {
-						getDistance(newPosition, out startDistance, out endDistance);
-						newNode = new PathNode(parent, newPosition, startDistance, endDistance);
+					getDistance(newPosition, parent, out startDistance, out endDistance);
+					newNode = new PathNode(parent, newPosition, startDistance, endDistance);
+					if (i >= 4) {
 						// if we are not allowing cutting we need to check if this diagonal would cut a corner, if it does do not process it
 						if (!this.allowedToCutCorners) {
 							// to get the corners we simply get the new x/y positions direction and multiply it by -1 and add it to x/y
@@ -82,24 +78,22 @@ namespace GWNorthEngine.AI.AStar {
 					// check if the position is already on the open list
 					for (int j = 0; j < base.openList.Count; j++) {
 						existingNode = base.openList[j];
-						if (existingNode != null && existingNode.Position == newPosition && existingNode.Parent != null) {
-							if ((newPosition.X - parent.Position.X) == 1 && (newPosition.Y - parent.Position.Y) == 1) {
-								newG = newNode.G + 14;
+						if (existingNode != null && existingNode.Position == newPosition) {
+							/*if ((newPosition.X - parent.Position.X) == 1 && (newPosition.Y - parent.Position.Y) == 1) {
+								newG = base.costs.DiagonalCost;
 							} else {
-								newG = newNode.G + 10;
-							}
-							if (newG < existingNode.G) {
-								existingNode.Parent.Position = newPosition;
-								existingNode.G = newG;
-								existingNode.H = endDistance;
-								existingNode.FScore = startDistance + endDistance;
+								newG = base.costs.StandardCost;
+							}*/
+							if (newNode.G < existingNode.G) {
+								existingNode.Parent = parent;
+								existingNode.G = newNode.G;
 							}
 							foundPieceInList = true;
 							break;
 						}
 					}
 					if (!foundPieceInList) {
-						// Now that we found this piece, find and set his fScore
+						// We didn't find this piece in the open list so add it to the open list
 						base.openList.Add(newNode);
 					}
 				}
@@ -108,7 +102,7 @@ namespace GWNorthEngine.AI.AStar {
 			base.closedList.Add(parent);
 
 			// we need to remove items that are on the closed list
-			if (base.openList.Count > 0) {
+			if (base.openList.Count >= 1) {
 				int removal;
 				PathNode pathPiece = null;
 				for (int c = 0; c < base.closedList.Count; c++) {
@@ -131,7 +125,7 @@ namespace GWNorthEngine.AI.AStar {
 			// get the lowest cost next point
 			if (base.openList.Count > 0) {
 				base.openList.Sort(FScoreComparator.getInstance());
-				int index = checkForTieBreakerAndResolvePath(ref base.openList);
+				int index = base.checkForTieBreakerAndResolvePath(ref base.openList);
 				PathNode lowestScorePiece = base.openList[index];
 				if (base.end.Equals(lowestScorePiece.Position)) {
 					this.closedList.Add(lowestScorePiece);

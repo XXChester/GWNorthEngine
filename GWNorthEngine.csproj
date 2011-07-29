@@ -96,6 +96,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\AStar\Costs.cs" />
+    <Compile Include="AI\AStar\DefaultCosts.cs" />
     <Compile Include="AI\AStar\FScoreComparator.cs" />
     <Compile Include="AI\AStar\MazeSolver.cs" />
     <Compile Include="AI\AStar\PathFinder.cs" />

@@ -41,7 +41,6 @@ namespace GWNorthEngine.AI.AStar {
 		protected override void findPath(PathNode parent, int parentsIndex) {
 			// find our surronding points
 			int x, y;
-			int newG;
 			int startDistance, endDistance;
 			PathNode existingNode = null;
 			PathNode newNode = null;
@@ -52,25 +51,23 @@ namespace GWNorthEngine.AI.AStar {
 				x = parent.Position.X + base.directions[i, 1];
 				if (x > -1 && y > -1 && x < base.WIDTH && y < base.HEIGHT && base.board[y, x] != PathFinder.TypeOfSpace.Unwalkable) {
 					newPosition = new Point(x, y);
-					base.getDistance(newPosition, out startDistance, out endDistance);
+					base.getDistance(newPosition, parent, out startDistance, out endDistance);
 					newNode = new PathNode(parent, newPosition, startDistance, endDistance);
 					foundPieceInList = false;
 					// check if the position is already on the open list
 					for (int j = 0; j < base.openList.Count; j++) {
 						existingNode = base.openList[j];
-						if (existingNode != null && existingNode.Position == newPosition && existingNode.Parent != null) {
-							newG = newNode.G + 10;
-							if (newG < existingNode.G) {
-								existingNode.Parent.Position = newPosition;
-								existingNode.G = newG;
-								existingNode.calculateFScore();
+						if (existingNode != null && existingNode.Position == newPosition) {
+							if (newNode.G < existingNode.G) {
+								existingNode.Parent = parent;
+								existingNode.G = newNode.G;
 							}
 							foundPieceInList = true;
 							break;
 						}
 					}
 					if (!foundPieceInList) {
-						// Now that we found this piece, find and set his fScore
+						// We didn't find this piece in the open list so add it to the open list
 						base.openList.Add(newNode);
 					}
 				}
@@ -79,7 +76,7 @@ namespace GWNorthEngine.AI.AStar {
 			base.closedList.Add(parent);
 
 			// we need to remove items that are on the closed list
-			if (base.openList.Count > 0) {
+			if (base.openList.Count >= 1) {
 				int removal;
 				PathNode pathPiece = null;
 				for (int c = 0; c < base.closedList.Count; c++) {
@@ -102,7 +99,7 @@ namespace GWNorthEngine.AI.AStar {
 			// get the lowest cost next point
 			if (base.openList.Count > 0) {
 				base.openList.Sort(FScoreComparator.getInstance());
-				int index = checkForTieBreakerAndResolvePath(ref base.openList);
+				int index = base.checkForTieBreakerAndResolvePath(ref base.openList);
 				PathNode lowestScorePiece = base.openList[index];
 				if (base.end.Equals(lowestScorePiece.Position)) {
 					this.closedList.Add(lowestScorePiece);

@@ -7,24 +7,23 @@ namespace GWNorthEngine.AI.AStar {
 		#region Class variables
 		private int g;
 		private int h;
-		private int fScore;
 		private Point position;
 		private PathNode parent;
 		#endregion Class variables
 
 		#region Class properties
 		/// <summary>
-		/// Get or sets the H score of a node
+		/// Get or sets the H score of a node (Estimated cost to move to the destination point from the current position)
 		/// </summary>
 		public int H { get { return this.h; } set { this.h = value; } }
 		/// <summary>
-		/// Gets or sets the G score of a node
+		/// Gets or sets the G score of a node (Cost to move from the starting point to the current position)
 		/// </summary>
 		public int G { get { return this.g; } set { this.g = value; } }
 		/// <summary>
-		/// Gets or sets the total F score of a node
+		/// Gets the total F score of a node
 		/// </summary>
-		public int FScore { get { return this.fScore; } set { this.fScore = value; } }
+		public int FScore { get { return this.g + this.h; } }
 		/// <summary>
 		/// Gets or sets the nodes position within the board
 		/// </summary>
@@ -48,18 +47,10 @@ namespace GWNorthEngine.AI.AStar {
 			this.position = position;
 			this.g = startDistance;
 			this.h = endDistance;
-			calculateFScore();
 		}
 		#endregion Constructor
 
 		#region Support functions
-		/// <summary>
-		/// Calculates and assigns the FScore of a node based on its G and H scores
-		/// </summary>
-		public void calculateFScore() {
-			this.fScore = this.g + this.h;
-		}
-
 		/// <summary>
 		/// Determines if two Nodes have an equal F score and H score
 		/// </summary>
@@ -67,7 +58,7 @@ namespace GWNorthEngine.AI.AStar {
 		/// <returns>true if the nodes are equal, otherwise false</returns>
 		public bool fScoresEqual(PathNode compareWith) {
 			bool result = false;
-			if (this.fScore == compareWith.FScore) {
+			if (this.FScore == compareWith.FScore) {
 				if (this.h == compareWith.H) {
 					result = true;
 				}
@@ -80,7 +71,7 @@ namespace GWNorthEngine.AI.AStar {
 		/// </summary>
 		/// <returns>String of the node object</returns>
 		public override string ToString() {
-			return ("H: " + h + " G:" + g + " fScore: " + fScore + " pointX: " + position.X + " pointY: " + position.Y);
+			return ("FScore: " + FScore + " H: " + h + " G:" + g + " pointX: " + position.X + " pointY: " + position.Y);
 		}
 		#endregion Support functions
 	}
