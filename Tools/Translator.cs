@@ -28,11 +28,17 @@ namespace GWNorthEngine.Tools {
 			PathFinder.TypeOfSpace aStarValue;
 			TileValues tileValue = EnumUtils.numberToEnum<TileValues>(value);
 			switch (tileValue) {
-				case TileValues.BackGround:
-					aStarValue = PathFinder.TypeOfSpace.Unwalkable;
-					break;
 				case TileValues.NoMovements:
 					aStarValue = PathFinder.TypeOfSpace.Unwalkable;
+					break;
+				case TileValues.VariableTerrainLowCost:
+					aStarValue = PathFinder.TypeOfSpace.VariableTerrainLowCost;
+					break;
+				case TileValues.VariableTerrainMediumCost:
+					aStarValue = PathFinder.TypeOfSpace.VariableTerrainMediumCost;
+					break;
+				case TileValues.VariableTerrainHighCost:
+					aStarValue = PathFinder.TypeOfSpace.VariableTerrainHighCost;
 					break;
 				default:
 					aStarValue = PathFinder.TypeOfSpace.Walkable;

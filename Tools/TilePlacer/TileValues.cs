@@ -23,10 +23,26 @@ namespace GWNorthEngine.Tools.TilePlacer {
 		/// <summary>
 		/// Tiles that you stand on
 		/// </summary>
-		SpawnPoint = 2,
+		SpawnPoint,
 		/// <summary>
 		/// Tiles that you can climb
 		/// </summary>
-		Climbers = 3
+		Climbers,
+		/// <summary>
+		/// Moveable piece on the board
+		/// </summary>
+		Walkable,
+		/// <summary>
+		/// Variable terrain with a higher cost than standard with an extra cost that is low
+		/// </summary>
+		VariableTerrainLowCost,
+		/// <summary>
+		/// Variable terrain with a higher cost than standard with an extra cost that is medium
+		/// </summary>
+		VariableTerrainMediumCost,
+		/// <summary>
+		/// Variable terrain with a higher cost than standard with an extra cost that is high
+		/// </summary>
+		VariableTerrainHighCost
 	}
 }
