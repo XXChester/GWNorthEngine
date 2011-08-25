@@ -115,7 +115,7 @@ namespace GWNorthEngine.Engine {
 							if (!this.scriptConsoleRunning) {
 								return;
 							}
-							Thread.Sleep(250);
+							Thread.Sleep(50);
 						}
 						input = Console.ReadLine();
 						ScriptManager.getInstance().handleInput(input);
