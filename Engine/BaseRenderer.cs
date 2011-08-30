@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using GWNorthEngine.Engine.Params;
 using GWNorthEngine.Scripting;
+using GWNorthEngine.Input;
 
 namespace GWNorthEngine.Engine {
 	/// <summary>
@@ -150,6 +151,7 @@ namespace GWNorthEngine.Engine {
 			}
 #endif
 #endif
+			InputManager.getInstance().update();
 			base.Update(gameTime);
 		}
 		/// <summary>

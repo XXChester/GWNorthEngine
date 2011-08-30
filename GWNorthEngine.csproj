@@ -116,6 +116,8 @@
     <Compile Include="Engine\Params\BaseRendererParams.cs" />
     <Compile Include="Engine\FrameRate.cs" />
     <Compile Include="Engine\RunningMode.cs" />
+    <Compile Include="Input\InputManager.cs" />
+    <Compile Include="Input\MouseButton.cs" />
     <Compile Include="Model\2D\Animated2DSprite.cs" />
     <Compile Include="Model\2D\BaseParticle2D.cs" />
     <Compile Include="Model\2D\ColouredButton.cs" />
