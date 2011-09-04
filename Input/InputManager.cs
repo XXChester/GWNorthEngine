@@ -18,6 +18,23 @@ namespace GWNorthEngine.Input {
 		private GamePadState[] currentGamePadStates;
 		#endregion Class variables
 
+		#region Class properties
+		/// <summary>
+		/// Returns the mouses X position
+		/// </summary>
+		public int MouseX { get { return this.currentMouseState.X; } }
+		
+		/// <summary>
+		/// Returns the mouses Y position
+		/// </summary>
+		public int MouseY { get { return this.currentMouseState.Y; } }
+
+		/// <summary>
+		/// Returns a Vector2 of the mouses position
+		/// </summary>
+		public Vector2 MousePosition { get { return new Vector2(MouseX, MouseY); } }
+		#endregion Class properties
+
 		#region Constructor
 		/// <summary>
 		/// Sets the default values of the input manager
@@ -93,7 +110,7 @@ namespace GWNorthEngine.Input {
 		/// </summary>
 		/// <param name="key">Key that we are checking for</param>
 		/// <returns>True if the key is held, otherwise false</returns>
-		public bool isKeyHeld(Keys key) {
+		public bool isKeyDown(Keys key) {
 			bool result = false;
 			if (this.previousKeyboardState.IsKeyDown(key) && this.currentKeyboardState.IsKeyDown(key)) {
 				result = true;

@@ -106,11 +106,27 @@ namespace GWNorthEngine.Model {
 		/// </summary>
 		/// <param name="maxFrameCount">Max frames used to reset reverse sprites</param>
 		public void resetAnimation(int maxFrameCount) {
+			resetAnimation(maxFrameCount, false);
+		}
+
+		/// <summary>
+		/// Resets the animation sequence that the AnimationManager is controlling and has an option to set the animation so that it will
+		/// fire as soon the state is changed to a "play" state
+		/// </summary>
+		/// <param name="maxFrameCount">Max frames used to reset reverse sprites</param>
+		/// <param name="cockAnimation">Determines if we are setting the animation up to fire right away as soon as a "Play" state is entered or whether
+		/// we want it set to replay the whole wait time</param>
+		public void resetAnimation(int maxFrameCount, bool cockAnimation) {
 			this.totalElapsed = 0f;
 			if (animationState == AnimationState.PlayReversed) {
 				this.currentFrame = maxFrameCount;
 			} else {
 				this.currentFrame = 0;
+			}
+
+			if (cockAnimation) {
+				this.State = AnimationState.Paused;
+				this.totalElapsed = frameRate;
 			}
 		}
 
