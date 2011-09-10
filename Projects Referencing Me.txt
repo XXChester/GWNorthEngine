@@ -6,6 +6,7 @@ Team folder:
 -ScriptingIntegration
 -AudioPlayer
 -InputIntegration
+-PhysicsTest
 
 ========================
 Jason's personal work:

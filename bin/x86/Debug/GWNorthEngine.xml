@@ -2151,7 +2151,7 @@
         <member name="M:GWNorthEngine.Engine.Params.BaseRendererParams.#ctor">
             <summary>
             Builds the default settings for setting up the the BaseRenderer. The default settings are below;
-            ScreenHeight:			600
+            \nScreenHeight:			600
             ScreenWidth:			800
             MouseVisiblity:			true
             FullScreen:				false
