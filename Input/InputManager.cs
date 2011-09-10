@@ -177,7 +177,7 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just pressed, otherwise false</returns>
 		public bool wasLeftButtonPressed() {
 			bool result = false;
-			if (this.previousMouseState.LeftButton == ButtonState.Pressed && this.currentMouseState.LeftButton == ButtonState.Released) {
+			if (this.previousMouseState.LeftButton == ButtonState.Released && this.currentMouseState.LeftButton == ButtonState.Pressed) {
 				result = true;
 			}
 			return result;
@@ -189,7 +189,7 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just released, otherwise false</returns>
 		public bool wasLeftButtonReleased() {
 			bool result = false;
-			if (this.previousMouseState.LeftButton == ButtonState.Released && this.currentMouseState.LeftButton == ButtonState.Pressed) {
+			if (this.previousMouseState.LeftButton == ButtonState.Pressed && this.currentMouseState.LeftButton == ButtonState.Released) {
 				result = true;
 			}
 			return result;
@@ -213,7 +213,7 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just pressed, otherwise false</returns>
 		public bool wasRightButtonPressed() {
 			bool result = false;
-			if (this.previousMouseState.RightButton == ButtonState.Pressed && this.currentMouseState.RightButton == ButtonState.Released) {
+			if (this.previousMouseState.RightButton == ButtonState.Released && this.currentMouseState.RightButton == ButtonState.Pressed) {
 				result = true;
 			}
 			return result;
@@ -225,7 +225,7 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just released, otherwise false</returns>
 		public bool wasRightButtonReleased() {
 			bool result = false;
-			if (this.previousMouseState.RightButton == ButtonState.Released && this.currentMouseState.RightButton == ButtonState.Pressed) {
+			if (this.previousMouseState.RightButton == ButtonState.Pressed && this.currentMouseState.RightButton == ButtonState.Released) {
 				result = true;
 			}
 			return result;
@@ -249,7 +249,7 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just pressed, otherwise false</returns>
 		public bool wasMiddleButtonPressed() {
 			bool result = false;
-			if (this.previousMouseState.MiddleButton == ButtonState.Pressed && this.currentMouseState.MiddleButton == ButtonState.Released) {
+			if (this.previousMouseState.MiddleButton == ButtonState.Released && this.currentMouseState.MiddleButton == ButtonState.Pressed) {
 				result = true;
 			}
 			return result;
@@ -261,7 +261,7 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just released, otherwise false</returns>
 		public bool wasMiddleButtonReleased() {
 			bool result = false;
-			if (this.previousMouseState.MiddleButton == ButtonState.Released && this.currentMouseState.MiddleButton == ButtonState.Pressed) {
+			if (this.previousMouseState.MiddleButton == ButtonState.Pressed && this.currentMouseState.MiddleButton == ButtonState.Released) {
 				result = true;
 			}
 			return result;

@@ -58,9 +58,6 @@ namespace GWNorthEngine.Engine {
 		protected void initialize(BaseRendererParams parms) {
 			this.builtWithParms = parms;
 			this.graphics = new GraphicsDeviceManager(this);
-			Content.RootDirectory = parms.ContentRootDirectory;
-			this.IsMouseVisible = parms.MouseVisible;
-			this.runningMode = parms.RunningMode;
 		}
 
 		/// <summary>
@@ -71,12 +68,16 @@ namespace GWNorthEngine.Engine {
 		/// </summary>
 		protected override void Initialize() {
 			// Create a new SpriteBatch, which can be used to draw textures.
-			spriteBatch = new SpriteBatch(GraphicsDevice);
+			//this.graphics = new GraphicsDeviceManager(this);
+			this.spriteBatch = new SpriteBatch(GraphicsDevice);
 			this.graphics.PreferredBackBufferWidth = this.builtWithParms.ScreenWidth;
 			this.graphics.PreferredBackBufferHeight = this.builtWithParms.ScreenHeight;
 			this.graphics.IsFullScreen = this.builtWithParms.FullScreen;
 			this.graphics.ApplyChanges();
 			this.Window.Title = this.builtWithParms.WindowsText;
+			base.Content.RootDirectory = this.builtWithParms.ContentRootDirectory;
+			this.IsMouseVisible = this.builtWithParms.MouseVisible;
+			this.runningMode = this.builtWithParms.RunningMode;
 			base.Initialize();
 
 			try {
