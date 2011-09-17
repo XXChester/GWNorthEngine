@@ -40,7 +40,10 @@ namespace GWNorthEngine.Audio {
 		#endregion Constructor
 
 		#region Support methods
-
+		/// <summary>
+		/// Monitors current Sound instances and flags them for cleanup if they have finished playing
+		/// </summary>
+		public abstract void update();
 		#endregion Support methods
 
 		#region Destructor

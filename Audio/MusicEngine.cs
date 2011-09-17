@@ -159,7 +159,7 @@ namespace GWNorthEngine.Audio {
 		/// <summary>
 		/// Progresses the sound track alongs its path at the end of a sound
 		/// </summary>
-		public virtual void update() {
+		public override void update() {
 			if (MediaPlayer.PlayPosition == this.currentTrack.Duration) {
 				this.TrackNumber++;
 				play();
