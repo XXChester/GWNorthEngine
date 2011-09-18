@@ -120,7 +120,9 @@
     <Compile Include="Input\MouseButton.cs" />
     <Compile Include="Model\2D\Animated2DSprite.cs" />
     <Compile Include="Model\2D\BaseParticle2D.cs" />
+    <Compile Include="Model\2D\BaseParticle2DEmitter.cs" />
     <Compile Include="Model\2D\ColouredButton.cs" />
+    <Compile Include="Model\2D\Params\BaseParticle2DEmitterParams.cs" />
     <Compile Include="Model\2D\Params\ColouredButtonParams.cs" />
     <Compile Include="Model\2D\Params\StaticDrawable2DParams.cs" />
     <Compile Include="Model\2D\StaticDrawable2D.cs" />
