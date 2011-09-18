@@ -38,6 +38,13 @@ namespace GWNorthEngine.Model {
 		protected readonly Random RANDOM;
 		#endregion Class variables
 
+		#region Class properties
+		/// <summary>
+		/// Gets or sets the emitters particle list
+		/// </summary>
+		public List<BaseParticle2D> Particles { get { return this.particles; } set { this.particles = value; } }
+		#endregion Class properties
+
 		#region Constructor
 		/// <summary>
 		/// Builds the base particle emitter
