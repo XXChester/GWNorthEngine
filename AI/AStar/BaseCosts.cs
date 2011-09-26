@@ -55,13 +55,13 @@ namespace GWNorthEngine.AI.AStar {
 		/// </summary>
 		/// <param name="space"></param>
 		/// <returns></returns>
-		public virtual int getCost(PathFinder.TypeOfSpace space) {
+		public virtual int getCost(BasePathFinder.TypeOfSpace space) {
 			int cost = StandardCost;
-			if (space == PathFinder.TypeOfSpace.VariableTerrainLowCost) {
+			if (space == BasePathFinder.TypeOfSpace.VariableTerrainLowCost) {
 				cost = VariableTerrainLowCost;
-			} else if (space == PathFinder.TypeOfSpace.VariableTerrainMediumCost) {
+			} else if (space == BasePathFinder.TypeOfSpace.VariableTerrainMediumCost) {
 				cost = VariableTerrainMediumCost;
-			} else if (space == PathFinder.TypeOfSpace.VariableTerrainHighCost) {
+			} else if (space == BasePathFinder.TypeOfSpace.VariableTerrainHighCost) {
 				cost = VariableTerrainHighCost;
 			}
 			return cost;

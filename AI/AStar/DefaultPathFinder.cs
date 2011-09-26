@@ -1,42 +1,18 @@
 using System;
 using Microsoft.Xna.Framework;
+using GWNorthEngine.AI.AStar.Params;
 namespace GWNorthEngine.AI.AStar {
 	/// <summary>
-	/// Child path finding class that moves in a any direction and can optionally cut corners
+	/// Default path finding class
 	/// </summary>
-	public class Walker : PathFinder {
-		#region Class variables
-		private bool allowedToCutCorners;
-		#endregion Class variables
-
+	public class DefaultPathFinder : BasePathFinder {
 		#region Constructor
 		/// <summary>
-		/// Builds a Walker instance based on the height, width and ability to cut corners. Used for on the fly path calculation
+		/// Builds a DefaultPathFinder
 		/// </summary>
-		/// <param name="height">Height of the board</param>
-		/// <param name="width">Width of the board</param>
-		/// <param name="allowedToCutCorners">Ability to cut across corners</param>
-		public Walker(int height, int width, bool allowedToCutCorners)
-			:base(height, width, RestrictionType.None) {
-			// used for on the fly processing
-			this.allowedToCutCorners = allowedToCutCorners;
-		}
-
-		/// <summary>
-		/// Builds a Walker instance based on the board and ability to cut corners. Used for one off path calculation
-		/// </summary>
-		/// <param name="board">A* representation of the board</param>
-		/// <param name="allowedToCutCorners">Ability to cut across corners</param>
-		public Walker(TypeOfSpace[,] board, bool allowedToCutCorners)
-			: base(board, RestrictionType.None) {
-			// used for static processing
-			this.allowedToCutCorners = allowedToCutCorners;
-			base.getStartAndEnd();
-			if (base.end.X != -1 && base.end.Y != -1 && base.start.X != -1 && base.start.Y != -1) {
-				
-			} else {
-				throw new ArgumentException("Failed to find a start and ending position");
-			}
+		/// <param name="parms">DefaultPathFinderParams object containing the data required to build the PathFinder</param>
+		public DefaultPathFinder(DefaultPathfinderParams parms) 
+			:base(parms) {
 		}
 		#endregion Constructor
 
@@ -54,16 +30,16 @@ namespace GWNorthEngine.AI.AStar {
 			PathNode newNode = null;
 			bool foundPieceInList;
 			Point newPosition;
-			for (int i = 0; i < 8; i++) {
+			for (int i = 0; i < base.DIRECTIONS_LENGTH; i++) {
 				y = parent.Position.Y + base.directions[i, 0];
 				x = parent.Position.X + base.directions[i, 1];
-				if (x > -1 && y > -1 && x < base.WIDTH && y < base.HEIGHT && base.board[y, x] != PathFinder.TypeOfSpace.Unwalkable) {
+				if (x > -1 && y > -1 && x < base.WIDTH && y < base.HEIGHT && base.board[y, x] != BasePathFinder.TypeOfSpace.Unwalkable) {
 					newPosition = new Point(x, y);
 					getDistance(newPosition, parent, out startDistance, out endDistance);
 					newNode = new PathNode(parent, newPosition, startDistance, endDistance);
 					if (i >= 4) {
 						// if we are not allowing cutting we need to check if this diagonal would cut a corner, if it does do not process it
-						if (!this.allowedToCutCorners) {
+						if (!base.allowedToCutCorners) {
 							// to get the corners we simply get the new x/y positions direction and multiply it by -1 and add it to x/y
 							cornerCheckY = (base.directions[i, 0] * -1) + y;
 							cornerCheckX = (base.directions[i, 1] * -1) + x;
@@ -79,11 +55,6 @@ namespace GWNorthEngine.AI.AStar {
 					for (int j = 0; j < base.openList.Count; j++) {
 						existingNode = base.openList[j];
 						if (existingNode != null && existingNode.Position == newPosition) {
-							/*if ((newPosition.X - parent.Position.X) == 1 && (newPosition.Y - parent.Position.Y) == 1) {
-								newG = base.costs.DiagonalCost;
-							} else {
-								newG = base.costs.StandardCost;
-							}*/
 							if (newNode.G < existingNode.G) {
 								existingNode.Parent = parent;
 								existingNode.G = newNode.G;

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using GWNorthEngine.AI.AStar.Params;
 namespace GWNorthEngine.AI.AStar {
 	// built using the steps described at http://www.policyalmanac.org/games/aStarTutorial.htm
 	/// <summary>
 	/// Abstract class containing the common information for basic A* Pathfinding
 	/// </summary>
-	public abstract class PathFinder {
+	public abstract class BasePathFinder {
 		/// <summary>
 		/// Type of spaces the board can contain
 		/// </summary>
@@ -57,14 +58,6 @@ namespace GWNorthEngine.AI.AStar {
 
 		#region Class variables
 		/// <summary>
-		/// Height of the board
-		/// </summary>
-		protected readonly int HEIGHT;
-		/// <summary>
-		/// Width of the board
-		/// </summary>
-		protected readonly int WIDTH;
-		/// <summary>
 		/// Directions we can generate moves in
 		/// </summary>
 		protected int[,] directions;
@@ -72,6 +65,10 @@ namespace GWNorthEngine.AI.AStar {
 		/// A* readable board representation
 		/// </summary>
 		protected TypeOfSpace[,] board;
+		/// <summary>
+		/// Determines if corner cutting is allowed
+		/// </summary>
+		protected bool allowedToCutCorners;
 		/// <summary>
 		/// List of open nodes
 		/// </summary>
@@ -99,11 +96,23 @@ namespace GWNorthEngine.AI.AStar {
 		/// <summary>
 		/// Type of restriction against the board on moves that we can generate
 		/// </summary>
-		protected RestrictionType restrictionType;
+		protected RestrictionType directionRestrictionType;
 		/// <summary>
 		/// Costs associated with the board's tiles
 		/// </summary>
 		protected BaseCosts costs;
+		/// <summary>
+		/// Height of the board
+		/// </summary>
+		protected readonly int HEIGHT;
+		/// <summary>
+		/// Width of the board
+		/// </summary>
+		protected readonly int WIDTH;
+		/// <summary>
+		/// Length of directions we have
+		/// </summary>
+		protected readonly int DIRECTIONS_LENGTH;
 		/// <summary>
 		/// Constant that defines the parent at the start of the linked list of path nodes
 		/// </summary>
@@ -122,15 +131,21 @@ namespace GWNorthEngine.AI.AStar {
 		#endregion Class properties
 
 		#region Constructor
-		private PathFinder(int height, int width, TypeOfSpace[,] board, RestrictionType restrictionType) {
+		/// <summary>
+		/// Builds a BasePathFinder
+		/// </summary>
+		/// <param name="parms">BasePathFinderParams object containing the data requried to build the pathfinder</param>
+		public BasePathFinder(BasePathFinderParams parms) {
 			this.tieBreakerRandom = new Random();
-			this.restrictionType = restrictionType;
-			this.costs = new DefaultCosts();
-			this.HEIGHT = height;
-			this.WIDTH = width;
-			this.board = board;
+			this.directionRestrictionType = parms.DirectionRestrictionType;
+			this.costs = parms.Costs;
+			this.HEIGHT = parms.Height;
+			this.WIDTH = parms.Width;
+			this.allowedToCutCorners = parms.AllowCornerCutting;
+			this.board = null;
 
-			if (restrictionType == RestrictionType.Restricted) {
+			if (this.directionRestrictionType == RestrictionType.Restricted) {
+				this.DIRECTIONS_LENGTH = 4;
 				this.directions = new int[4, 2] {
 					{0,1},		// right
 					{0,-1},		// left
@@ -138,6 +153,7 @@ namespace GWNorthEngine.AI.AStar {
 					{-1, 0}		// top
 				};
 			} else {
+				this.DIRECTIONS_LENGTH = 8;
 				this.directions = new int[8, 2] {
 					{0,1},		// right
 					{0,-1},		// left
@@ -150,25 +166,6 @@ namespace GWNorthEngine.AI.AStar {
 
 				};
 			}
-		}
-
-		/// <summary>
-		/// Builds a base A* PathFinder instance for on the fly processing
-		/// </summary>
-		/// <param name="height">Height of the board</param>
-		/// <param name="width">Width of the board</param>
-		/// <param name="restrictionType">Movement restriction type</param>
-		public PathFinder(int height, int width, RestrictionType restrictionType)
-			: this(height, width, new TypeOfSpace[0,0], restrictionType) {
-		}
-
-		/// <summary>
-		/// Builds a base A* PathFinder instance for static processing
-		/// </summary>
-		/// <param name="board">A* representation of the board</param>
-		/// <param name="restrictionType">Movement restriction type</param>
-		public PathFinder(TypeOfSpace[,] board, RestrictionType restrictionType)
-			: this(board.GetUpperBound(0), board.GetUpperBound(1), board, restrictionType) {
 		}
 		#endregion Constructor
 
@@ -213,7 +210,7 @@ namespace GWNorthEngine.AI.AStar {
 
 				// can we move diagonally and has our previous node been set
 				travelledCost = this.costs.getCost(this.board[travelledNode.Position.Y, travelledNode.Position.X]);
-				if (this.restrictionType == RestrictionType.None) {
+				if (this.directionRestrictionType == RestrictionType.None) {
 					if (previousNode == null) {
 						previousPosition = currentPosition;
 					} else {
@@ -305,7 +302,7 @@ namespace GWNorthEngine.AI.AStar {
 		/// Finds a path from the starting position to the ending position if one exists
 		/// </summary>
 		/// <param name="board">Board to search through</param>
-		public virtual void findPath(PathFinder.TypeOfSpace[,] board) {
+		public virtual void findPath(BasePathFinder.TypeOfSpace[,] board) {
 			this.board = board;
 			getStartAndEnd();
 			if (this.end.X != -1 && this.end.Y != -1 && this.start.X != -1 && this.start.Y != -1) {

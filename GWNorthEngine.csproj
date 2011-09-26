@@ -96,13 +96,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AI\AStar\Costs.cs" />
+    <Compile Include="AI\AStar\BaseCosts.cs" />
     <Compile Include="AI\AStar\DefaultCosts.cs" />
     <Compile Include="AI\AStar\FScoreComparator.cs" />
-    <Compile Include="AI\AStar\MazeSolver.cs" />
-    <Compile Include="AI\AStar\PathFinder.cs" />
+    <Compile Include="AI\AStar\Params\BasePathFinderParams.cs" />
+    <Compile Include="AI\AStar\Params\DefaultPathfinderParams.cs" />
+    <Compile Include="AI\AStar\BasePathFinder.cs" />
     <Compile Include="AI\AStar\PathNode.cs" />
-    <Compile Include="AI\AStar\Walker.cs" />
+    <Compile Include="AI\AStar\DefaultPathFinder.cs" />
     <Compile Include="Audio\BaseWrapper.cs" />
     <Compile Include="Audio\MusicEngine.cs" />
     <Compile Include="Audio\MusicWrapper.cs" />

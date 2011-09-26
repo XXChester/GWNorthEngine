@@ -15,7 +15,7 @@ namespace GWNorthEngine.Tools {
 		/// </summary>
 		/// <param name="value">Tile placer value</param>
 		/// <returns>AStar representation of the value passed in</returns>
-		public static PathFinder.TypeOfSpace translateTileValueToAStarType(TileValues value) {
+		public static BasePathFinder.TypeOfSpace translateTileValueToAStarType(TileValues value) {
 			return translateTileValueToAStarType((int)value);
 		}
 
@@ -24,24 +24,24 @@ namespace GWNorthEngine.Tools {
 		/// </summary>
 		/// <param name="value">Tile placer value</param>
 		/// <returns>AStar representation of the value passed in</returns>
-		public static PathFinder.TypeOfSpace translateTileValueToAStarType(int value) {
-			PathFinder.TypeOfSpace aStarValue;
+		public static BasePathFinder.TypeOfSpace translateTileValueToAStarType(int value) {
+			BasePathFinder.TypeOfSpace aStarValue;
 			TileValues tileValue = EnumUtils.numberToEnum<TileValues>(value);
 			switch (tileValue) {
 				case TileValues.NoMovements:
-					aStarValue = PathFinder.TypeOfSpace.Unwalkable;
+					aStarValue = BasePathFinder.TypeOfSpace.Unwalkable;
 					break;
 				case TileValues.VariableTerrainLowCost:
-					aStarValue = PathFinder.TypeOfSpace.VariableTerrainLowCost;
+					aStarValue = BasePathFinder.TypeOfSpace.VariableTerrainLowCost;
 					break;
 				case TileValues.VariableTerrainMediumCost:
-					aStarValue = PathFinder.TypeOfSpace.VariableTerrainMediumCost;
+					aStarValue = BasePathFinder.TypeOfSpace.VariableTerrainMediumCost;
 					break;
 				case TileValues.VariableTerrainHighCost:
-					aStarValue = PathFinder.TypeOfSpace.VariableTerrainHighCost;
+					aStarValue = BasePathFinder.TypeOfSpace.VariableTerrainHighCost;
 					break;
 				default:
-					aStarValue = PathFinder.TypeOfSpace.Walkable;
+					aStarValue = BasePathFinder.TypeOfSpace.Walkable;
 					break;
 			}
 			return aStarValue;
