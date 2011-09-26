@@ -128,6 +128,10 @@ namespace GWNorthEngine.AI.AStar {
 		/// Gets or sets the class used to generate costs of the boards tiles
 		/// </summary>
 		public BaseCosts Costs { get { return this.costs; } set { this.costs = value; } }
+		/// <summary>
+		/// Gets or sets the A* readable board representation
+		/// </summary>
+		public TypeOfSpace[,] Board { get { return this.board; } set { this.board = value; } }
 		#endregion Class properties
 
 		#region Constructor
