@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using GWNorthEngine.Model.Params;
@@ -15,6 +16,10 @@ namespace GWNorthEngine.Model.Params {
 		/// Gets or sets the texture to be drawn to the screen
 		/// </summary>
 		public Texture2D Texture { get; set; }
+		/// <summary>
+		/// Gets or sets the Rectangle used to render portions of the Texture
+		/// </summary>
+		public Rectangle RenderingRectangle { get; set; }
 		#endregion Class properties
 	}
 }

@@ -20,6 +20,10 @@ namespace GWNorthEngine.Model {
 		/// Texture2D object
 		/// </summary>
 		protected Texture2D texture;
+		/// <summary>
+		/// Rendering rectangle
+		/// </summary>
+		protected Rectangle renderingRectangle;
 		#endregion Class variables
 
 		#region Class propeties
@@ -27,6 +31,10 @@ namespace GWNorthEngine.Model {
 		/// Gets or sets the Texture of the static drawable object
 		/// </summary>
 		public Texture2D Texture { get { return this.texture; } set { this.texture = value; } }
+		/// <summary>
+		/// Gets or sets the Rectangle used for rendering the texture
+		/// </summary>
+		public Rectangle RenderingRectangle { get { return this.renderingRectangle; } set { this.renderingRectangle = value; } }
 		#endregion Class properties
 
 		#region Constructor
@@ -36,7 +44,12 @@ namespace GWNorthEngine.Model {
 		/// <param name="parms">StaticDrawable2DParams object</param>
 		public StaticDrawable2D(StaticDrawable2DParams parms)
 			: base(parms) {
-				this.texture = parms.Texture;
+			this.texture = parms.Texture;
+			this.renderingRectangle = parms.RenderingRectangle;
+			// if no rendering rectangle was defined we should try to base it off of the texture
+			if (this.texture != null && Rectangle.Empty.Equals(this.renderingRectangle)) {
+				this.renderingRectangle = new Rectangle(0, 0, this.texture.Width, this.texture.Height);
+			}
 		}
 		#endregion Constructor
 
@@ -54,7 +67,7 @@ namespace GWNorthEngine.Model {
 		/// </summary>
 		/// <param name="spriteBatch">SpriteBatch object used to render the etxture</param>
 		public override void render(SpriteBatch spriteBatch) {
-			spriteBatch.Draw(this.texture, base.position, null, base.lightColour, base.rotation, base.origin, base.scale, base.spriteEffect, base.layer);
+			spriteBatch.Draw(this.texture, base.position, this.renderingRectangle, base.lightColour, base.rotation, base.origin, base.scale, base.spriteEffect, base.layer);
 		}
 		#endregion Support methods
 

@@ -23,3 +23,5 @@ Brandon's personal work:
 -Flowers
 -Rob, The Dumbass Robber
 -NonContentProjectLoadingPOC
+-AStarPathfindingGUIXNA
+-ScrollingBackGroundPOC
