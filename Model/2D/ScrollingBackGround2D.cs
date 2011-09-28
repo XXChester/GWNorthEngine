@@ -85,9 +85,9 @@ namespace GWNorthEngine.Model {
 			for (int i = 1; i < this.backGrounds.Count; i++) {
 				previousPosition = this.backGrounds[i - 1].Position;
 				if (this.ScrollDirection == ScrollingDirection.Left || this.ScrollDirection == ScrollingDirection.Right) {
-					previousXSize = this.backGrounds[i - 1].Texture.Width * this.backGrounds[i - 1].Scale.X - 1;
+					previousXSize = this.backGrounds[i - 1].Texture.Width * this.backGrounds[i - 1].Scale.X;
 				} else if (this.ScrollDirection == ScrollingDirection.Down || this.ScrollDirection == ScrollingDirection.Up) {
-					previousYSize = this.backGrounds[i - 1].Texture.Height * this.backGrounds[i - 1].Scale.Y - 1;
+					previousYSize = this.backGrounds[i - 1].Texture.Height * this.backGrounds[i - 1].Scale.Y;
 				}
 				this.backGrounds[i].Position = new Vector2(previousPosition.X + previousXSize,previousPosition.Y + previousYSize);
 				this.backGrounds[i].RenderingRectangle = new Rectangle(0, 0, (int)(this.backGrounds[i].Texture.Width), (int)(this.backGrounds[i].Texture.Height));
@@ -102,42 +102,43 @@ namespace GWNorthEngine.Model {
 		/// <param name="elapsed">Elapsed time since the last update call</param>
 		public virtual void update(float elapsed) {
 			// check if any of the images have fallen off the screen, if they have re-order them
-			StaticDrawable2D parent;
-			int index;
+			StaticDrawable2D parent = null;
+			int index = -1;
 			for (int i = 0; i < this.backGrounds.Count; i++) {
-				if (this.backGrounds[i].Position.X < -this.viewPort.Width * this.backGrounds[i].Scale.X) {//left
+				if (this.ScrollDirection == ScrollingDirection.Left || this.ScrollDirection == ScrollingDirection.Up) {
 					if (i == 0) {
 						index = this.backGrounds.Count - 1;
 					} else {
 						index = i - 1;
 					}
 					parent = this.backGrounds[index];
-					this.backGrounds[i].Position = new Vector2(parent.Position.X + parent.RenderingRectangle.Width * parent.Scale.X - 1, this.viewPort.Y);
-				} else if (this.backGrounds[i].Position.X > this.viewPort.Width * this.backGrounds[i].Scale.X) {//right
+				} else if (this.ScrollDirection == ScrollingDirection.Right || this.ScrollDirection == ScrollingDirection.Down) {
 					if (i == this.backGrounds.Count - 1) {
 						index = 0;
 					} else {
 						index = i + 1;
 					}
 					parent = this.backGrounds[index];
-					this.backGrounds[i].Position = new Vector2(parent.Position.X - parent.RenderingRectangle.Width * this.backGrounds[i].Scale.X + 1, this.viewPort.Y);
-				} else if (this.backGrounds[i].Position.Y < -this.viewPort.Height * this.backGrounds[i].Scale.Y) {//Up
-					if (i == 0) {
-						index = this.backGrounds.Count - 1;
-					} else {
-						index = i - 1;
+				}
+
+
+				if (this.ScrollDirection == ScrollingDirection.Left) {
+					if (this.backGrounds[i].Position.X < this.viewPort.X - this.backGrounds[i].RenderingRectangle.Width * this.backGrounds[i].Scale.X) {
+						this.backGrounds[i].Position = new Vector2(parent.Position.X + (parent.RenderingRectangle.Width * parent.Scale.X), this.viewPort.Y);
 					}
-					parent = this.backGrounds[index];
-					this.backGrounds[i].Position = new Vector2(this.viewPort.X, parent.Position.Y + parent.RenderingRectangle.Height * parent.Scale.Y - 1);
-				} else if (this.backGrounds[i].Position.Y > this.viewPort.Height * this.backGrounds[i].Scale.Y) {//down
-					if (i == this.backGrounds.Count - 1) {
-						index = 0;
-					} else {
-						index = i + 1;
+				} else if (this.ScrollDirection == ScrollingDirection.Right) {
+					if (this.backGrounds[i].Position.X > this.viewPort.Width + this.backGrounds[i].RenderingRectangle.Width * this.backGrounds[i].Scale.X) {
+						this.backGrounds[i].Position = new Vector2(parent.Position.X - (parent.RenderingRectangle.Width * parent.Scale.X), this.viewPort.Y);
 					}
-					parent = this.backGrounds[index];
-					this.backGrounds[i].Position = new Vector2(this.viewPort.X, parent.Position.Y - parent.RenderingRectangle.Height * this.backGrounds[i].Scale.Y + 1);
-				} 
+				} else if (this.ScrollDirection == ScrollingDirection.Up) {
+					if (this.backGrounds[i].Position.Y < this.viewPort.Y - this.backGrounds[i].RenderingRectangle.Height * this.backGrounds[i].Scale.Y) {//Up
+						this.backGrounds[i].Position = new Vector2(this.viewPort.X, parent.Position.Y + (parent.RenderingRectangle.Height * parent.Scale.Y));
+					}
+				} else if (this.ScrollDirection == ScrollingDirection.Down) {
+					if (this.backGrounds[i].Position.Y > this.viewPort.Height + this.backGrounds[i].RenderingRectangle.Height * this.backGrounds[i].Scale.Y) {//down
+						this.backGrounds[i].Position = new Vector2(this.viewPort.X, parent.Position.Y - (parent.RenderingRectangle.Height * this.backGrounds[i].Scale.Y));
+					}
+				}
 			}
 
 			float directionX = 0f;
