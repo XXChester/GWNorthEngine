@@ -63,5 +63,77 @@ namespace GWNorthEngine.Utils {
 			texture.SetData<Color>(data, 0, data.Length);
 			return texture;
 		}
+
+		/// <summary>
+		/// Retrieves the texures colour information
+		/// </summary>
+		/// <param name="texture">Texture to retrieve the colour array from</param>
+		/// <returns>Colour[] of the texture</returns>
+		public static Color[] getColourData(Texture2D texture) {
+			Color[] colourData = new Color[texture.Height * texture.Width];
+			texture.GetData<Color>(colourData);
+
+			return colourData;
+		}
+
+		/*public static Color[,] getColourData2D(Texture2D texture, int startX = 0, int startY = 0, int width = -1, int height = -1) {
+			int indexX = 0;
+			int indexY = 0;
+			if (height == -1) {
+				height = texture.Height;
+			}
+			if (width == -1) {
+				width = texture.Width;
+			}
+			Color[] colors1D = getColourData(texture);
+
+			Color[,] colors2D = new Color[height, width];
+			for (int y = startY; y < height; y++) {
+			
+				indexX = 0;
+				for (int x = startX; x < width; x++) {	
+					colors2D[indexY, indexX] = colors1D[y + x * height];
+					indexX++;
+				}
+				indexY++;
+			}
+
+			return colors2D;
+		}*/
+
+		/// <summary>
+		/// Retrieves the Texture's colour data in a 2D array
+		/// </summary>
+		/// <remarks>The texture data is in x,y format not y,x format at this time</remarks>
+		/// <param name="texture">Texture that we want to analyze</param>
+		/// <param name="startX">Optional parameter of where to start on the X axis in the texture</param>
+		/// <param name="startY">Optional parameter of where to start on the Y axis in the texture</param>
+		/// <param name="width">Optional parameter of where to stop analyzing on the X axis</param>
+		/// <param name="height">Optional parameter of where to stop analyzing on the Y axis</param>
+		/// <returns>Color[,] of the texture</returns>
+		public static Color[,] getColourData2D(Texture2D texture, int startX = 0, int startY = 0, int width = -1, int height = -1) {
+			//TODO: Change the order to be Y,X instead of X,Y to fit the rest of my programs
+			int indexX = 0;
+			int indexY = 0;
+			if (height == -1) {
+				height = texture.Height;
+			}
+			if (width == -1) {
+				width = texture.Width;
+			}
+			Color[] colors1D = getColourData(texture);
+
+			Color[,] colors2D = new Color[width, height];
+			for (int x = startX; x < width; x++) {
+				indexY = 0;
+				for (int y = startY; y < height; y++) {
+					colors2D[indexX, indexY] = colors1D[x + y * width];
+					indexY++;
+				}
+				indexX++;
+			}
+
+			return colors2D;
+		}
 	}
 }

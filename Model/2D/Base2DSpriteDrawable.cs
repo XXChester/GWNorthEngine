@@ -50,6 +50,10 @@ namespace GWNorthEngine.Model {
 		/// </summary>
 		protected SpriteEffects spriteEffect;
 		/// <summary>
+		/// Rendering rectangle
+		/// </summary>
+		protected Rectangle renderingRectangle;
+		/// <summary>
 		/// Original colour the sprite was rendered in
 		/// </summary>
 		protected readonly Color originalLightColour;
@@ -76,6 +80,14 @@ namespace GWNorthEngine.Model {
 		/// Gets or sets the Origin in which the sprite is rendered around
 		/// </summary>
 		public Vector2 Origin { get { return this.origin; } set { this.origin = value; } }
+		/// <summary>
+		/// Gets or sets the SpriteEffects to rendering the object under
+		/// </summary>
+		public SpriteEffects SpriteEffect { get { return this.spriteEffect; } set { this.spriteEffect = value; } }
+		/// <summary>
+		/// Gets or sets the Rectangle used for rendering the texture
+		/// </summary>
+		public Rectangle RenderingRectangle { get { return this.renderingRectangle; } set { this.renderingRectangle = value; } }
 		#endregion Class properties
 
 		#region Constructor
@@ -92,6 +104,7 @@ namespace GWNorthEngine.Model {
 			this.lightColour = parms.LightColour;
 			this.originalLightColour = parms.LightColour;
 			this.spriteEffect = parms.SpriteEffect;
+			this.renderingRectangle = parms.RenderingRectangle;
 		}
 		#endregion Constructor
 
@@ -100,6 +113,17 @@ namespace GWNorthEngine.Model {
 		#endregion Initialization
 
 		#region Support method
+		/// <summary>
+		/// Sets the rendering rectangle based on the texture's bounds
+		/// </summary>
+		/// <param name="texture">Texture to base the Rendering Rectangle on</param>
+		protected void setRenderingRectByTexture(Texture2D texture) {
+			// if no rendering rectangle was defined we should try to base it off of the texture
+			if (texture != null && Rectangle.Empty.Equals(this.renderingRectangle)) {
+				this.renderingRectangle = texture.Bounds;
+			}
+		}
+
 		/// <summary>
 		/// Scales the object over time
 		/// </summary>

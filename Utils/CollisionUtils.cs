@@ -9,28 +9,109 @@ namespace GWNorthEngine.Utils {
 	/// Helper methods for determining collision between objects
 	/// </summary>
 	public static class CollisionUtils {
-		//This works I believe but needs further testing and as I am not currently using it, it is commented out
-		/*public static bool intersectPixels(Rectangle rectangleA, Color[] dataA, Rectangle rectangleB, Color[] dataB) {
+		/// <summary>
+		/// Determines if two textures pixels intersect
+		/// </summary>
+		/// <param name="texture1Data">Texture1's colour data</param>
+		/// <param name="texture1Matrix">The matrix used to render Texture1</param>
+		/// <param name="texture2Data">Texture2's colour data</param>
+		/// <param name="texture2Matrix">The matrix used to render Texture2</param>
+		/// <returns>True if a collision was detected, otherwise false</returns>
+		public static bool doPixelsIntersect(Color[,] texture1Data, Matrix texture1Matrix, Color[,] texture2Data,
+			Matrix texture2Matrix) {
+			Vector2 collisionPoint;
+			return doPixelsIntersect(texture1Data, texture1Matrix, texture2Data, texture2Matrix, out collisionPoint);
+		}
+
+		/*public static bool doPixelsIntersect(Color[,] texture1Data, Matrix texture1Matrix, Color[,] texture2Data,
+			Matrix texture2Matrix, out Vector2 collisionPoint) {
 			bool collision = false;
-			int top = Math.Max(rectangleA.Top, rectangleB.Top);
-			int bottom = Math.Min(rectangleA.Bottom, rectangleB.Bottom);
-			int left = Math.Max(rectangleA.Left, rectangleB.Left);
-			int right = Math.Min(rectangleA.Right, rectangleB.Right);
+			collisionPoint = new Vector2(-1f);
+			Matrix mat1to2 = texture1Matrix * Matrix.Invert(texture2Matrix);
+			int width1 = texture1Data.GetLength(1);
+			int height1 = texture1Data.GetLength(0);
+			int width2 = texture2Data.GetLength(1);
+			int height2 = texture2Data.GetLength(0);
 
-			for (int y = top; y < bottom; y++) {
-				for (int x = left; x < right; x++) {
-					Color colorA = dataA[(x - rectangleA.Left) +
-								(y - rectangleA.Top) * rectangleA.Width];
-					Color colorB = dataB[(x - rectangleB.Left) +
-								(y - rectangleB.Top) * rectangleB.Width];
+			Vector2 pos1;
+			Vector2 pos2;
+			int x2;
+			int y2;
+			for (int y1 = 0; y1 < height1; y1++) {
+				for (int x1 = 0; x1 < width1; x1++) {
+					pos1 = new Vector2(x1, y1);
+					pos2 = Vector2.Transform(pos1, mat1to2);
 
-					if (colorA.A != 0 && colorB.A != 0) {
-						collision = true;
-						break;
+					x2 = (int)pos2.X;
+					y2 = (int)pos2.Y;
+					if ((y2 >= 0) && (y2 < height2)) {
+						if ((x2 >= 0) && (x2 < width2)) {
+							if (texture1Data[y1, x1].A > 0 && texture2Data[y2, x2].A > 0) {
+								collisionPoint = Vector2.Transform(pos1, texture1Matrix);
+								collision = true;
+								break;
+							}
+						}
 					}
 				}
+
+				if (collision) {
+					break;
+				}
 			}
+
 			return collision;
 		}*/
+
+		/// <summary>
+		/// Determines if two textures pixels intersect and at which point
+		/// </summary>
+		/// <remarks>The collision is based on data in x,y format not y,x format at this time</remarks>
+		/// <param name="texture1Data">Texture1's colour data</param>
+		/// <param name="texture1Matrix">The matrix used to render Texture1</param>
+		/// <param name="texture2Data">Texture2's colour data</param>
+		/// <param name="texture2Matrix">The matrix used to render Texture2</param>
+		/// <param name="collisionPoint">Out the Vector2 in which a collision occurred if at all</param>
+		/// <returns>True if a collision was detected, otherwise false</returns>
+		public static bool doPixelsIntersect(Color[,] texture1Data, Matrix texture1Matrix, Color[,] texture2Data,
+			Matrix texture2Matrix, out Vector2 collisionPoint) {
+			//TODO: Change the order to be Y,X instead of X,Y to fit the rest of my programs
+			bool collision = false;
+			collisionPoint = new Vector2(-1f);
+			Matrix mat1to2 = texture1Matrix * Matrix.Invert(texture2Matrix);
+			int width1 = texture1Data.GetLength(0);
+			int height1 = texture1Data.GetLength(1);
+			int width2 = texture2Data.GetLength(0);
+			int height2 = texture2Data.GetLength(1);
+
+			Vector2 pos1;
+			Vector2 pos2;
+			int x2;
+			int y2;
+			for (int x1 = 0; x1 < width1; x1++) {
+				for (int y1 = 0; y1 < height1; y1++) {
+					pos1 = new Vector2(x1, y1);
+					pos2 = Vector2.Transform(pos1, mat1to2);
+
+					x2 = (int)pos2.X;
+					y2 = (int)pos2.Y;
+					if ((x2 >= 0) && (x2 < width2)) {
+						if ((y2 >= 0) && (y2 < height2)) {
+							if (texture1Data[x1, y1].A > 0 && texture2Data[x2, y2].A > 0) {
+								collisionPoint = Vector2.Transform(pos1, texture1Matrix);
+								collision = true;
+								break;
+							}
+						}
+					}
+				}
+
+				if (collision) {
+					break;
+				}
+			}
+
+			return collision;
+		}
 	}
 }

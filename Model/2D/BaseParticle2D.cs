@@ -74,6 +74,7 @@ namespace GWNorthEngine.Model {
 			this.direction = parms.Direction;
 			this.acceleration = parms.Acceleration;
 			this.texture = parms.Texture;
+			base.setRenderingRectByTexture(this.texture);
 		}
 		#endregion Constructor
 
@@ -102,7 +103,7 @@ namespace GWNorthEngine.Model {
 		/// </summary>
 		/// <param name="spriteBatch">SpriteBatch object used to render the particle</param>
 		public override void render(SpriteBatch spriteBatch) {
-			spriteBatch.Draw(this.texture, base.position, null, base.lightColour, base.rotation, base.origin, base.scale, base.spriteEffect, base.layer);
+			spriteBatch.Draw(this.texture, base.position, base.renderingRectangle, base.lightColour, base.rotation, base.origin, base.scale, base.spriteEffect, base.layer);
 		}
 		#endregion Support methods
 	}

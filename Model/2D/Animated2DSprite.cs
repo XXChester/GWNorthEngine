@@ -52,6 +52,10 @@ namespace GWNorthEngine.Model {
 		/// Gets or sets the texture of an animated sprite
 		/// </summary>
 		public Texture2D Texture { get { return this.texture; } set { this.texture = value; } }
+		/// <summary>
+		/// Gets or sets the animation frames
+		/// </summary>
+		public Rectangle[] Frames { get { return this.frames; } set { this.frames = value; } }
 		#endregion Class properties
 
 		#region Constructor
@@ -66,7 +70,7 @@ namespace GWNorthEngine.Model {
 				parms.Texture2D = texture2D;
 			}
 
-			initSprite(parms.Position, parms.Origin, parms.Rotation, parms.Scale, parms.Layer, parms.Texture2D, parms.LightColour, parms.LoadingType, parms.FramesStartWidth, 
+			initSprite(parms.Texture2D, parms.LoadingType, parms.FramesStartWidth, 
 				parms.FramesStartHeight, parms.FramesWidth, parms.FramesHeight, parms.SpaceBetweenFrames, parms.AnimationParams);
 		}
 		#endregion Constructor
@@ -75,13 +79,7 @@ namespace GWNorthEngine.Model {
 		/// <summary>
 		/// Actual building of the sprite
 		/// </summary>
-		/// <param name="position">Starting position of the sprite</param>
-		/// <param name="origin">Sprites orign; important for rotating the sprite</param>
-		/// <param name="rotation">Rotation of  the sprite</param>
-		/// <param name="scale">X,Y scale of the sprite</param>
-		/// <param name="depth">Layer to draw the sprite at</param>
 		/// <param name="texture">Texture2D use to render the sprite</param>
-		/// <param name="lightColour">Colour to render to the sprite in</param>
 		/// <param name="loadingType">Way to load the sprite</param>
 		/// <param name="framesStartWidth">Starting x point of the sprite in the sprite sheet</param>
 		/// <param name="framesStartHeight">Starting y point of the sprite in the sprite sheet</param>
@@ -89,15 +87,9 @@ namespace GWNorthEngine.Model {
 		/// <param name="frameHeight">Y size of a sprites single frame</param>
 		/// <param name="spaceBetweenFrames">Space between the frames in the sprite sheet</param>
 		/// <param name="animationParams">BaseAnimationManagerParams object containing the animation information for the sprite</param>
-		private void initSprite(Vector2 position, Vector2 origin, float rotation, Vector2 scale, float depth, Texture2D texture, Color lightColour, Animated2DSprite.LoadingType loadingType, 
+		private void initSprite(Texture2D texture, Animated2DSprite.LoadingType loadingType, 
 			int framesStartWidth, int framesStartHeight, int frameWidth, int frameHeight, int spaceBetweenFrames, BaseAnimationManagerParams animationParams) {
-			this.position = position;
-			this.origin = origin;
-			this.rotation = rotation;
-			this.scale = scale;
-			this.layer = depth;
 			this.texture = texture;
-			this.lightColour = lightColour;
 			this.animationManager = new AnimationManager(animationParams);
 
 			//setup the frames
@@ -112,6 +104,7 @@ namespace GWNorthEngine.Model {
 				this.frames[i] = new Rectangle(x, framesStartHeight, frameWidth, frameHeight);
 				x = (x + frameWidth + spaceBetweenFrames);
 			}
+			base.renderingRectangle = this.frames[this.animationManager.CurrentFrame];
 		}
 		#endregion Initialization
 
@@ -141,6 +134,7 @@ namespace GWNorthEngine.Model {
 		/// <param name="elapsed"></param>
 		public override void update(float elapsed) {
 			this.animationManager.update(elapsed, this.frames.Length - 1);
+			base.renderingRectangle = this.frames[this.animationManager.CurrentFrame];
 		}
 
 		/// <summary>
@@ -148,16 +142,7 @@ namespace GWNorthEngine.Model {
 		/// </summary>
 		/// <param name="spriteBatch">SpriteBatch object used to render the sprite</param>
 		public override void render(SpriteBatch spriteBatch) {
-			render(spriteBatch, this.animationManager.CurrentFrame);
-		}
-
-		/// <summary>
-		/// Renders the sprite to the screen at a specific frame
-		/// </summary>
-		/// <param name="spriteBatch">SpriteBatch object used to render the sprite</param>
-		/// <param name="frame">Specific frame to render the sprite at</param>
-		public virtual void render(SpriteBatch spriteBatch, int frame) {
-			spriteBatch.Draw(this.texture, this.position, this.frames[frame], base.lightColour, base.rotation, base.origin, base.scale, base.spriteEffect, base.layer);
+			spriteBatch.Draw(this.texture, base.position, base.renderingRectangle, base.lightColour, base.rotation, base.origin, base.scale, base.spriteEffect, base.layer);
 		}
 		#endregion Support methods
 

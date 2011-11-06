@@ -52,6 +52,10 @@ namespace GWNorthEngine.Model.Params {
 		/// Gets or sets the SpriteEffect technique used for rendering the sprite
 		/// </summary>
 		public SpriteEffects SpriteEffect { get; set; }
+		/// <summary>
+		/// Gets or sets the Rectangle used to render portions of the Texture
+		/// </summary>
+		public Rectangle RenderingRectangle { get; set; }
 		#endregion Class properties
 
 		#region Constructor

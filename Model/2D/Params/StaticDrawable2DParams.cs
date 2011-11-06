@@ -16,10 +16,6 @@ namespace GWNorthEngine.Model.Params {
 		/// Gets or sets the texture to be drawn to the screen
 		/// </summary>
 		public Texture2D Texture { get; set; }
-		/// <summary>
-		/// Gets or sets the Rectangle used to render portions of the Texture
-		/// </summary>
-		public Rectangle RenderingRectangle { get; set; }
 		#endregion Class properties
 	}
 }
