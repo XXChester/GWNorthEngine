@@ -152,7 +152,7 @@ namespace GWNorthEngine.Engine {
 			}
 #endif
 #endif
-			InputManager.getInstance().update();
+			InputManager.getInstance().update(base.IsActive);
 			base.Update(gameTime);
 		}
 		/// <summary>

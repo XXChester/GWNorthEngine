@@ -10,6 +10,7 @@ namespace GWNorthEngine.Input {
 		//singleton instance
 		private static InputManager instance = new InputManager();
 
+		private bool acceptInput;
 		private KeyboardState previousKeyboardState;
 		private KeyboardState currentKeyboardState;
 		private MouseState previousMouseState;
@@ -63,8 +64,10 @@ namespace GWNorthEngine.Input {
 
 		/// <summary>
 		/// Main loop that updates all of the devices
+		/// <param name="isWindowActive">States whether the window is active or not</param>
 		/// </summary>
-		public void update() {
+		public void update(bool isWindowActive) {
+			this.acceptInput = isWindowActive;
 			this.previousKeyboardState = this.currentKeyboardState;
 			this.previousMouseState = this.currentMouseState;
 			for (int i = 0; i < this.previousGamePadStates.Length; i++) {
@@ -86,8 +89,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the key was just pressed, otherwise false</returns>
 		public bool wasKeyPressed(Keys key) {
 			bool result = false;
-			if (this.previousKeyboardState.IsKeyUp(key) && this.currentKeyboardState.IsKeyDown(key)) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousKeyboardState.IsKeyUp(key) && this.currentKeyboardState.IsKeyDown(key)) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -99,8 +104,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the key was just released, otherwise false</returns>
 		public bool wasKeyReleased(Keys key) {
 			bool result = false;
-			if (this.previousKeyboardState.IsKeyDown(key) && this.currentKeyboardState.IsKeyUp(key)) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousKeyboardState.IsKeyDown(key) && this.currentKeyboardState.IsKeyUp(key)) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -112,8 +119,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the key is held, otherwise false</returns>
 		public bool isKeyDown(Keys key) {
 			bool result = false;
-			if (this.previousKeyboardState.IsKeyDown(key) && this.currentKeyboardState.IsKeyDown(key)) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousKeyboardState.IsKeyDown(key) && this.currentKeyboardState.IsKeyDown(key)) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -127,12 +136,14 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just pressed, otherwise false</returns>
 		public bool wasButtonPressed(MouseButton button) {
 			bool result = false;
-			if (MouseButton.Left.Equals(button)) {
-				result = wasLeftButtonPressed();
-			} else if (MouseButton.Right.Equals(button)) {
-				result = wasRightButtonPressed();
-			} else if (MouseButton.Middle.Equals(button)) {
-				result = wasMiddleButtonPressed();
+			if (this.acceptInput) {
+				if (MouseButton.Left.Equals(button)) {
+					result = wasLeftButtonPressed();
+				} else if (MouseButton.Right.Equals(button)) {
+					result = wasRightButtonPressed();
+				} else if (MouseButton.Middle.Equals(button)) {
+					result = wasMiddleButtonPressed();
+				}
 			}
 			return result;
 		}
@@ -144,12 +155,14 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just released, otherwise false</returns>
 		public bool wasButtonReleased(MouseButton button) {
 			bool result = false;
-			if (MouseButton.Left.Equals(button)) {
-				result = wasLeftButtonReleased();
-			} else if (MouseButton.Right.Equals(button)) {
-				result = wasRightButtonReleased();
-			} else if (MouseButton.Middle.Equals(button)) {
-				result = wasMiddleButtonReleased();
+			if (this.acceptInput) {
+				if (MouseButton.Left.Equals(button)) {
+					result = wasLeftButtonReleased();
+				} else if (MouseButton.Right.Equals(button)) {
+					result = wasRightButtonReleased();
+				} else if (MouseButton.Middle.Equals(button)) {
+					result = wasMiddleButtonReleased();
+				}
 			}
 			return result;
 		}
@@ -161,12 +174,14 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button is held down, otherwise false</returns>
 		public bool isButtonDown(MouseButton button) {
 			bool result = false;
-			if (MouseButton.Left.Equals(button)) {
-				result = isLeftButtonDown();
-			} else if (MouseButton.Right.Equals(button)) {
-				result = isRightButtonDown();
-			} else if (MouseButton.Middle.Equals(button)) {
-				result = isMiddleButtonDown();
+			if (this.acceptInput) {
+				if (MouseButton.Left.Equals(button)) {
+					result = isLeftButtonDown();
+				} else if (MouseButton.Right.Equals(button)) {
+					result = isRightButtonDown();
+				} else if (MouseButton.Middle.Equals(button)) {
+					result = isMiddleButtonDown();
+				}
 			}
 			return result;
 		}
@@ -177,8 +192,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just pressed, otherwise false</returns>
 		public bool wasLeftButtonPressed() {
 			bool result = false;
-			if (this.previousMouseState.LeftButton == ButtonState.Released && this.currentMouseState.LeftButton == ButtonState.Pressed) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousMouseState.LeftButton == ButtonState.Released && this.currentMouseState.LeftButton == ButtonState.Pressed) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -189,8 +206,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just released, otherwise false</returns>
 		public bool wasLeftButtonReleased() {
 			bool result = false;
-			if (this.previousMouseState.LeftButton == ButtonState.Pressed && this.currentMouseState.LeftButton == ButtonState.Released) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousMouseState.LeftButton == ButtonState.Pressed && this.currentMouseState.LeftButton == ButtonState.Released) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -201,8 +220,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button is held down, otherwise false</returns>
 		public bool isLeftButtonDown() {
 			bool result = false;
-			if (this.previousMouseState.LeftButton == ButtonState.Pressed && this.currentMouseState.LeftButton == ButtonState.Pressed) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousMouseState.LeftButton == ButtonState.Pressed && this.currentMouseState.LeftButton == ButtonState.Pressed) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -213,8 +234,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just pressed, otherwise false</returns>
 		public bool wasRightButtonPressed() {
 			bool result = false;
-			if (this.previousMouseState.RightButton == ButtonState.Released && this.currentMouseState.RightButton == ButtonState.Pressed) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousMouseState.RightButton == ButtonState.Released && this.currentMouseState.RightButton == ButtonState.Pressed) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -225,8 +248,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just released, otherwise false</returns>
 		public bool wasRightButtonReleased() {
 			bool result = false;
-			if (this.previousMouseState.RightButton == ButtonState.Pressed && this.currentMouseState.RightButton == ButtonState.Released) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousMouseState.RightButton == ButtonState.Pressed && this.currentMouseState.RightButton == ButtonState.Released) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -237,8 +262,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button is held down, otherwise false</returns>
 		public bool isRightButtonDown() {
 			bool result = false;
-			if (this.previousMouseState.RightButton == ButtonState.Pressed && this.currentMouseState.RightButton == ButtonState.Pressed) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousMouseState.RightButton == ButtonState.Pressed && this.currentMouseState.RightButton == ButtonState.Pressed) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -249,8 +276,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just pressed, otherwise false</returns>
 		public bool wasMiddleButtonPressed() {
 			bool result = false;
-			if (this.previousMouseState.MiddleButton == ButtonState.Released && this.currentMouseState.MiddleButton == ButtonState.Pressed) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousMouseState.MiddleButton == ButtonState.Released && this.currentMouseState.MiddleButton == ButtonState.Pressed) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -261,8 +290,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button was just released, otherwise false</returns>
 		public bool wasMiddleButtonReleased() {
 			bool result = false;
-			if (this.previousMouseState.MiddleButton == ButtonState.Pressed && this.currentMouseState.MiddleButton == ButtonState.Released) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousMouseState.MiddleButton == ButtonState.Pressed && this.currentMouseState.MiddleButton == ButtonState.Released) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -273,8 +304,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the button is held down, otherwise false</returns>
 		public bool isMiddleButtonDown() {
 			bool result = false;
-			if (this.previousMouseState.MiddleButton == ButtonState.Pressed && this.currentMouseState.MiddleButton == ButtonState.Pressed) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousMouseState.MiddleButton == ButtonState.Pressed && this.currentMouseState.MiddleButton == ButtonState.Pressed) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -289,8 +322,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the player's button was just pressed, otherwise false</returns>
 		public bool wasButtonPressed(PlayerIndex playerIndex, Buttons button) {
 			bool result = false;
-			if (this.previousGamePadStates[(int)playerIndex].IsButtonUp(button) && this.currentGamePadStates[(int)playerIndex].IsButtonDown(button)) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousGamePadStates[(int)playerIndex].IsButtonUp(button) && this.currentGamePadStates[(int)playerIndex].IsButtonDown(button)) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -303,8 +338,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the player's button was just released, otherwise false</returns>
 		public bool wasButtonReleased(PlayerIndex playerIndex, Buttons button) {
 			bool result = false;
-			if (this.previousGamePadStates[(int)playerIndex].IsButtonDown(button) && this.currentGamePadStates[(int)playerIndex].IsButtonUp(button)) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousGamePadStates[(int)playerIndex].IsButtonDown(button) && this.currentGamePadStates[(int)playerIndex].IsButtonUp(button)) {
+					result = true;
+				}
 			}
 			return result;
 		}
@@ -317,8 +354,10 @@ namespace GWNorthEngine.Input {
 		/// <returns>True if the player's button is held down, otherwise false</returns>
 		public bool isButtonDown(PlayerIndex playerIndex, Buttons button) {
 			bool result = false;
-			if (this.previousGamePadStates[(int)playerIndex].IsButtonDown(button) && this.currentGamePadStates[(int)playerIndex].IsButtonDown(button)) {
-				result = true;
+			if (this.acceptInput) {
+				if (this.previousGamePadStates[(int)playerIndex].IsButtonDown(button) && this.currentGamePadStates[(int)playerIndex].IsButtonDown(button)) {
+					result = true;
+				}
 			}
 			return result;
 		}
