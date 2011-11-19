@@ -25,6 +25,10 @@ namespace GWNorthEngine.Tools.TilePlacer {
 		/// </summary>
 		public const string XML_WIDTH = "Width";
 		/// <summary>
+		/// Size of the tiles on the layer
+		/// </summary>
+		public const string XML_TILE_SIZE = "TileSize";
+		/// <summary>
 		/// Header that denotes the start of a layer
 		/// </summary>
 		public const string XML_HEADER_LAYER = "Layer";

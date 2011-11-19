@@ -1964,6 +1964,11 @@
             Width of the map
             </summary>
         </member>
+        <member name="F:GWNorthEngine.Tools.TilePlacer.Constants.XML_TILE_SIZE">
+            <summary>
+            Size of the tiles on the layer
+            </summary>
+        </member>
         <member name="F:GWNorthEngine.Tools.TilePlacer.Constants.XML_HEADER_LAYER">
             <summary>
             Header that denotes the start of a layer
