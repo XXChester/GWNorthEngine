@@ -102,6 +102,8 @@ namespace GWNorthEngine.Utils {
 			//TODO: Custom crap...no name field for fonts =/
 			return font;
 		}
+
+		
 		#endregion Visual
 
 		#region Audio

@@ -2912,5 +2912,15 @@
             Middle mouse button
             </summary>
         </member>
+        <member name="M:GWNorthEngine.Engine.Params.DefaultCameraParams.#ctor">
+            <summary>
+            Constructs a default camera setup with the following values
+            Position:			Vector3(0f,0f,50f)
+            Target:				Vector3.Zero
+            UpVector:			Vector3.Up
+            ViewMatrix:			Matrix.Identity
+            ProjectionMatrix:	Matrix.createPerspectiveFOV(45f, 16:9, .5f, 5000f)
+            </summary>
+        </member>
     </members>
 </doc>

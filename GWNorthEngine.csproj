@@ -113,10 +113,15 @@
     <Compile Include="Audio\SFXEngine.cs" />
     <Compile Include="Audio\SFXInstanceWrapper.cs" />
     <Compile Include="Audio\SoundEngine.cs" />
+    <Compile Include="Engine\BaseCamera.cs" />
+    <Compile Include="Engine\Params\BaseCameraParams.cs" />
     <Compile Include="Engine\BaseRenderer.cs" />
+    <Compile Include="Engine\DefaultCamera.cs" />
+    <Compile Include="Engine\Params\DefaultCameraParams.cs" />
     <Compile Include="Engine\Params\BaseRendererParams.cs" />
     <Compile Include="Engine\FrameRate.cs" />
     <Compile Include="Engine\RunningMode.cs" />
+    <Compile Include="Engine\YawPitchRollCamera.cs" />
     <Compile Include="Input\InputManager.cs" />
     <Compile Include="Input\MouseButton.cs" />
     <Compile Include="Model\2D\Animated2DSprite.cs" />
