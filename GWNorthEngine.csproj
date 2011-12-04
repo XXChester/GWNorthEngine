@@ -113,15 +113,13 @@
     <Compile Include="Audio\SFXEngine.cs" />
     <Compile Include="Audio\SFXInstanceWrapper.cs" />
     <Compile Include="Audio\SoundEngine.cs" />
-    <Compile Include="Engine\BaseCamera.cs" />
-    <Compile Include="Engine\Params\BaseCameraParams.cs" />
+    <Compile Include="Engine\Camera.cs" />
+    <Compile Include="Engine\Params\CameraParams.cs" />
     <Compile Include="Engine\BaseRenderer.cs" />
-    <Compile Include="Engine\DefaultCamera.cs" />
     <Compile Include="Engine\Params\DefaultCameraParams.cs" />
     <Compile Include="Engine\Params\BaseRendererParams.cs" />
     <Compile Include="Engine\FrameRate.cs" />
     <Compile Include="Engine\RunningMode.cs" />
-    <Compile Include="Engine\YawPitchRollCamera.cs" />
     <Compile Include="Input\InputManager.cs" />
     <Compile Include="Input\MouseButton.cs" />
     <Compile Include="Model\2D\Animated2DSprite.cs" />
@@ -137,6 +135,8 @@
     <Compile Include="Model\2D\Params\BaseButtonParams.cs" />
     <Compile Include="Model\2D\Params\BaseParticle2DParams.cs" />
     <Compile Include="Model\2D\Params\TexturedButtonParams.cs" />
+    <Compile Include="Model\3D\Model.cs" />
+    <Compile Include="Model\3D\Params\ModelParams.cs" />
     <Compile Include="Model\AnimationManager.cs" />
     <Compile Include="Model\2D\Button.cs" />
     <Compile Include="Model\2D\Line2D.cs" />
@@ -171,9 +171,7 @@
     <Compile Include="Utils\TextureUtils.cs" />
     <Compile Include="Utils\TransitionUtils.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\3D\Params\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Template.txt" />
     <Content Include="Projects Referencing Me.txt" />

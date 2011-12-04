@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 namespace GWNorthEngine.Engine.Params {
-	public class DefaultCameraParams : BaseCameraParams {
+	/// <summary>
+	/// Object containing the data required to build a default camera
+	/// </summary>
+	public class DefaultCameraParams : CameraParams {
 		#region Constructor
 		/// <summary>
 		/// Constructs a default camera setup with the following values
