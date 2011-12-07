@@ -11,7 +11,7 @@ namespace GWNorthEngine.Model.Params {
 	/// <summary>
 	/// Object containing the data required to build a 3D model
 	/// </summary>
-	public class ModelParams {
+	public class BaseModelParams {
 		#region Class properties
 		/// <summary>
 		/// Gets or sets the core XNA Model used for rendering
@@ -29,6 +29,10 @@ namespace GWNorthEngine.Model.Params {
 		/// Gets or sets the scale of the model
 		/// </summary>
 		public Vector3 Scale { get; set; }
+		/// <summary>
+		/// Gets or sets whether the model is to be drawn
+		/// </summary>
+		public bool Visible { get; set; }
 		#endregion Class properties
 
 		#region Constructor
@@ -36,8 +40,9 @@ namespace GWNorthEngine.Model.Params {
 		/// Builds the default settings for the ModelParams. The default settings are below;
 		/// Scale:		new Vector3(1f)
 		/// </summary>
-		public ModelParams() {
+		public BaseModelParams() {
 			this.Scale = new Vector3(1f);
+			this.Visible = true;
 		}
 		#endregion Constructor
 	}

@@ -135,8 +135,8 @@
     <Compile Include="Model\2D\Params\BaseButtonParams.cs" />
     <Compile Include="Model\2D\Params\BaseParticle2DParams.cs" />
     <Compile Include="Model\2D\Params\TexturedButtonParams.cs" />
-    <Compile Include="Model\3D\Model.cs" />
-    <Compile Include="Model\3D\Params\ModelParams.cs" />
+    <Compile Include="Model\3D\BaseModel.cs" />
+    <Compile Include="Model\3D\Params\BaseModelParams.cs" />
     <Compile Include="Model\AnimationManager.cs" />
     <Compile Include="Model\2D\Button.cs" />
     <Compile Include="Model\2D\Line2D.cs" />

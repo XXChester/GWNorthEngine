@@ -103,7 +103,23 @@ namespace GWNorthEngine.Utils {
 			return font;
 		}
 
-		
+		/// <summary>
+		/// Loads a Model via the ContentManager and assigns the model custom data for debugging purposes
+		/// </summary>
+		/// <param name="content">ContentManager object</param>
+		/// <param name="modelName">Name of the model</param>
+		/// <returns></returns>
+		public static Microsoft.Xna.Framework.Graphics.Model loadModel(ContentManager content, string modelName) {
+			Microsoft.Xna.Framework.Graphics.Model model = content.Load<Microsoft.Xna.Framework.Graphics.Model>(modelName);
+			//TODO: Custom crap....no name field for models
+			return model;
+		}
+
+		public static Effect loadEffect(ContentManager content, string effectName) {
+			Effect effect = content.Load<Effect>(effectName);
+			effect.Name = effectName;
+			return effect;
+		}
 		#endregion Visual
 
 		#region Audio

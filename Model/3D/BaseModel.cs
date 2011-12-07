@@ -16,9 +16,12 @@ namespace GWNorthEngine.Model {
 	/// <summary>
 	/// Basic 3D model class
 	/// </summary>
-	public class Model {
+	public class BaseModel {
 		#region Class variables
-		private Microsoft.Xna.Framework.Graphics.Model model;
+		/// <summary>
+		/// Internal XNA Model object
+		/// </summary>
+		protected Microsoft.Xna.Framework.Graphics.Model model;
 		#endregion Class variables
 
 		#region Class propeties
@@ -34,6 +37,10 @@ namespace GWNorthEngine.Model {
 		/// Gets or sets the scale of the model
 		/// </summary>
 		public Vector3 Scale { get; set; }
+		/// <summary>
+		/// Gets or sets whether the model is to be drawn
+		/// </summary>
+		public bool Visible { get; set; }
 		#endregion Class properties
 
 		#region Constructor
@@ -41,11 +48,12 @@ namespace GWNorthEngine.Model {
 		/// Builds a Model based on the parms specified
 		/// </summary>
 		/// <param name="parms"></param>
-		public Model(ModelParams parms) {
+		public BaseModel(BaseModelParams parms) {
 			this.model = parms.Model;
 			this.Position = parms.Position;
 			this.Rotation = parms.Rotation;
 			this.Scale = parms.Scale;
+			this.Visible = parms.Visible;
 		}
 		#endregion Constructor
 
@@ -54,19 +62,21 @@ namespace GWNorthEngine.Model {
 		/// Renders the model
 		/// <param name="camera">Camera the model uses to render with</param>
 		/// </summary>
-		public void render(Camera camera) {
-			Matrix[] transforms = new Matrix[this.model.Bones.Count];
-			this.model.CopyAbsoluteBoneTransformsTo(transforms);
-			foreach (ModelMesh mesh in this.model.Meshes) {
-				foreach (BasicEffect effect in mesh.Effects) {
-					effect.EnableDefaultLighting();
-					effect.World = transforms[mesh.ParentBone.Index] * Matrix.CreateScale(this.Scale) *
-						Matrix.CreateRotationX(this.Rotation.X) * Matrix.CreateRotationY(this.Rotation.Y) * 
-						Matrix.CreateRotationZ(this.Rotation.Z) * Matrix.CreateTranslation(this.Position);
-					effect.View = camera.ViewMatrix;
-					effect.Projection = camera.ProjectionMatrix;
+		public virtual void render(Camera camera) {
+			if (this.Visible) {
+				Matrix[] transforms = new Matrix[this.model.Bones.Count];
+				this.model.CopyAbsoluteBoneTransformsTo(transforms);
+				foreach (ModelMesh mesh in this.model.Meshes) {
+					foreach (BasicEffect effect in mesh.Effects) {
+						effect.EnableDefaultLighting();
+						effect.World = transforms[mesh.ParentBone.Index] * Matrix.CreateScale(this.Scale) *
+							Matrix.CreateRotationX(this.Rotation.X) * Matrix.CreateRotationY(this.Rotation.Y) *
+							Matrix.CreateRotationZ(this.Rotation.Z) * Matrix.CreateTranslation(this.Position);
+						effect.View = camera.ViewMatrix;
+						effect.Projection = camera.ProjectionMatrix;
+					}
+					mesh.Draw();
 				}
-				mesh.Draw();
 			}
 		}
 		#endregion Support methods
