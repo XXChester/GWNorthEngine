@@ -13,6 +13,13 @@ namespace GWNorthEngine.Model {
 		private Texture2D activeTexture;
 		#endregion Class variables
 
+		#region Class properties
+		/// <summary>
+		/// Gets or sets the Colour in which the button is to be rendered in
+		/// </summary>
+		public Color LightColour { get; set; }
+		#endregion Class properties
+
 		#region Constructor
 		/// <summary>
 		/// Building of a textured button
@@ -20,8 +27,8 @@ namespace GWNorthEngine.Model {
 		/// <param name="parms">TexturedButtonParams object containing the data required to build the TexturedButton</param>
 		public TexturedButton(TexturedButtonParams parms)
 			: base(parms) {
-			this.regularTexture = LoadingUtils.loadTexture2D(parms.Content, parms.RegularTextureFileName);
-			this.mouseOverTexture = LoadingUtils.loadTexture2D(parms.Content, parms.MouseOverTextureFileName);
+			this.regularTexture = parms.RegularTexture;
+			this.mouseOverTexture = parms.MouseOverTexture;
 			this.activeTexture = this.regularTexture;
 		}
 		#endregion Construct
@@ -43,7 +50,7 @@ namespace GWNorthEngine.Model {
 		/// </summary>
 		/// <param name="spriteBatch">SpriteBatch object to render the button</param>
 		public override void render(SpriteBatch spriteBatch) {
-			spriteBatch.Draw(this.activeTexture, base.renderingRectangle, Color.White);
+			spriteBatch.Draw(this.activeTexture, base.renderingRectangle, this.LightColour);
 		}
 		#endregion Support methods
 

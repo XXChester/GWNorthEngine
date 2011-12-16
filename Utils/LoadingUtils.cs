@@ -115,6 +115,12 @@ namespace GWNorthEngine.Utils {
 			return model;
 		}
 
+		/// <summary>
+		/// Loads an effect via the ContentManager and assigns the effect custom data for debugging purposes
+		/// </summary>
+		/// <param name="content"></param>
+		/// <param name="effectName"></param>
+		/// <returns></returns>
 		public static Effect loadEffect(ContentManager content, string effectName) {
 			Effect effect = content.Load<Effect>(effectName);
 			effect.Name = effectName;

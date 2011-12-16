@@ -471,6 +471,14 @@
             <param name="modelName">Name of the model</param>
             <returns></returns>
         </member>
+        <member name="M:GWNorthEngine.Utils.LoadingUtils.loadEffect(Microsoft.Xna.Framework.Content.ContentManager,System.String)">
+            <summary>
+            Loads an effect via the ContentManager and assigns the effect custom data for debugging purposes
+            </summary>
+            <param name="content"></param>
+            <param name="effectName"></param>
+            <returns></returns>
+        </member>
         <member name="M:GWNorthEngine.Utils.LoadingUtils.loadSoundEffect(Microsoft.Xna.Framework.Content.ContentManager,System.String)">
             <summary>
             Loads a SoundEffect via the ContentManager and assigns the sound effect custom data for debugging purposes
@@ -1610,19 +1618,26 @@
             Params object containing the data required to build a TexturedButton object
             </summary>
         </member>
-        <member name="P:GWNorthEngine.Model.Params.TexturedButtonParams.Content">
+        <member name="M:GWNorthEngine.Model.Params.TexturedButtonParams.#ctor">
             <summary>
-            Gets or sets the ContentManager object used for loading textures
+            Initializes a button with the default values set below
+            
+            LightColour:		Color.White;
             </summary>
         </member>
-        <member name="P:GWNorthEngine.Model.Params.TexturedButtonParams.RegularTextureFileName">
+        <member name="P:GWNorthEngine.Model.Params.TexturedButtonParams.RegularTexture">
             <summary>
-            Gets or sets the regular texture's file name for the button
+            Gets or sets the regular texture for the button
             </summary>
         </member>
-        <member name="P:GWNorthEngine.Model.Params.TexturedButtonParams.MouseOverTextureFileName">
+        <member name="P:GWNorthEngine.Model.Params.TexturedButtonParams.MouseOverTexture">
             <summary>
-            Gets or sets the buttons mouse over texture file name
+            Gets or sets the buttons mouse over texture
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.TexturedButtonParams.LightColour">
+            <summary>
+            Gets or sets the Colour in which the button is to be rendered in
             </summary>
         </member>
         <member name="T:GWNorthEngine.Model.Animated2DSprite">
@@ -2629,6 +2644,11 @@
         <member name="M:GWNorthEngine.Model.TexturedButton.dispose">
             <summary>
             Releases the portions of the button that cause memory leaks
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.TexturedButton.LightColour">
+            <summary>
+            Gets or sets the Colour in which the button is to be rendered in
             </summary>
         </member>
         <member name="T:GWNorthEngine.Utils.EnumUtils">
