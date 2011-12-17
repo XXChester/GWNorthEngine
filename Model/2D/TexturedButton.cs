@@ -30,6 +30,7 @@ namespace GWNorthEngine.Model {
 			this.regularTexture = parms.RegularTexture;
 			this.mouseOverTexture = parms.MouseOverTexture;
 			this.activeTexture = this.regularTexture;
+			this.LightColour = parms.LightColour;
 		}
 		#endregion Construct
 
