@@ -66,7 +66,7 @@ namespace GWNorthEngine.Model {
 		public Animated2DSprite(Animated2DSpriteParams parms)
 			: base(parms) {
 			if (parms.Texture2D == null && parms.TexturesName != null) {
-				Texture2D texture2D = LoadingUtils.loadTexture2D(parms.Content, parms.TexturesName);
+				Texture2D texture2D = LoadingUtils.load<Texture2D>(parms.Content, parms.TexturesName);
 				parms.Texture2D = texture2D;
 			}
 

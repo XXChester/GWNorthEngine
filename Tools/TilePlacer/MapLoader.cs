@@ -95,7 +95,7 @@ namespace GWNorthEngine.Tools.TilePlacer {
 					}
 				}
 				if (tileIndex != -1 && tileFileName != null && pieceType != TileValues.Unknown) {
-					texture = LoadingUtils.loadTexture2D(content, tileFileName);
+					texture = LoadingUtils.load<Texture2D>(content, tileFileName);
 					x = tileIndex % width;
 					y = tileIndex / width;
 					pieceIndex = new Point(x, y);

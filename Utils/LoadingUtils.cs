@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -14,28 +15,22 @@ namespace GWNorthEngine.Utils {
 	/// Contains helper methods for loading data from the file system
 	/// </summary>
 	public static class LoadingUtils {
-		#region Visual
 		/// <summary>
-		/// Sets all of the common data for the Texture2D
+		/// Generic load which appends the asset name to the assets properties if the field is available
 		/// </summary>
-		/// <param name="texture">Loaded Texture2D to set the data on</param>
-		/// <param name="fileName">Name of the file</param>
-		/// <returns>Texture2D with the custom data appended to it</returns>
-		private static Texture2D setCommonAttributes(Texture2D texture, string fileName) {
-			fileName = StringUtils.scrubPathAndExtFromFileName(fileName);
-			texture.Name = fileName;
-			return texture;
-		}
-
-		/// <summary>
-		/// Loads a texture via the ContentManager and assigns the texture custom data for debugging purposes
-		/// </summary>
+		/// <typeparam name="T">Type of object to load</typeparam>
 		/// <param name="content">ContentManager object</param>
-		/// <param name="textureName">Name of the texture</param>
-		/// <returns>Texture2D object</returns>
-		public static Texture2D loadTexture2D(ContentManager content, string textureName) {
-			Texture2D texture = content.Load<Texture2D>(textureName);
-			return (setCommonAttributes(texture, textureName));
+		/// <param name="assetName">Name of the asset to load from the content pipeline</param>
+		/// <returns>T object</returns>
+		public static T load<T>(ContentManager content, string assetName) {
+			T asset = content.Load<T>(assetName);
+			if (asset != null) {
+				PropertyInfo nameProperty = asset.GetType().GetProperty("Name");
+				if (nameProperty != null && nameProperty.CanWrite) {
+					nameProperty.SetValue(asset, assetName, null);
+				}
+			}
+			return asset;
 		}
 
 		/// <summary>
@@ -88,71 +83,8 @@ namespace GWNorthEngine.Utils {
 			//Release the GPU back to drawing to the screen
 			device.SetRenderTarget(null);
 			texture = renderTarget;
-			return setCommonAttributes(texture, fileNameWithPathAndExtension);
+			texture.Name = fileNameWithPathAndExtension;
+			return texture;
 		}
-		
-		/// <summary>
-		/// Loads a SpriteFont via the ContentManager and assigns the font custom data for debugging purposes
-		/// </summary>
-		/// <param name="content">ContentManager object</param>
-		/// <param name="spriteFontName">Name of the sprite font</param>
-		/// <returns>Texture2D object</returns>
-		public static SpriteFont loadSpriteFont(ContentManager content, string spriteFontName) {
-			SpriteFont font = content.Load<SpriteFont>(spriteFontName);
-			//TODO: Custom crap...no name field for fonts =/
-			return font;
-		}
-
-		/// <summary>
-		/// Loads a Model via the ContentManager and assigns the model custom data for debugging purposes
-		/// </summary>
-		/// <param name="content">ContentManager object</param>
-		/// <param name="modelName">Name of the model</param>
-		/// <returns></returns>
-		public static Microsoft.Xna.Framework.Graphics.Model loadModel(ContentManager content, string modelName) {
-			Microsoft.Xna.Framework.Graphics.Model model = content.Load<Microsoft.Xna.Framework.Graphics.Model>(modelName);
-			//TODO: Custom crap....no name field for models
-			return model;
-		}
-
-		/// <summary>
-		/// Loads an effect via the ContentManager and assigns the effect custom data for debugging purposes
-		/// </summary>
-		/// <param name="content"></param>
-		/// <param name="effectName"></param>
-		/// <returns></returns>
-		public static Effect loadEffect(ContentManager content, string effectName) {
-			Effect effect = content.Load<Effect>(effectName);
-			effect.Name = effectName;
-			return effect;
-		}
-		#endregion Visual
-
-		#region Audio
-		/// <summary>
-		/// Loads a SoundEffect via the ContentManager and assigns the sound effect custom data for debugging purposes
-		/// </summary>
-		/// <param name="content">ContentManager object</param>
-		/// <param name="soundEffectName">Name of the sound effect</param>
-		/// <returns>Texture2D object</returns>
-		public static SoundEffect loadSoundEffect(ContentManager content, string soundEffectName) {
-			SoundEffect sfx = content.Load<SoundEffect>(soundEffectName);
-			sfx.Name = soundEffectName;
-			return sfx;
-		}
-
-		/// <summary>
-		/// Loads a Song via the ContentManager and assugbs the song custom data for debugging purposes
-		/// </summary>
-		/// <param name="content">ContentManager object</param>
-		/// <param name="songName">Name of the song</param>
-		/// <returns></returns>
-		public static Song loadSong(ContentManager content, string songName) {
-			Song song = content.Load<Song>(songName);
-			//TODO: Custom crap....name field is readonly
-			return song;
-		}
-		#endregion Audio
-
 	}
 }
