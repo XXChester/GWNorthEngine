@@ -6,18 +6,17 @@ namespace GWNorthEngine.Model {
 	/// <summary>
 	/// Textured button
 	/// </summary>
-	public class TexturedButton : Button {
+	public class TexturedButton : StaticDrawable2D, IButton {
 		#region Class variables
 		private Texture2D regularTexture;
 		private Texture2D mouseOverTexture;
-		private Texture2D activeTexture;
 		#endregion Class variables
 
 		#region Class properties
 		/// <summary>
-		/// Gets or sets the Colour in which the button is to be rendered in
+		/// Gets or sets the ID of the button
 		/// </summary>
-		public Color LightColour { get; set; }
+		public int ID { get; set; }
 		#endregion Class properties
 
 		#region Constructor
@@ -27,31 +26,37 @@ namespace GWNorthEngine.Model {
 		/// <param name="parms">TexturedButtonParams object containing the data required to build the TexturedButton</param>
 		public TexturedButton(TexturedButtonParams parms)
 			: base(parms) {
+			base.texture = parms.RegularTexture;
+			base.setRenderingRectByTexture(base.texture);
 			this.regularTexture = parms.RegularTexture;
 			this.mouseOverTexture = parms.MouseOverTexture;
-			this.activeTexture = this.regularTexture;
-			this.LightColour = parms.LightColour;
+			this.ID = parms.ID;
 		}
 		#endregion Construct
 
 		#region Support methods
 		/// <summary>
-		/// Processes the movement of the actor (Mouse/XBox Controller etc)
+		/// Determines if the actor is over the button
 		/// </summary>
 		/// <param name="actorsPosition">Actors current position</param>
-		public override void processActorsMovement(Vector2 actorsPosition) {
-			this.activeTexture = this.regularTexture;
-			if (base.isActorOver(actorsPosition)) {
-				this.activeTexture = this.mouseOverTexture;
-			}
+		/// <returns>boolean based on whether the actor is over the button</returns>
+		public bool isActorOver(Vector2 actorsPosition) {
+			int x1 = (int)(base.position.X - base.origin.X);
+			int y1 = (int)(base.position.Y - base.origin.Y);
+			int x2 = (int)(base.texture.Width);
+			int y2 = (int)(base.texture.Height);
+			return (PickingUtils.pickRectangle(actorsPosition, new Rectangle(x1, y1, x2, y2)));
 		}
 
 		/// <summary>
-		/// Rendering of the button
+		/// Processes the movement of the actor (Mouse/XBox Controller etc)
 		/// </summary>
-		/// <param name="spriteBatch">SpriteBatch object to render the button</param>
-		public override void render(SpriteBatch spriteBatch) {
-			spriteBatch.Draw(this.activeTexture, base.renderingRectangle, this.LightColour);
+		/// <param name="actorsPosition">Actors current position</param>
+		public void processActorsMovement(Vector2 actorsPosition) {
+			this.texture = this.regularTexture;
+			if (isActorOver(actorsPosition)) {
+				this.texture = this.mouseOverTexture;
+			}
 		}
 		#endregion Support methods
 
@@ -68,10 +73,7 @@ namespace GWNorthEngine.Model {
 				this.mouseOverTexture.Dispose();
 				this.mouseOverTexture = null;
 			}
-			if (this.activeTexture != null) {
-				this.activeTexture.Dispose();
-				this.activeTexture = null;
-			}
+			base.dispose();
 		}
 		#endregion Destructor
 	}

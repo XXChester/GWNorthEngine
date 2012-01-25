@@ -63,7 +63,7 @@ namespace GWNorthEngine.Model {
 		/// <summary>
 		/// Disposes the texture that was being drawn
 		/// </summary>
-		public void dispose() {
+		public virtual void dispose() {
 			if (this.texture != null) {
 				this.texture.Dispose();
 			}

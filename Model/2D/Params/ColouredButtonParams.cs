@@ -9,8 +9,28 @@ namespace GWNorthEngine.Model.Params {
 	/// <summary>
 	/// Params object containing the data required to build a coloured button
 	/// </summary>
-	public class ColouredButtonParams : BaseButtonParams {
+	public class ColouredButtonParams {
 		#region Class properties
+		/// <summary>
+		/// Gets or sets the starting x positon of the button
+		/// </summary>
+		public int StartX { get; set; }
+		/// <summary>
+		/// Gets or sets the starting y position of the button
+		/// </summary>
+		public int StartY { get; set; }
+		/// <summary>
+		/// Gets or sets the width of the button
+		/// </summary>
+		public int Width { get; set; }
+		/// <summary>
+		/// Gets or sets the height of the button
+		/// </summary>
+		public int Height { get; set; }
+		/// <summary>
+		/// Buttons ID used for determining if a button was clicked
+		/// </summary>
+		public int ID { get; set; }
 		/// <summary>
 		/// Gets or sets the lines texture
 		/// </summary>
