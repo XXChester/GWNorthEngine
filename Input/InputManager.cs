@@ -361,6 +361,43 @@ namespace GWNorthEngine.Input {
 			}
 			return result;
 		}
+
+		/// <summary>
+		/// Determines if a specific players stick is moved
+		/// </summary>
+		/// <param name="stick">Stick value to check</param>
+		/// <returns>True if the stick is moved, otherwise false</returns>
+		public bool isStickMoved(Vector2 stick) {
+			bool result = false;
+			if (!Vector2.Zero.Equals(stick)) {
+				result = true;
+			}
+			return result;
+		}
+
+		/// <summary>
+		/// Determines if a specific players left stick is moved
+		/// </summary>
+		/// <param name="playerIndex">Player we are checking</param>
+		/// <param name="value">How much the stick is moved by</param>
+		/// <returns>True if the stick is moved, otherwise false</returns>
+		public bool isLeftStickMoved(PlayerIndex playerIndex, out Vector2 value) {
+			GamePadState state = this.currentGamePadStates[(int)playerIndex];
+			value = state.ThumbSticks.Left;
+			return isStickMoved(state.ThumbSticks.Left);
+		}
+
+		/// <summary>
+		/// Determines if a specific players right stick is moved
+		/// </summary>
+		/// <param name="playerIndex">Player we are checking</param>
+		/// <param name="value">How much the stick is moved by</param>
+		/// <returns>True if the stick is moved, otherwise false</returns>
+		public bool isRightStickMoved(PlayerIndex playerIndex, out Vector2 value) {
+			GamePadState state = this.currentGamePadStates[(int)playerIndex];
+			value = state.ThumbSticks.Right;
+			return isStickMoved(state.ThumbSticks.Right);
+		}
 		#endregion
 		#endregion Support methods
 	}

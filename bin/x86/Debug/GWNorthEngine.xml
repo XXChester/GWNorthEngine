@@ -1350,6 +1350,29 @@
             <param name="button">Button that we are checking</param>
             <returns>True if the player's button is held down, otherwise false</returns>
         </member>
+        <member name="M:GWNorthEngine.Input.InputManager.isStickMoved(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Determines if a specific players stick is moved
+            </summary>
+            <param name="stick">Stick value to check</param>
+            <returns>True if the stick is moved, otherwise false</returns>
+        </member>
+        <member name="M:GWNorthEngine.Input.InputManager.isLeftStickMoved(Microsoft.Xna.Framework.PlayerIndex,Microsoft.Xna.Framework.Vector2@)">
+            <summary>
+            Determines if a specific players left stick is moved
+            </summary>
+            <param name="playerIndex">Player we are checking</param>
+            <param name="value">How much the stick is moved by</param>
+            <returns>True if the stick is moved, otherwise false</returns>
+        </member>
+        <member name="M:GWNorthEngine.Input.InputManager.isRightStickMoved(Microsoft.Xna.Framework.PlayerIndex,Microsoft.Xna.Framework.Vector2@)">
+            <summary>
+            Determines if a specific players right stick is moved
+            </summary>
+            <param name="playerIndex">Player we are checking</param>
+            <param name="value">How much the stick is moved by</param>
+            <returns>True if the stick is moved, otherwise false</returns>
+        </member>
         <member name="P:GWNorthEngine.Input.InputManager.MouseX">
             <summary>
             Returns the mouses X position
@@ -1559,6 +1582,99 @@
         <member name="P:GWNorthEngine.Model.Params.BaseAnimationManagerParams.AnimationState">
             <summary>
             Gets or sets the AnimationState of the object
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.Model.Params.TexturedButtonParams">
+            <summary>
+            Params object containing the data required to build a TexturedButton object
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.Model.Params.StaticDrawable2DParams">
+            <summary>
+            Models the data required to draw a static texture to the screen
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams">
+            <summary>
+            Object containing the required data for the basis to build any SpriteBatch drawable object
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.#ctor">
+            <summary>
+            Defines a new Base2DSpriteDrawableParams object with the defaults set. The defaults are listed below;
+            LightColour:	Colour.White
+            Origin:			Vector2(0f,0f)
+            Scale:			Vector2(1f,1f)
+            Rotation:		0f
+            Layer:			0f
+            SpriteEffect:	None
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.Position">
+            <summary>
+            Gets or sets the starting position of the sprite
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.Origin">
+            <summary>
+            Gets or sets the starting origin of the sprite
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.Scale">
+            <summary>
+            Gets or Sets the startign scale of the sprite
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.Rotation">
+            <summary>
+            Gets or sets the starting rotation of the sprite
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.Layer">
+            <summary>
+            Gets or sets the starting layer to render the sprite at
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.LightColour">
+            <summary>
+            Gets or sets the starting colour in which to render the sprite in
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.SpriteEffect">
+            <summary>
+            Gets or sets the SpriteEffect technique used for rendering the sprite
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.RenderingRectangle">
+            <summary>
+            Gets or sets the Rectangle used to render portions of the Texture
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.StaticDrawable2DParams.Texture">
+            <summary>
+            Gets or sets the texture to be drawn to the screen
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Model.Params.TexturedButtonParams.#ctor">
+            <summary>
+            Initializes a button with the default values set below
+            
+            LightColour:		Color.White;
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.TexturedButtonParams.RegularTexture">
+            <summary>
+            Gets or sets the regular texture for the button
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.TexturedButtonParams.MouseOverTexture">
+            <summary>
+            Gets or sets the buttons mouse over texture
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Params.TexturedButtonParams.ID">
+            <summary>
+            Buttons ID used for determining if a button was clicked
             </summary>
         </member>
         <member name="T:GWNorthEngine.Model.Animated2DSprite">
@@ -1921,72 +2037,6 @@
         <member name="P:GWNorthEngine.Model.Text2D.WrittenText">
             <summary>
             Gets or sets text to be written to the screen
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.Model.Params.StaticDrawable2DParams">
-            <summary>
-            Models the data required to draw a static texture to the screen
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams">
-            <summary>
-            Object containing the required data for the basis to build any SpriteBatch drawable object
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.#ctor">
-            <summary>
-            Defines a new Base2DSpriteDrawableParams object with the defaults set. The defaults are listed below;
-            LightColour:	Colour.White
-            Origin:			Vector2(0f,0f)
-            Scale:			Vector2(1f,1f)
-            Rotation:		0f
-            Layer:			0f
-            SpriteEffect:	None
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.Position">
-            <summary>
-            Gets or sets the starting position of the sprite
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.Origin">
-            <summary>
-            Gets or sets the starting origin of the sprite
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.Scale">
-            <summary>
-            Gets or Sets the startign scale of the sprite
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.Rotation">
-            <summary>
-            Gets or sets the starting rotation of the sprite
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.Layer">
-            <summary>
-            Gets or sets the starting layer to render the sprite at
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.LightColour">
-            <summary>
-            Gets or sets the starting colour in which to render the sprite in
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.SpriteEffect">
-            <summary>
-            Gets or sets the SpriteEffect technique used for rendering the sprite
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.RenderingRectangle">
-            <summary>
-            Gets or sets the Rectangle used to render portions of the Texture
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.StaticDrawable2DParams.Texture">
-            <summary>
-            Gets or sets the texture to be drawn to the screen
             </summary>
         </member>
         <member name="T:GWNorthEngine.Tools.TilePlacer.Constants">
@@ -3045,33 +3095,6 @@
         <member name="F:GWNorthEngine.Input.MouseButton.Middle">
             <summary>
             Middle mouse button
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.Model.Params.TexturedButtonParams">
-            <summary>
-            Params object containing the data required to build a TexturedButton object
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.Model.Params.TexturedButtonParams.#ctor">
-            <summary>
-            Initializes a button with the default values set below
-            
-            LightColour:		Color.White;
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.TexturedButtonParams.RegularTexture">
-            <summary>
-            Gets or sets the regular texture for the button
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.TexturedButtonParams.MouseOverTexture">
-            <summary>
-            Gets or sets the buttons mouse over texture
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Params.TexturedButtonParams.ID">
-            <summary>
-            Buttons ID used for determining if a button was clicked
             </summary>
         </member>
     </members>
