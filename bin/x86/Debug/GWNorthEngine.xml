@@ -1326,6 +1326,13 @@
             </summary>
             <returns>True if the button is held down, otherwise false</returns>
         </member>
+        <member name="M:GWNorthEngine.Input.InputManager.updateMousePosition(System.Int32,System.Int32)">
+            <summary>
+            Adds the passed in x value to the Mouse.X and subtracts the y value from the Mouse.Y
+            </summary>
+            <param name="x">Value to add in the x direction</param>
+            <param name="y">Value to subtract in the y direction</param>
+        </member>
         <member name="M:GWNorthEngine.Input.InputManager.wasButtonPressed(Microsoft.Xna.Framework.PlayerIndex,Microsoft.Xna.Framework.Input.Buttons)">
             <summary>
             Determines if a specific player just pressed a buton

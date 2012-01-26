@@ -311,6 +311,15 @@ namespace GWNorthEngine.Input {
 			}
 			return result;
 		}
+
+		/// <summary>
+		/// Adds the passed in x value to the Mouse.X and subtracts the y value from the Mouse.Y
+		/// </summary>
+		/// <param name="x">Value to add in the x direction</param>
+		/// <param name="y">Value to subtract in the y direction</param>
+		public void updateMousePosition(int x, int y) {
+			Mouse.SetPosition(MouseX + x, MouseY - y);
+		}
 		#endregion Mouse
 
 		#region XBOX
