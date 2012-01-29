@@ -132,6 +132,7 @@
     <Compile Include="Model\2D\Params\ColouredButtonParams.cs" />
     <Compile Include="Model\2D\Params\Animated2DSpriteLoadSingleCustomRow.cs" />
     <Compile Include="Model\2D\Params\Animated2DSpriteLoadSingleRowBasedOnTexture.cs" />
+    <Compile Include="Model\2D\Params\Animated2DSpriteLoadMultipleRows.cs" />
     <Compile Include="Model\2D\Params\ScrollingBackGround2DParams.cs" />
     <Compile Include="Model\2D\Params\StaticDrawable2DParams.cs" />
     <Compile Include="Model\2D\Params\TexturedButtonParams.cs" />

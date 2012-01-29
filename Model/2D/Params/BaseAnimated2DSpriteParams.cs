@@ -12,9 +12,22 @@ namespace GWNorthEngine.Model.Params {
 	/// </summary>
 	public abstract class BaseAnimated2DSpriteParams : Base2DSpriteDrawableParams {
 		#region Class variables
+		/// <summary>
+		/// Where to start in the sprites width for loading
+		/// </summary>
 		protected int framesStartWidth;
+		/// <summary>
+		/// Where to start in the sprites height for loading
+		/// </summary>
 		protected int framesStartHeight;
+		/// <summary>
+		/// Space between the frames
+		/// </summary>
 		protected int spaceBetweenFrames;
+		/// <summary>
+		/// Number of columns to load in a sheet before moving to the next line
+		/// </summary>
+		protected int maxColumnsToARow;
 		#endregion Class variables
 
 		#region Class propeties

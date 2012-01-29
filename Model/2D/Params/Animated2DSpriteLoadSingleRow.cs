@@ -5,13 +5,9 @@ using System.Text;
 
 
 namespace GWNorthEngine.Model.Params {
+	/// <summary>
+	/// Object used to load an Animated2DSprite object that is a single row in a sprite sheet
+	/// </summary>
 	public class Animated2DSpriteLoadSingleRow : BaseAnimated2DSpriteParams {
-		#region Class properties
-
-		#endregion Class properties
-
-		#region Constructor
-
-		#endregion Constructor
 	}
 }

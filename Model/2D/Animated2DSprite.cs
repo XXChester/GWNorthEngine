@@ -54,12 +54,16 @@ namespace GWNorthEngine.Model {
 			: base(parms) {
 			if (typeof(Animated2DSpriteLoadSingleCustomRow) == parms.GetType()) {
 				Animated2DSpriteLoadSingleCustomRow realParms = (Animated2DSpriteLoadSingleCustomRow)parms;
-				initSprite(realParms.Texture2D, realParms.AnimationParams, realParms.FramesWidth,
-					realParms.FramesHeight, realParms.SpaceBetweenFrames,  realParms.FramesStartWidth, realParms.FramesStartHeight);
+				initSprite(realParms.Texture2D, realParms.AnimationParams, realParms.FramesWidth, realParms.FramesHeight, 
+					realParms.SpaceBetweenFrames,  realParms.FramesStartWidth, realParms.FramesStartHeight);
 			} else if (typeof(Animated2DSpriteLoadSingleRowBasedOnTexture) == parms.GetType()) {
 				parms.FramesWidth = parms.Texture2D.Width / parms.AnimationParams.TotalFrameCount;
 				parms.FramesHeight = parms.Texture2D.Height;
 				initSprite(parms.Texture2D, parms.AnimationParams, parms.FramesWidth, parms.FramesHeight);
+			} else if (typeof(Animated2DSpriteLoadMultipleRows) == parms.GetType()) {
+				Animated2DSpriteLoadMultipleRows realParms = (Animated2DSpriteLoadMultipleRows)parms;
+				initSprite(realParms.Texture2D, realParms.AnimationParams, realParms.FramesWidth, realParms.FramesHeight,
+				maxColumnsToARow: realParms.MaxColumnsToARow);
 			} else {
 				initSprite(parms.Texture2D, parms.AnimationParams, parms.FramesWidth, parms.FramesHeight);
 			}
@@ -77,16 +81,27 @@ namespace GWNorthEngine.Model {
 		/// <param name="frameHeight">Y size of a sprites single frame</param>
 		/// <param name="spaceBetweenFrames">Space between the frames in the sprite sheet</param>
 		/// <param name="animationParams">BaseAnimationManagerParams object containing the animation information for the sprite</param>
+		/// <param name="maxColumnsToARow">Maximum columns to a row in the sprite sheet</param>
 		private void initSprite(Texture2D texture, BaseAnimationManagerParams animationParams, int frameWidth, int frameHeight,
-			int spaceBetweenFrames=0, int framesStartWidth=0, int framesStartHeight=0) {
+			int spaceBetweenFrames=0, int framesStartWidth=0, int framesStartHeight=0, int maxColumnsToARow=-1) {
 			this.texture = texture;
 			this.animationManager = new AnimationManager(animationParams);
+
+			// if we are the default value for maxColumnsToARow set the value based on the animation's total frames
+			if (maxColumnsToARow == -1) {
+				maxColumnsToARow = animationParams.TotalFrameCount;
+			}
 
 			// load the frames
 			this.frames = new Rectangle[animationParams.TotalFrameCount];
 			int x = framesStartWidth;
+			int y = framesStartHeight;
 			for (int i = 0; i < this.frames.Length; i++) {
-				this.frames[i] = new Rectangle(x, framesStartHeight, frameWidth, frameHeight);
+				if (i > 0 && i % maxColumnsToARow == 0) {
+					x = framesStartWidth;
+					y = (y + frameHeight + spaceBetweenFrames);
+				}
+				this.frames[i] = new Rectangle(x, y, frameWidth, frameHeight);
 				x = (x + frameWidth + spaceBetweenFrames);
 			}
 			base.renderingRectangle = this.frames[this.animationManager.CurrentFrame];

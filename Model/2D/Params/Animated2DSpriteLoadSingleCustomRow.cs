@@ -6,6 +6,9 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GWNorthEngine.Model.Params {
+	/// <summary>
+	/// Object used to load an Animated2DSprite object that is a custom single row in a sprite sheet
+	/// </summary>
 	public class Animated2DSpriteLoadSingleCustomRow : BaseAnimated2DSpriteParams {
 		#region Class properties
 		/// <summary>
@@ -21,9 +24,5 @@ namespace GWNorthEngine.Model.Params {
 		/// </summary>
 		public int SpaceBetweenFrames { get { return base.spaceBetweenFrames; } set { base.spaceBetweenFrames = value; } }
 		#endregion Class properties
-
-		#region Constructor
-
-		#endregion Constructor
 	}
 }
