@@ -127,8 +127,11 @@
     <Compile Include="Model\2D\BaseParticle2DEmitter.cs" />
     <Compile Include="Model\2D\ColouredButton.cs" />
     <Compile Include="Model\2D\IButton.cs" />
+    <Compile Include="Model\2D\Params\Animated2DSpriteLoadSingleRow.cs" />
     <Compile Include="Model\2D\Params\BaseParticle2DEmitterParams.cs" />
     <Compile Include="Model\2D\Params\ColouredButtonParams.cs" />
+    <Compile Include="Model\2D\Params\Animated2DSpriteLoadSingleCustomRow.cs" />
+    <Compile Include="Model\2D\Params\Animated2DSpriteLoadSingleRowBasedOnTexture.cs" />
     <Compile Include="Model\2D\Params\ScrollingBackGround2DParams.cs" />
     <Compile Include="Model\2D\Params\StaticDrawable2DParams.cs" />
     <Compile Include="Model\2D\Params\TexturedButtonParams.cs" />
@@ -142,7 +145,7 @@
     <Compile Include="Model\Params\BaseAnimationManagerParams.cs" />
     <Compile Include="Model\2D\Base2DSpriteDrawable.cs" />
     <Compile Include="Model\2D\Params\Base2DSpriteDrawableParams.cs" />
-    <Compile Include="Model\2D\Params\Animated2DSpriteParams.cs" />
+    <Compile Include="Model\2D\Params\BaseAnimated2DSpriteParams.cs" />
     <Compile Include="Model\2D\Params\Line2DParams.cs" />
     <Compile Include="Model\2D\Params\Text2DParams.cs" />
     <Compile Include="Model\2D\Text2D.cs" />

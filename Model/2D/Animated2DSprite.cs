@@ -15,19 +15,6 @@ namespace GWNorthEngine.Model {
 	/// Sprite class that can be either animated or not
 	/// </summary>
 	public class Animated2DSprite : Base2DSpriteDrawable {
-		/// <summary>
-		/// Determines how the sprite sheet is loaded
-		/// </summary>
-		public enum LoadingType {
-			/// <summary>
-			/// Loads the entire sprite sheet and determines the frames based on the Textures width / the total frames passed in
-			/// </summary>
-			WholeSheetReadFramesFromFile,
-			/// <summary>
-			/// Loads the sprite sheet based on the framesStartWidth, framesStartHeight, framesHeight, framesWidth, and the space between the frames
-			/// </summary>
-			CustomizedSheetDefineFrames
-		}
 		#region Class variables
 		/// <summary>
 		/// Texture used to render the sprite
@@ -63,15 +50,19 @@ namespace GWNorthEngine.Model {
 		/// Builds a sprite based off of the parms specified
 		/// </summary>
 		/// <param name="parms">SpriteParams object containing all of the data to how this sprite is loaded, its position, colour, etc,etc</param>
-		public Animated2DSprite(Animated2DSpriteParams parms)
+		public Animated2DSprite(BaseAnimated2DSpriteParams parms)
 			: base(parms) {
-			if (parms.Texture2D == null && parms.TexturesName != null) {
-				Texture2D texture2D = LoadingUtils.load<Texture2D>(parms.Content, parms.TexturesName);
-				parms.Texture2D = texture2D;
+			if (typeof(Animated2DSpriteLoadSingleCustomRow) == parms.GetType()) {
+				Animated2DSpriteLoadSingleCustomRow realParms = (Animated2DSpriteLoadSingleCustomRow)parms;
+				initSprite(realParms.Texture2D, realParms.AnimationParams, realParms.FramesWidth,
+					realParms.FramesHeight, realParms.SpaceBetweenFrames,  realParms.FramesStartWidth, realParms.FramesStartHeight);
+			} else if (typeof(Animated2DSpriteLoadSingleRowBasedOnTexture) == parms.GetType()) {
+				parms.FramesWidth = parms.Texture2D.Width / parms.AnimationParams.TotalFrameCount;
+				parms.FramesHeight = parms.Texture2D.Height;
+				initSprite(parms.Texture2D, parms.AnimationParams, parms.FramesWidth, parms.FramesHeight);
+			} else {
+				initSprite(parms.Texture2D, parms.AnimationParams, parms.FramesWidth, parms.FramesHeight);
 			}
-
-			initSprite(parms.Texture2D, parms.LoadingType, parms.FramesStartWidth, 
-				parms.FramesStartHeight, parms.FramesWidth, parms.FramesHeight, parms.SpaceBetweenFrames, parms.AnimationParams);
 		}
 		#endregion Constructor
 
@@ -80,25 +71,19 @@ namespace GWNorthEngine.Model {
 		/// Actual building of the sprite
 		/// </summary>
 		/// <param name="texture">Texture2D use to render the sprite</param>
-		/// <param name="loadingType">Way to load the sprite</param>
 		/// <param name="framesStartWidth">Starting x point of the sprite in the sprite sheet</param>
 		/// <param name="framesStartHeight">Starting y point of the sprite in the sprite sheet</param>
 		/// <param name="frameWidth">X size of a sprites single frame</param>
 		/// <param name="frameHeight">Y size of a sprites single frame</param>
 		/// <param name="spaceBetweenFrames">Space between the frames in the sprite sheet</param>
 		/// <param name="animationParams">BaseAnimationManagerParams object containing the animation information for the sprite</param>
-		private void initSprite(Texture2D texture, Animated2DSprite.LoadingType loadingType, 
-			int framesStartWidth, int framesStartHeight, int frameWidth, int frameHeight, int spaceBetweenFrames, BaseAnimationManagerParams animationParams) {
+		private void initSprite(Texture2D texture, BaseAnimationManagerParams animationParams, int frameWidth, int frameHeight,
+			int spaceBetweenFrames=0, int framesStartWidth=0, int framesStartHeight=0) {
 			this.texture = texture;
 			this.animationManager = new AnimationManager(animationParams);
 
-			//setup the frames
-			this.frames = new Rectangle[animationParams.TotalFrameCount];
-			if (loadingType == LoadingType.WholeSheetReadFramesFromFile) {
-				frameWidth = this.texture.Width / animationParams.TotalFrameCount;
-				frameHeight = this.texture.Height;
-			}
 			// load the frames
+			this.frames = new Rectangle[animationParams.TotalFrameCount];
 			int x = framesStartWidth;
 			for (int i = 0; i < this.frames.Length; i++) {
 				this.frames[i] = new Rectangle(x, framesStartHeight, frameWidth, frameHeight);
