@@ -113,5 +113,22 @@ namespace GWNorthEngine.Utils {
 
 			return collision;
 		}
+
+		/// <summary>
+		/// Determinse if a bounding box collides with any number of bounding boxes in a list
+		/// </summary>
+		/// <param name="bboxes">List of bounding boxes to check a collision for</param>
+		/// <param name="checkWith">Single bounding box to check against</param>
+		/// <returns>True if a collision was found, otherwise false</returns>
+		public static bool doesBBoxCollideWithAnotherBBox(List<BoundingBox> bboxes, BoundingBox checkWith) {
+			bool collision = false;
+			foreach (BoundingBox bbox in bboxes) {
+				if (checkWith.Intersects(bbox)) {
+					collision = true;
+					break;
+				}
+			}
+			return collision;
+		}
 	}
 }
