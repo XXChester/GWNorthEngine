@@ -23,7 +23,7 @@ namespace GWNorthEngine.Tools.TilePlacer {
 		/// <summary>
 		/// Gets or sets the world position of the tile
 		/// </summary>
-		public Vector2 WorldPosition { get; set; }
+		public virtual Vector2 WorldPosition { get; set; }
 		/// <summary>
 		/// Gets or sets the Texture the tile uses
 		/// </summary>
