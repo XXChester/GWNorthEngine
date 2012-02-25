@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using GWNorthEngine.Engine.Params;
-namespace GWNorthEngine.Engine {
+using GWNorthEngine.Logic.Params;
+namespace GWNorthEngine.Logic {
 	/// <summary>
 	/// Models the data required for a camera to be used in 3D space
 	/// </summary>
-	public class Camera {
+	public class Camera3D {
 		#region Class properties
 		/// <summary>
 		/// Gets or Sets the position of the Camera
@@ -41,7 +41,7 @@ namespace GWNorthEngine.Engine {
 		/// Creates a Camera based on the data parameter object
 		/// </summary>
 		/// <param name="parms">CameraParams object</param>
-		public Camera(CameraParams parms) {
+		public Camera3D(Camera3DParams parms) {
 			this.Position = parms.Position;
 			this.Target = parms.Target;
 			this.Up = parms.Up;

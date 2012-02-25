@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-using GWNorthEngine.Engine;
+using GWNorthEngine.Logic;
 using GWNorthEngine.Model.Params;
 namespace GWNorthEngine.Model {
 	/// <summary>
@@ -62,7 +62,7 @@ namespace GWNorthEngine.Model {
 		/// Renders the model
 		/// <param name="camera">Camera the model uses to render with</param>
 		/// </summary>
-		public virtual void render(Camera camera) {
+		public virtual void render(Camera3D camera) {
 			if (this.Visible) {
 				Matrix[] transforms = new Matrix[this.model.Bones.Count];
 				this.model.CopyAbsoluteBoneTransformsTo(transforms);

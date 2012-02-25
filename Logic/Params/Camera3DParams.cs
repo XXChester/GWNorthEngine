@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-namespace GWNorthEngine.Engine.Params {
+namespace GWNorthEngine.Logic.Params {
 	/// <summary>
 	/// Object containing the data required to build a camera
 	/// </summary>
-	public class CameraParams {
+	public class Camera3DParams {
 		#region Class properties
 		/// <summary>
 		/// Gets or Sets the position of the Camera

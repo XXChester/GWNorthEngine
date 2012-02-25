@@ -113,10 +113,14 @@
     <Compile Include="Audio\SFXEngine.cs" />
     <Compile Include="Audio\SFXInstanceWrapper.cs" />
     <Compile Include="Audio\SoundEngine.cs" />
-    <Compile Include="Engine\Camera.cs" />
-    <Compile Include="Engine\Params\CameraParams.cs" />
+    <Compile Include="Logic\Camera2D.cs" />
+    <Compile Include="Logic\Camera3D.cs" />
+    <Compile Include="Logic\ClampableCamera2D.cs" />
+    <Compile Include="Logic\Params\Camera2DParams.cs" />
+    <Compile Include="Logic\Params\Camera3DParams.cs" />
     <Compile Include="Engine\BaseRenderer.cs" />
-    <Compile Include="Engine\Params\DefaultCameraParams.cs" />
+    <Compile Include="Logic\Params\ClampableCamera2DParams.cs" />
+    <Compile Include="Logic\Params\DefaultCamera3DParams.cs" />
     <Compile Include="Engine\Params\BaseRendererParams.cs" />
     <Compile Include="Engine\FrameRate.cs" />
     <Compile Include="Engine\RunningMode.cs" />
