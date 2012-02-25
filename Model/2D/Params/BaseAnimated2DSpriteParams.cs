@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+
+using GWNorthEngine.Logic.Params;
 namespace GWNorthEngine.Model.Params {
 	/// <summary>
 	/// Object containing the data required to build a sprite

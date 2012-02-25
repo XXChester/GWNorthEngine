@@ -122,6 +122,8 @@
     <Compile Include="Engine\RunningMode.cs" />
     <Compile Include="Input\InputManager.cs" />
     <Compile Include="Input\MouseButton.cs" />
+    <Compile Include="Logic\AnimationState.cs" />
+    <Compile Include="Logic\KeyFrameData.cs" />
     <Compile Include="Model\2D\Animated2DSprite.cs" />
     <Compile Include="Model\2D\BaseParticle2D.cs" />
     <Compile Include="Model\2D\BaseParticle2DEmitter.cs" />
@@ -141,15 +143,17 @@
     <Compile Include="Model\2D\Params\BaseParticle2DParams.cs" />
     <Compile Include="Model\3D\BaseModel.cs" />
     <Compile Include="Model\3D\Params\BaseModelParams.cs" />
-    <Compile Include="Model\AnimationManager.cs" />
+    <Compile Include="Logic\AnimationManager.cs" />
     <Compile Include="Model\2D\Line2D.cs" />
-    <Compile Include="Model\Params\BaseAnimationManagerParams.cs" />
+    <Compile Include="Logic\KeyFrameAnimationManager.cs" />
+    <Compile Include="Logic\Params\BaseAnimationManagerParams.cs" />
     <Compile Include="Model\2D\Base2DSpriteDrawable.cs" />
     <Compile Include="Model\2D\Params\Base2DSpriteDrawableParams.cs" />
     <Compile Include="Model\2D\Params\BaseAnimated2DSpriteParams.cs" />
     <Compile Include="Model\2D\Params\Line2DParams.cs" />
     <Compile Include="Model\2D\Params\Text2DParams.cs" />
     <Compile Include="Model\2D\Text2D.cs" />
+    <Compile Include="Logic\Params\KeyFrameAnimationManagerParams.cs" />
     <Compile Include="Scripting\AlphaComparer.cs" />
     <Compile Include="Scripting\Utils\ObjectTranslator.cs" />
     <Compile Include="Scripting\Model\RegisteredObject.cs" />
@@ -174,10 +178,15 @@
     <Compile Include="Utils\TextureUtils.cs" />
     <Compile Include="Utils\TransitionUtils.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\Params\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Template.txt" />
     <Content Include="Projects Referencing Me.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GWNorthEngine.class.violet" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

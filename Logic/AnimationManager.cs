@@ -2,35 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GWNorthEngine.Model.Params;
-namespace GWNorthEngine.Model {
+using GWNorthEngine.Logic.Params;
+namespace GWNorthEngine.Logic {
 	/// <summary>
 	/// Animation manager class which handles the animation steps for anything animated
 	/// </summary>
 	public class AnimationManager {
-		/// <summary>
-		/// Animation state of the object
-		/// </summary>
-		public enum AnimationState {
-			/// <summary>
-			/// Animation is paused
-			/// </summary>
-			Paused,
-			/// <summary>
-			/// Animation is playing forawrd
-			/// </summary>
-			PlayForward,
-			/// <summary>
-			/// Animation is playing in reverse
-			/// </summary>
-			PlayReversed,
-			/// <summary>
-			/// Animation plays through forward 1 time
-			/// </summary>
-			PlayForwardOnce
-		}
 		#region Class variables
-		private AnimationState animationState;
+		/// <summary>
+		/// Animation state for the animation sequence
+		/// </summary>
+		protected AnimationState animationState;
 		/// <summary>
 		/// Frame rate at which the object is animated
 		/// </summary>
@@ -80,7 +62,7 @@ namespace GWNorthEngine.Model {
 		/// <summary>
 		/// Handles incrementing the animation steps
 		/// </summary>
-		private void setNextFrame(int maxFrameCount) {
+		protected virtual void setNextFrame(int maxFrameCount) {
 			if (this.animationState == AnimationState.PlayForward || this.animationState == AnimationState.PlayForwardOnce) {
 				if (this.currentFrame == maxFrameCount) {
 					// for animations only playing once we pause the animation once we are at our max frame
@@ -116,9 +98,9 @@ namespace GWNorthEngine.Model {
 		/// <param name="maxFrameCount">Max frames used to reset reverse sprites</param>
 		/// <param name="cockAnimation">Determines if we are setting the animation up to fire right away as soon as a "Play" state is entered or whether
 		/// we want it set to replay the whole wait time</param>
-		public void resetAnimation(int maxFrameCount, bool cockAnimation) {
+		public virtual void resetAnimation(int maxFrameCount, bool cockAnimation) {
 			this.totalElapsed = 0f;
-			if (animationState == AnimationState.PlayReversed) {
+			if (this.animationState == AnimationState.PlayReversed) {
 				this.currentFrame = maxFrameCount;
 			} else {
 				this.currentFrame = 0;

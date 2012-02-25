@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GWNorthEngine.Model.Params {
+using GWNorthEngine.Logic;
+namespace GWNorthEngine.Logic.Params {
 	/// <summary>
 	/// Object containing the required data to build the AnimationManager object
 	/// </summary>
@@ -20,7 +21,7 @@ namespace GWNorthEngine.Model.Params {
 		/// <summary>
 		/// Gets or sets the AnimationState of the object
 		/// </summary>
-		public AnimationManager.AnimationState AnimationState { get; set; }
+		public AnimationState AnimationState { get; set; }
 		#endregion Class properties
 
 		#region Constructor
@@ -29,7 +30,7 @@ namespace GWNorthEngine.Model.Params {
 		/// AnimationState:		Paused
 		/// </summary>
 		public BaseAnimationManagerParams() {
-			this.AnimationState = AnimationManager.AnimationState.Paused;
+			this.AnimationState = AnimationState.Paused;
 		}
 		#endregion Constructor
 	}

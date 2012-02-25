@@ -9,7 +9,8 @@ using Microsoft.Xna.Framework.Input;
 
 using GWNorthEngine.Model.Params;
 using GWNorthEngine.Utils;
-
+using GWNorthEngine.Logic;
+using GWNorthEngine.Logic.Params;
 namespace GWNorthEngine.Model {
 	/// <summary>
 	/// Sprite class that can be either animated or not
@@ -85,7 +86,11 @@ namespace GWNorthEngine.Model {
 		private void initSprite(Texture2D texture, BaseAnimationManagerParams animationParams, int frameWidth, int frameHeight,
 			int spaceBetweenFrames=0, int framesStartWidth=0, int framesStartHeight=0, int maxColumnsToARow=-1) {
 			this.texture = texture;
-			this.animationManager = new AnimationManager(animationParams);
+			if (typeof(KeyFrameAnimationManagerParams) == animationParams.GetType()) {
+				this.animationManager = new KeyFrameAnimationManager((KeyFrameAnimationManagerParams)animationParams);
+			} else {
+				this.animationManager = new AnimationManager(animationParams);
+			}
 
 			// if we are the default value for maxColumnsToARow set the value based on the animation's total frames
 			if (maxColumnsToARow == -1) {
