@@ -147,7 +147,17 @@ namespace GWNorthEngine.Model {
 		/// </summary>
 		/// <param name="spriteBatch">SpriteBatch object used to render the sprite</param>
 		public override void render(SpriteBatch spriteBatch) {
-			spriteBatch.Draw(this.texture, base.position, base.renderingRectangle, base.lightColour, base.rotation, base.origin, base.scale, base.spriteEffect, base.layer);
+			render(spriteBatch, Vector2.Zero);
+		}
+
+		/// <summary>
+		/// Renders the sprite to the screen
+		/// </summary>
+		/// <param name="spriteBatch">SpriteBatch object used to render the sprite</param>
+		/// <param name="positionOffset">Offset to render the object at</param>
+		public override void render(SpriteBatch spriteBatch, Vector2 positionOffset) {
+			spriteBatch.Draw(this.texture, Vector2.Add(base.position, positionOffset), base.renderingRectangle, base.lightColour, 
+				base.rotation, base.origin, base.scale, base.spriteEffect, base.layer);
 		}
 		#endregion Support methods
 

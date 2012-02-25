@@ -59,8 +59,18 @@ namespace GWNorthEngine.Model {
 		/// </summary>
 		/// <param name="spriteBatch">SpriteBatch object used to render the text</param>
 		public override void render(SpriteBatch spriteBatch) {
+			render(spriteBatch, Vector2.Zero);
+		}
+
+		/// <summary>
+		/// Renders the sprite to the screen
+		/// </summary>
+		/// <param name="spriteBatch">SpriteBatch object used to render the sprite</param>
+		/// <param name="positionOffset">Offset to render the object at</param>
+		public override void render(SpriteBatch spriteBatch, Vector2 positionOffset) {
 			if (this.writtenText != null) {
-				spriteBatch.DrawString(this.font, this.writtenText, base.position, base.lightColour, base.rotation, base.origin, base.scale, base.spriteEffect, base.layer);
+				spriteBatch.DrawString(this.font, this.writtenText, Vector2.Add(base.position, positionOffset), base.lightColour,
+					base.rotation, base.origin, base.scale, base.spriteEffect, base.layer);
 			}
 		}
 		#endregion Support methods

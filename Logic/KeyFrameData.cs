@@ -21,6 +21,10 @@ namespace GWNorthEngine.Logic {
 		/// Gets or sets the Frame Rate for the animation set
 		/// </summary>
 		public float FrameRate { get; set; }
+		/// <summary>
+		/// Gets or sets the Name of the KeyFrameData
+		/// </summary>
+		public string Name { get; set; }
 		#endregion Class properties
 
 		#region Constructor
@@ -30,11 +34,13 @@ namespace GWNorthEngine.Logic {
 		/// <param name="startingKeyFrame">Frame the animation starts at</param>
 		/// <param name="endingKeyFrame">Frame the animation ends at</param>
 		/// <param name="frameRate">Frame rate to run the animation set at</param>
-		public KeyFrameData(int startingKeyFrame, int endingKeyFrame, float frameRate) 
+		/// <param name="name">Name of the KeyFrameData</param>
+		public KeyFrameData(int startingKeyFrame, int endingKeyFrame, float frameRate, string name) 
 			: this() {
 			this.StartingKeyFrame = startingKeyFrame;
 			this.EndingKeyFrame = endingKeyFrame;
 			this.FrameRate = frameRate;
+			this.Name = name;
 		}
 		#endregion Constructor
 
@@ -44,7 +50,7 @@ namespace GWNorthEngine.Logic {
 		/// </summary>
 		/// <returns>Cloned KeyFrameData object</returns>
 		public object Clone() {
-			return new KeyFrameData(this.StartingKeyFrame, this.EndingKeyFrame, this.FrameRate);
+			return new KeyFrameData(this.StartingKeyFrame, this.EndingKeyFrame, this.FrameRate, this.Name);
 		}
 		#endregion Support methods
 	}

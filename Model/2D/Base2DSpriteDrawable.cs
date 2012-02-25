@@ -171,6 +171,13 @@ namespace GWNorthEngine.Model {
 		/// </summary>
 		/// <param name="spriteBatch">SpriteBatch object</param>
 		public abstract void render(SpriteBatch spriteBatch);
+
+		/// <summary>
+		/// Abstract method that forces the children objects to implement render
+		/// </summary>
+		/// <param name="spriteBatch">SpriteBatch object</param>
+		/// <param name="positionOffset">Offset to render the object at</param>
+		public abstract void render(SpriteBatch spriteBatch, Vector2 positionOffset);
 		#endregion Support method
 
 		#region Destructor
