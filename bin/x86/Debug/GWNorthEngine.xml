@@ -210,6 +210,31 @@
             Gets or sets the end position of the line
             </summary>
         </member>
+        <member name="T:GWNorthEngine.Logic.Params.ClampableCamera2DParams">
+            <summary>
+            Models the data required to build a ClampableCamera2D object
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.Logic.Params.Camera2DParams">
+            <summary>
+            Models the data required to build a Camera2D object
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Params.Camera2DParams.StartingPosition">
+            <summary>
+            Gets or sets the starting position of the camera
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Params.ClampableCamera2DParams.MaxClamp">
+            <summary>
+            Gets or sets the Maximum values to clamp the camera at
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Params.ClampableCamera2DParams.MinClamp">
+            <summary>
+            Gets or sets the Minimum values to clamp the camera at
+            </summary>
+        </member>
         <member name="T:GWNorthEngine.AI.AStar.DefaultPathFinder">
             <summary>
             Default path finding class
@@ -1107,6 +1132,28 @@
             <param name="gameTime">GameTime object</param>
             <returns>Current frames per second (FPS)</returns>
         </member>
+        <member name="T:GWNorthEngine.Logic.Camera2D">
+            <summary>
+            Models the data required for a camera to be used in 2D space
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Logic.Camera2D.#ctor(GWNorthEngine.Logic.Params.Camera2DParams)">
+            <summary>
+            Builds a Camer2D object based on the Camera2DParams object passed in
+            </summary>
+            <param name="parms">Camera2DParams object containing the data required to build the camera</param>
+        </member>
+        <member name="M:GWNorthEngine.Logic.Camera2D.update(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Updates the cameras position by the amount pass in
+            </summary>
+            <param name="moveBy">Amount to move the camera by</param>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Camera2D.Position">
+            <summary>
+            Gets the position of the camera
+            </summary>
+        </member>
         <member name="T:GWNorthEngine.AI.AStar.PathNode">
             <summary>
             A* node of each moveable space
@@ -1539,6 +1586,62 @@
         <member name="P:GWNorthEngine.Input.InputManager.MousePosition">
             <summary>
             Returns a Vector2 of the mouses position
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.Logic.Camera3D">
+            <summary>
+            Models the data required for a camera to be used in 3D space
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Logic.Camera3D.#ctor(GWNorthEngine.Logic.Params.Camera3DParams)">
+            <summary>
+            Creates a Camera based on the data parameter object
+            </summary>
+            <param name="parms">CameraParams object</param>
+        </member>
+        <member name="M:GWNorthEngine.Logic.Camera3D.updateViewMatrix">
+            <summary>
+            Updates the view matrix based on the cameras current position, target and up vector
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Logic.Camera3D.updateRotationMatrix">
+            <summary>
+            Updates the rotation matrix and applies it to the cameras position, target and up vector (Yaw, Pitch and Roll)
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Logic.Camera3D.update">
+            <summary>
+            Updates the camera
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Camera3D.Position">
+            <summary>
+            Gets or Sets the position of the Camera
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Camera3D.Target">
+            <summary>
+            Gets or sets the cameras target or look at position
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Camera3D.Up">
+            <summary>
+            Gets or sets the Up vector of the camera
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Camera3D.Rotation">
+            <summary>
+            Gets or sets the rotation of the camera
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Camera3D.ViewMatrix">
+            <summary>
+            Gets or sets the view matrix of the camera
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Camera3D.ProjectionMatrix">
+            <summary>
+            Gets or sets the projection matrix of the camera
             </summary>
         </member>
         <member name="T:GWNorthEngine.Model.BaseParticle2D">
@@ -2319,6 +2422,75 @@
             Gets or sets the ID of the button
             </summary>
         </member>
+        <member name="T:GWNorthEngine.Logic.Params.DefaultCamera3DParams">
+            <summary>
+            Object containing the data required to build a default camera
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.Logic.Params.Camera3DParams">
+            <summary>
+            Object containing the data required to build a camera
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Params.Camera3DParams.Position">
+            <summary>
+            Gets or Sets the position of the Camera
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Params.Camera3DParams.Target">
+            <summary>
+            Gets or sets the cameras target or look at position
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Params.Camera3DParams.Up">
+            <summary>
+            Gets or sets the Up vector of the camera
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Params.Camera3DParams.Rotation">
+            <summary>
+            Gets or sets the rotation of the camera
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Params.Camera3DParams.ViewMatrix">
+            <summary>
+            Gets or sets the view matrix of the camera
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.Params.Camera3DParams.ProjectionMatrix">
+            <summary>
+            Gets or sets the projection matrix of the camera
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Logic.Params.DefaultCamera3DParams.#ctor">
+            <summary>
+            Constructs a default camera setup with the following values
+            Position:			Vector3(0f,0f,50f)
+            Target:				Vector3.Zero
+            UpVector:			Vector3.Up
+            ViewMatrix:			Matrix.Identity
+            ProjectionMatrix:	Matrix.createPerspectiveFOV(45f, 16:9, .5f, 5000f)
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.Logic.ClampableCamera2D">
+            <summary>
+            Models the data required for a clampable(confined to a certain space) camera to be used in 2D space
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Logic.ClampableCamera2D.#ctor(GWNorthEngine.Logic.Params.ClampableCamera2DParams)">
+            <summary>
+            Builds a ClampableCamera2D object based on the ClampableCamera2DParams object passed in
+            </summary>
+            <param name="parms">ClampableCamera2DParams object containing the data required to build the camera</param>
+        </member>
+        <member name="M:GWNorthEngine.Logic.ClampableCamera2D.update(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,System.Single)">
+            <summary>
+            Updates the cameras position based on the amount passed in but taking into account the cameras clamping restrictions
+            </summary>
+            <param name="moveBy">Amount to move the camera by</param>
+            <param name="fromPosition">Position the clamping is to be based on</param>
+            <param name="divisionFactor">Amount the position should be divided by to account for clamping</param>
+        </member>
         <member name="T:GWNorthEngine.Audio.MusicEngine">
             <summary>
             Music engine, handles playing a play list
@@ -2508,6 +2680,13 @@
             <summary>
             Handles incrementing the animation steps
             </summary>
+            <param name="maxFrameCount">Max frames used to reset reverse sprites</param>
+        </member>
+        <member name="M:GWNorthEngine.Logic.AnimationManager.step(System.Int32)">
+            <summary>
+            Steps the animation frame ignoring timing
+            </summary>
+            <param name="maxFrameCount">Max frames used to reset reverse sprites</param>
         </member>
         <member name="M:GWNorthEngine.Logic.AnimationManager.resetAnimation(System.Int32)">
             <summary>
@@ -3152,178 +3331,6 @@
         <member name="F:GWNorthEngine.Input.MouseButton.Middle">
             <summary>
             Middle mouse button
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.Logic.Camera2D">
-            <summary>
-            Models the data required for a camera to be used in 2D space
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.Logic.Camera2D.#ctor(GWNorthEngine.Logic.Params.Camera2DParams)">
-            <summary>
-            Builds a Camer2D object based on the Camera2DParams object passed in
-            </summary>
-            <param name="parms">Camera2DParams object containing the data required to build the camera</param>
-        </member>
-        <member name="M:GWNorthEngine.Logic.Camera2D.update(Microsoft.Xna.Framework.Vector2)">
-            <summary>
-            Updates the cameras position by the amount pass in
-            </summary>
-            <param name="moveBy">Amount to move the camera by</param>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Camera2D.Position">
-            <summary>
-            Gets the position of the camera
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.Logic.Camera3D">
-            <summary>
-            Models the data required for a camera to be used in 3D space
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.Logic.Camera3D.#ctor(GWNorthEngine.Logic.Params.Camera3DParams)">
-            <summary>
-            Creates a Camera based on the data parameter object
-            </summary>
-            <param name="parms">CameraParams object</param>
-        </member>
-        <member name="M:GWNorthEngine.Logic.Camera3D.updateViewMatrix">
-            <summary>
-            Updates the view matrix based on the cameras current position, target and up vector
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.Logic.Camera3D.updateRotationMatrix">
-            <summary>
-            Updates the rotation matrix and applies it to the cameras position, target and up vector (Yaw, Pitch and Roll)
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.Logic.Camera3D.update">
-            <summary>
-            Updates the camera
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Camera3D.Position">
-            <summary>
-            Gets or Sets the position of the Camera
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Camera3D.Target">
-            <summary>
-            Gets or sets the cameras target or look at position
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Camera3D.Up">
-            <summary>
-            Gets or sets the Up vector of the camera
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Camera3D.Rotation">
-            <summary>
-            Gets or sets the rotation of the camera
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Camera3D.ViewMatrix">
-            <summary>
-            Gets or sets the view matrix of the camera
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Camera3D.ProjectionMatrix">
-            <summary>
-            Gets or sets the projection matrix of the camera
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.Logic.ClampableCamera2D">
-            <summary>
-            Models the data required for a clampable(confined to a certain space) camera to be used in 2D space
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.Logic.ClampableCamera2D.#ctor(GWNorthEngine.Logic.Params.ClampableCamera2DParams)">
-            <summary>
-            Builds a ClampableCamera2D object based on the ClampableCamera2DParams object passed in
-            </summary>
-            <param name="parms">ClampableCamera2DParams object containing the data required to build the camera</param>
-        </member>
-        <member name="M:GWNorthEngine.Logic.ClampableCamera2D.update(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,System.Single)">
-            <summary>
-            Updates the cameras position based on the amount passed in but taking into account the cameras clamping restrictions
-            </summary>
-            <param name="moveBy">Amount to move the camera by</param>
-            <param name="fromPosition">Position the clamping is to be based on</param>
-            <param name="divisionFactor">Amount the position should be divided by to account for clamping</param>
-        </member>
-        <member name="T:GWNorthEngine.Logic.Params.ClampableCamera2DParams">
-            <summary>
-            Models the data required to build a ClampableCamera2D object
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.Logic.Params.Camera2DParams">
-            <summary>
-            Models the data required to build a Camera2D object
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Params.Camera2DParams.StartingPosition">
-            <summary>
-            Gets or sets the starting position of the camera
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Params.ClampableCamera2DParams.MaxClamp">
-            <summary>
-            Gets or sets the Maximum values to clamp the camera at
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Params.ClampableCamera2DParams.MinClamp">
-            <summary>
-            Gets or sets the Minimum values to clamp the camera at
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.Logic.Params.Camera3DParams">
-            <summary>
-            Object containing the data required to build a camera
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Params.Camera3DParams.Position">
-            <summary>
-            Gets or Sets the position of the Camera
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Params.Camera3DParams.Target">
-            <summary>
-            Gets or sets the cameras target or look at position
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Params.Camera3DParams.Up">
-            <summary>
-            Gets or sets the Up vector of the camera
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Params.Camera3DParams.Rotation">
-            <summary>
-            Gets or sets the rotation of the camera
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Params.Camera3DParams.ViewMatrix">
-            <summary>
-            Gets or sets the view matrix of the camera
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Logic.Params.Camera3DParams.ProjectionMatrix">
-            <summary>
-            Gets or sets the projection matrix of the camera
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.Logic.Params.DefaultCamera3DParams">
-            <summary>
-            Object containing the data required to build a default camera
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.Logic.Params.DefaultCamera3DParams.#ctor">
-            <summary>
-            Constructs a default camera setup with the following values
-            Position:			Vector3(0f,0f,50f)
-            Target:				Vector3.Zero
-            UpVector:			Vector3.Up
-            ViewMatrix:			Matrix.Identity
-            ProjectionMatrix:	Matrix.createPerspectiveFOV(45f, 16:9, .5f, 5000f)
             </summary>
         </member>
     </members>

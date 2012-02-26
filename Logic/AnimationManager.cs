@@ -62,6 +62,7 @@ namespace GWNorthEngine.Logic {
 		/// <summary>
 		/// Handles incrementing the animation steps
 		/// </summary>
+		/// <param name="maxFrameCount">Max frames used to reset reverse sprites</param>
 		protected virtual void setNextFrame(int maxFrameCount) {
 			if (this.animationState == AnimationState.PlayForward || this.animationState == AnimationState.PlayForwardOnce) {
 				if (this.currentFrame == maxFrameCount) {
@@ -81,6 +82,14 @@ namespace GWNorthEngine.Logic {
 					this.currentFrame--;
 				}
 			}
+		}
+
+		/// <summary>
+		/// Steps the animation frame ignoring timing
+		/// </summary>
+		/// <param name="maxFrameCount">Max frames used to reset reverse sprites</param>
+		public void step(int maxFrameCount) {
+			setNextFrame(maxFrameCount);
 		}
 
 		/// <summary>

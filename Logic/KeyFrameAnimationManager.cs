@@ -23,7 +23,6 @@ namespace GWNorthEngine.Logic {
 			set {
 				this.keyFrameData = value;
 				base.frameRate = this.keyFrameData.FrameRate;
-				resetAnimation();
 			}
 		}
 		#endregion Class properties
@@ -36,6 +35,8 @@ namespace GWNorthEngine.Logic {
 		public KeyFrameAnimationManager(KeyFrameAnimationManagerParams parms)
 			: base(parms) {
 			this.keyFrameData = parms.KeyFrameData;
+			// we need to call reset because when the base did on its constructor we didn't have teh keyFrameData set yet
+			resetAnimation();
 		}
 		#endregion Constructor
 
