@@ -115,17 +115,10 @@ namespace GWNorthEngine.Model {
 
 		#region Support methods
 		/// <summary>
-		/// Resets the sprite
-		/// </summary>
-		public void reset() {
-			reset(false);
-		}
-
-		/// <summary>
 		/// Resets the sprite with the option to make the animation sequence fire as soon as a "Play" state is entered
 		/// </summary>
 		/// <param name="cockAnimation">Option to make an animation fire as soon as a "Play" state is entered</param>
-		public void reset(bool cockAnimation) {
+		public void reset(bool cockAnimation=false) {
 			if (cockAnimation) {
 				this.animationManager.resetAnimation(this.frames.Length - 1, true);
 			} else {

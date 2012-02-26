@@ -49,12 +49,36 @@ namespace GWNorthEngine.Utils {
 		/// <param name="spriteBatch">SpriteBatch object used to draw the bounding box</param>
 		/// <param name="boundingBox">BoundingBox object to draw</param>
 		/// <param name="debugColour">Colour to draw the box in</param>
+		/// <param name="positionOffset">Offset to render the object at</param>
+		public void drawBoundingBox(SpriteBatch spriteBatch, BoundingBox boundingBox, Color debugColour, Vector2 positionOffset) {
+			drawBoundingBox(spriteBatch, boundingBox, debugColour, this.lineTexture, positionOffset);
+		}
+
+		/// <summary>
+		/// Draws a bounding box using Line2D's
+		/// </summary>
+		/// <param name="spriteBatch">SpriteBatch object used to draw the bounding box</param>
+		/// <param name="boundingBox">BoundingBox object to draw</param>
+		/// <param name="debugColour">Colour to draw the box in</param>
 		/// <param name="lineTexture">Texture2D used for drawing the bounding box</param>
 		public static void drawBoundingBox(SpriteBatch spriteBatch, BoundingBox boundingBox, Color debugColour, Texture2D lineTexture) {
+			drawBoundingBox(spriteBatch, boundingBox, debugColour, lineTexture, Vector2.Zero);
+		}
+
+		/// <summary>
+		/// Draws a bounding box using Line2D's
+		/// </summary>
+		/// <param name="spriteBatch">SpriteBatch object used to draw the bounding box</param>
+		/// <param name="boundingBox">BoundingBox object to draw</param>
+		/// <param name="debugColour">Colour to draw the box in</param>
+		/// <param name="lineTexture">Texture2D used for drawing the bounding box</param>
+		/// <param name="positionOffset">Offset to render the object at</param>
+		public static void drawBoundingBox(SpriteBatch spriteBatch, BoundingBox boundingBox, Color debugColour, Texture2D lineTexture,
+			Vector2 positionOffset) {
 			Vector3 min = boundingBox.Min;
 			Vector3 max = boundingBox.Max;
 			Line2DParams parms = new Line2DParams();
-			drawVector3s(spriteBatch, max, min, debugColour, lineTexture);
+			drawVector3s(spriteBatch, max, min, debugColour, lineTexture, positionOffset);
 		}
 
 		/// <summary>
@@ -74,9 +98,11 @@ namespace GWNorthEngine.Utils {
 		/// <param name="boundingSphere">BoundingSPhere object to draw</param>
 		/// <param name="debugColour">Colour to draw the sphere in</param>
 		/// <param name="lineTexture">Texture2D used for drawing the bounding sphere</param>
-		public static void drawBoundingSphere(SpriteBatch spriteBatch, BoundingSphere boundingSphere, Color debugColour, Texture2D lineTexture) {
+		public static void drawBoundingSphere(SpriteBatch spriteBatch, BoundingSphere boundingSphere, Color debugColour, 
+			Texture2D lineTexture) {
 			Vector2 position = new Vector2(boundingSphere.Center.X, boundingSphere.Center.Y);
-			spriteBatch.Draw(lineTexture, position, null, debugColour, 0f, new Vector2(boundingSphere.Radius, boundingSphere.Radius), 1f, SpriteEffects.None, 1f);
+			spriteBatch.Draw(lineTexture, position, null, debugColour, 0f, new Vector2(boundingSphere.Radius, boundingSphere.Radius), 
+				1f, SpriteEffects.None, 1f);
 		}
 
 		/// <summary>
@@ -101,6 +127,20 @@ namespace GWNorthEngine.Utils {
 		/// <param name="debugColour">Colour to draw the Vectors in</param>
 		/// <param name="lineTexture">Texture2D used for drawing the vectors</param>
 		public static void drawVector3s(SpriteBatch spriteBatch, Vector3 max, Vector3 min, Color debugColour, Texture2D lineTexture) {
+			drawVector3s(spriteBatch, max, min, debugColour, lineTexture, Vector2.Zero);
+		}
+
+		/// <summary>
+		/// Draws a set of vector 3s
+		/// </summary>
+		/// <param name="spriteBatch">SpriteBatch object used to draw the vectors</param>
+		/// <param name="max">Max position to draw</param>
+		/// <param name="min">Min position to draw</param>
+		/// <param name="debugColour">Colour to draw the Vectors in</param>
+		/// <param name="lineTexture">Texture2D used for drawing the vectors</param>
+		/// <param name="positionOffset">Offset to render the object at</param>
+		public static void drawVector3s(SpriteBatch spriteBatch, Vector3 max, Vector3 min, Color debugColour, Texture2D lineTexture,
+			Vector2 positionOffset) {
 			Line2DParams parms = new Line2DParams();
 			parms.Texture = lineTexture;
 			parms.LightColour = debugColour;
@@ -119,10 +159,10 @@ namespace GWNorthEngine.Utils {
 			parms.StartPosition = new Vector2(min.X, max.Y);
 			Line2D bottom = new Line2D(parms);
 
-			left.render(spriteBatch);
-			top.render(spriteBatch);
-			right.render(spriteBatch);
-			bottom.render(spriteBatch);
+			left.render(spriteBatch, positionOffset);
+			top.render(spriteBatch, positionOffset);
+			right.render(spriteBatch, positionOffset);
+			bottom.render(spriteBatch, positionOffset);
 		}
 		#endregion Support methods
 	}

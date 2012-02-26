@@ -25,6 +25,10 @@ namespace GWNorthEngine.Logic {
 		/// Gets or sets the Name of the KeyFrameData
 		/// </summary>
 		public string Name { get; set; }
+		/// <summary>
+		/// Gets or sets whether we want to reset the animation when we activate this KeyFrameData object
+		/// </summary>
+		public bool ResetAnimationOnSet { get; set; }
 		#endregion Class properties
 
 		#region Constructor
@@ -35,22 +39,24 @@ namespace GWNorthEngine.Logic {
 		/// <param name="endingKeyFrame">Frame the animation ends at</param>
 		/// <param name="frameRate">Frame rate to run the animation set at</param>
 		/// <param name="name">Name of the KeyFrameData</param>
-		public KeyFrameData(int startingKeyFrame, int endingKeyFrame, float frameRate, string name) 
+		/// <param name="resetAnimationOnSet">Determines whether we want to rest the animation when we activate this object</param>
+		public KeyFrameData(int startingKeyFrame, int endingKeyFrame, float frameRate, string name, bool resetAnimationOnSet=true) 
 			: this() {
 			this.StartingKeyFrame = startingKeyFrame;
 			this.EndingKeyFrame = endingKeyFrame;
 			this.FrameRate = frameRate;
 			this.Name = name;
+			this.ResetAnimationOnSet = resetAnimationOnSet;
 		}
 		#endregion Constructor
 
 		#region Support methods
 		/// <summary>
-		/// Clones teh KeyFrameData object
+		/// Clones the KeyFrameData object
 		/// </summary>
 		/// <returns>Cloned KeyFrameData object</returns>
 		public object Clone() {
-			return new KeyFrameData(this.StartingKeyFrame, this.EndingKeyFrame, this.FrameRate, this.Name);
+			return new KeyFrameData(this.StartingKeyFrame, this.EndingKeyFrame, this.FrameRate, this.Name, this.ResetAnimationOnSet);
 		}
 		#endregion Support methods
 	}

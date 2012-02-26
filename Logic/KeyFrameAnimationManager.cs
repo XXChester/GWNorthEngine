@@ -23,6 +23,9 @@ namespace GWNorthEngine.Logic {
 			set {
 				this.keyFrameData = value;
 				base.frameRate = this.keyFrameData.FrameRate;
+				if (this.keyFrameData.ResetAnimationOnSet) {
+					resetAnimation();
+				}
 			}
 		}
 		#endregion Class properties

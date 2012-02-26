@@ -765,7 +765,7 @@
             Models the data required for Key Frame Animation
             </summary>
         </member>
-        <member name="M:GWNorthEngine.Logic.KeyFrameData.#ctor(System.Int32,System.Int32,System.Single,System.String)">
+        <member name="M:GWNorthEngine.Logic.KeyFrameData.#ctor(System.Int32,System.Int32,System.Single,System.String,System.Boolean)">
             <summary>
             Constructs a KeyFrameData object
             </summary>
@@ -773,6 +773,7 @@
             <param name="endingKeyFrame">Frame the animation ends at</param>
             <param name="frameRate">Frame rate to run the animation set at</param>
             <param name="name">Name of the KeyFrameData</param>
+            <param name="resetAnimationOnSet">Determines whether we want to rest the animation when we activate this object</param>
         </member>
         <member name="M:GWNorthEngine.Logic.KeyFrameData.Clone">
             <summary>
@@ -798,6 +799,11 @@
         <member name="P:GWNorthEngine.Logic.KeyFrameData.Name">
             <summary>
             Gets or sets the Name of the KeyFrameData
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Logic.KeyFrameData.ResetAnimationOnSet">
+            <summary>
+            Gets or sets whether we want to reset the animation when we activate this KeyFrameData object
             </summary>
         </member>
         <member name="T:GWNorthEngine.AI.AStar.Params.BasePathFinderParams">
@@ -1897,11 +1903,6 @@
             <param name="animationParams">BaseAnimationManagerParams object containing the animation information for the sprite</param>
             <param name="maxColumnsToARow">Maximum columns to a row in the sprite sheet</param>
         </member>
-        <member name="M:GWNorthEngine.Model.Animated2DSprite.reset">
-            <summary>
-            Resets the sprite
-            </summary>
-        </member>
         <member name="M:GWNorthEngine.Model.Animated2DSprite.reset(System.Boolean)">
             <summary>
             Resets the sprite with the option to make the animation sequence fire as soon as a "Play" state is entered
@@ -2073,6 +2074,15 @@
             <param name="boundingBox">BoundingBox object to draw</param>
             <param name="debugColour">Colour to draw the box in</param>
         </member>
+        <member name="M:GWNorthEngine.Utils.DebugUtils.drawBoundingBox(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.BoundingBox,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Draws a bounding box using Line2D's
+            </summary>
+            <param name="spriteBatch">SpriteBatch object used to draw the bounding box</param>
+            <param name="boundingBox">BoundingBox object to draw</param>
+            <param name="debugColour">Colour to draw the box in</param>
+            <param name="positionOffset">Offset to render the object at</param>
+        </member>
         <member name="M:GWNorthEngine.Utils.DebugUtils.drawBoundingBox(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.BoundingBox,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.Texture2D)">
             <summary>
             Draws a bounding box using Line2D's
@@ -2081,6 +2091,16 @@
             <param name="boundingBox">BoundingBox object to draw</param>
             <param name="debugColour">Colour to draw the box in</param>
             <param name="lineTexture">Texture2D used for drawing the bounding box</param>
+        </member>
+        <member name="M:GWNorthEngine.Utils.DebugUtils.drawBoundingBox(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.BoundingBox,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Draws a bounding box using Line2D's
+            </summary>
+            <param name="spriteBatch">SpriteBatch object used to draw the bounding box</param>
+            <param name="boundingBox">BoundingBox object to draw</param>
+            <param name="debugColour">Colour to draw the box in</param>
+            <param name="lineTexture">Texture2D used for drawing the bounding box</param>
+            <param name="positionOffset">Offset to render the object at</param>
         </member>
         <member name="M:GWNorthEngine.Utils.DebugUtils.drawBoundingSphere(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.BoundingSphere,Microsoft.Xna.Framework.Color)">
             <summary>
@@ -2117,6 +2137,17 @@
             <param name="min">Min position to draw</param>
             <param name="debugColour">Colour to draw the Vectors in</param>
             <param name="lineTexture">Texture2D used for drawing the vectors</param>
+        </member>
+        <member name="M:GWNorthEngine.Utils.DebugUtils.drawVector3s(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Draws a set of vector 3s
+            </summary>
+            <param name="spriteBatch">SpriteBatch object used to draw the vectors</param>
+            <param name="max">Max position to draw</param>
+            <param name="min">Min position to draw</param>
+            <param name="debugColour">Colour to draw the Vectors in</param>
+            <param name="lineTexture">Texture2D used for drawing the vectors</param>
+            <param name="positionOffset">Offset to render the object at</param>
         </member>
         <member name="T:GWNorthEngine.Model.Text2D">
             <summary>
