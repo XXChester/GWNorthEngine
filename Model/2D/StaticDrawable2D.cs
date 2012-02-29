@@ -51,14 +51,6 @@ namespace GWNorthEngine.Model {
 		}
 
 		/// <summary>
-		/// Renders the texture to the screen
-		/// </summary>
-		/// <param name="spriteBatch">SpriteBatch object used to render the etxture</param>
-		public override void render(SpriteBatch spriteBatch) {
-			render(spriteBatch, Vector2.Zero);
-		}
-
-		/// <summary>
 		/// Renders the sprite to the screen
 		/// </summary>
 		/// <param name="spriteBatch">SpriteBatch object used to render the sprite</param>

@@ -182,12 +182,6 @@
             </summary>
             <param name="elapsed">Time passed sense the last time the method was called</param>
         </member>
-        <member name="M:GWNorthEngine.Model.Line2D.render(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
-            <summary>
-            Rendering of the line
-            </summary>
-            <param name="spriteBatch">SpriteBatch object</param>
-        </member>
         <member name="M:GWNorthEngine.Model.Line2D.render(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2)">
             <summary>
             Renders the sprite to the screen
@@ -777,7 +771,7 @@
         </member>
         <member name="M:GWNorthEngine.Logic.KeyFrameData.Clone">
             <summary>
-            Clones teh KeyFrameData object
+            Clones the KeyFrameData object
             </summary>
             <returns>Cloned KeyFrameData object</returns>
         </member>
@@ -1702,12 +1696,6 @@
             </summary>
             <param name="elapsed">Time since the last time the method was called</param>
         </member>
-        <member name="M:GWNorthEngine.Model.BaseParticle2D.render(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
-            <summary>
-            Renders the particle to screen
-            </summary>
-            <param name="spriteBatch">SpriteBatch object used to render the particle</param>
-        </member>
         <member name="M:GWNorthEngine.Model.BaseParticle2D.render(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2)">
             <summary>
             Renders the sprite to the screen
@@ -1914,12 +1902,6 @@
             Updates the sprite, by default only the animation
             </summary>
             <param name="elapsed"></param>
-        </member>
-        <member name="M:GWNorthEngine.Model.Animated2DSprite.render(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
-            <summary>
-            Renders the sprite to the screen
-            </summary>
-            <param name="spriteBatch">SpriteBatch object used to render the sprite</param>
         </member>
         <member name="M:GWNorthEngine.Model.Animated2DSprite.render(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2)">
             <summary>
@@ -2175,12 +2157,6 @@
             Updates the text
             </summary>
             <param name="elapsed">time elapsed sense the last method call</param>
-        </member>
-        <member name="M:GWNorthEngine.Model.Text2D.render(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
-            <summary>
-            Renders the text to the screen
-            </summary>
-            <param name="spriteBatch">SpriteBatch object used to render the text</param>
         </member>
         <member name="M:GWNorthEngine.Model.Text2D.render(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2)">
             <summary>
@@ -2937,12 +2913,6 @@
             Updates the texture
             </summary>
             <param name="elapsed">time elapsed sense the last method call</param>
-        </member>
-        <member name="M:GWNorthEngine.Model.StaticDrawable2D.render(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
-            <summary>
-            Renders the texture to the screen
-            </summary>
-            <param name="spriteBatch">SpriteBatch object used to render the etxture</param>
         </member>
         <member name="M:GWNorthEngine.Model.StaticDrawable2D.render(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2)">
             <summary>

@@ -102,14 +102,6 @@ namespace GWNorthEngine.Model {
 		}
 
 		/// <summary>
-		/// Rendering of the line
-		/// </summary>
-		/// <param name="spriteBatch">SpriteBatch object</param>
-		public override void render(SpriteBatch spriteBatch) {
-			render(spriteBatch, Vector2.Zero);
-		}
-
-		/// <summary>
 		/// Renders the sprite to the screen
 		/// </summary>
 		/// <param name="spriteBatch">SpriteBatch object used to render the sprite</param>

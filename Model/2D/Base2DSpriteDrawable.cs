@@ -170,7 +170,9 @@ namespace GWNorthEngine.Model {
 		/// Abstract method that forces the children objects to implement render
 		/// </summary>
 		/// <param name="spriteBatch">SpriteBatch object</param>
-		public abstract void render(SpriteBatch spriteBatch);
+		public void render(SpriteBatch spriteBatch) {
+			render(spriteBatch, Vector2.Zero);
+		}
 
 		/// <summary>
 		/// Abstract method that forces the children objects to implement render
