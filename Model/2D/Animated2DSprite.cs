@@ -124,6 +124,7 @@ namespace GWNorthEngine.Model {
 			} else {
 				this.animationManager.resetAnimation(this.frames.Length - 1);
 			}
+			base.renderingRectangle = this.frames[this.animationManager.CurrentFrame];
 		}
 
 		/// <summary>
