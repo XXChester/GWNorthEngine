@@ -525,6 +525,11 @@
             Animation plays through forward 1 time
             </summary>
         </member>
+        <member name="T:GWNorthEngine.Audio.SFXEngine">
+            <summary>
+            Sound effect engine, properly plays sound effects
+            </summary>
+        </member>
         <member name="T:GWNorthEngine.Audio.BaseSoundEngine">
             <summary>
             Base implementation of a sound engine
@@ -556,44 +561,11 @@
             Gets or sets whether to play audio or not
             </summary>
         </member>
-        <member name="T:GWNorthEngine.Audio.SFXEngine">
-            <summary>
-            Sound effect engine, properly plays sound effects
-            </summary>
-        </member>
         <member name="M:GWNorthEngine.Audio.SFXEngine.#ctor(GWNorthEngine.Audio.Params.SFXEngineParams)">
             <summary>
             Builds a SFXEngine based on the parameter objects data
             </summary>
             <param name="parms">SFXEngineParams object containing the data required to build the SFXEngine</param>
-        </member>
-        <member name="M:GWNorthEngine.Audio.SFXEngine.playSoundEffect(Microsoft.Xna.Framework.Audio.SoundEffect)">
-            <summary>
-            Plays a sound effect with the generic data of the SFXEngine such as volume, etc
-            </summary>
-            <param name="sfx">SoundEffect to play</param>
-        </member>
-        <member name="M:GWNorthEngine.Audio.SFXEngine.playSoundEffect(Microsoft.Xna.Framework.Audio.SoundEffect,System.Boolean)">
-            <summary>
-            Plays a sound effect with the generic data of the SFXEngine such as volume, etc
-            </summary>
-            <param name="sfx">SoundEffect to play</param>
-            <param name="loop">Determines whether to loop the sound effect</param>
-        </member>
-        <member name="M:GWNorthEngine.Audio.SFXEngine.playSoundEffect(Microsoft.Xna.Framework.Audio.SoundEffect,System.Single)">
-            <summary>
-            Plays a sound effect with a specific volume
-            </summary>
-            <param name="sfx">SoundEffect to play</param>
-            <param name="volume">Volume to play the sound effect at</param>
-        </member>
-        <member name="M:GWNorthEngine.Audio.SFXEngine.playSoundEffect(Microsoft.Xna.Framework.Audio.SoundEffect,System.Single,System.Boolean)">
-            <summary>
-            Plays a sound effect with a specific volume
-            </summary>
-            <param name="sfx">SoundEffect to play</param>
-            <param name="volume">Volume to play the sound effect at</param>
-            <param name="loop">Determines whether to loop the sound effect</param>
         </member>
         <member name="M:GWNorthEngine.Audio.SFXEngine.playSoundEffect(Microsoft.Xna.Framework.Audio.SoundEffect,System.Single,System.Single,System.Single,System.Boolean)">
             <summary>
@@ -621,11 +593,6 @@
         <member name="M:GWNorthEngine.Audio.SFXEngine.update">
             <summary>
             Monitors current SoundEffectInstances and flags them for cleanup if they have finished playing
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.Audio.SFXEngine.Finalize">
-            <summary>
-            Cleans up the SFXEngines resources
             </summary>
         </member>
         <member name="M:GWNorthEngine.Audio.SFXEngine.dispose">
@@ -2692,12 +2659,6 @@
         <member name="M:GWNorthEngine.Logic.AnimationManager.step(System.Int32)">
             <summary>
             Steps the animation frame ignoring timing
-            </summary>
-            <param name="maxFrameCount">Max frames used to reset reverse sprites</param>
-        </member>
-        <member name="M:GWNorthEngine.Logic.AnimationManager.resetAnimation(System.Int32)">
-            <summary>
-            Resets the animation sequence that the AnimationManager is controlling
             </summary>
             <param name="maxFrameCount">Max frames used to reset reverse sprites</param>
         </member>

@@ -8,6 +8,7 @@ Team folder:
 -InputIntegration
 -PhysicsTest
 -CamerasIntegration
+-_2.5DSoundIntegration
 
 ========================
 Jason's personal work:

@@ -112,7 +112,7 @@
     <Compile Include="Audio\Params\SFXEngineParams.cs" />
     <Compile Include="Audio\SFXEngine.cs" />
     <Compile Include="Audio\SFXInstanceWrapper.cs" />
-    <Compile Include="Audio\SoundEngine.cs" />
+    <Compile Include="Audio\BaseSoundEngine.cs" />
     <Compile Include="Logic\Camera2D.cs" />
     <Compile Include="Logic\Camera3D.cs" />
     <Compile Include="Logic\ClampableCamera2D.cs" />

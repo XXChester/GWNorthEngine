@@ -39,42 +39,6 @@ namespace GWNorthEngine.Audio {
 
 		#region Support methods
 		/// <summary>
-		/// Plays a sound effect with the generic data of the SFXEngine such as volume, etc
-		/// </summary>
-		/// <param name="sfx">SoundEffect to play</param>
-		public void playSoundEffect(SoundEffect sfx) {
-			playSoundEffect(sfx, false);
-		}
-
-		/// <summary>
-		/// Plays a sound effect with the generic data of the SFXEngine such as volume, etc
-		/// </summary>
-		/// <param name="sfx">SoundEffect to play</param>
-		/// <param name="loop">Determines whether to loop the sound effect</param>
-		public void playSoundEffect(SoundEffect sfx, bool loop) {
-			playSoundEffect(sfx, base.Volume, this.Pan, this.Pitch, loop);
-		}
-
-		/// <summary>
-		/// Plays a sound effect with a specific volume
-		/// </summary>
-		/// <param name="sfx">SoundEffect to play</param>
-		/// <param name="volume">Volume to play the sound effect at</param>
-		public void playSoundEffect(SoundEffect sfx, float volume) {
-			playSoundEffect(sfx, volume, false);
-		}
-
-		/// <summary>
-		/// Plays a sound effect with a specific volume
-		/// </summary>
-		/// <param name="sfx">SoundEffect to play</param>
-		/// <param name="volume">Volume to play the sound effect at</param>
-		/// <param name="loop">Determines whether to loop the sound effect</param>
-		public void playSoundEffect(SoundEffect sfx, float volume, bool loop) {
-			playSoundEffect(sfx, volume, this.Pan, this.Pitch, loop);
-		}
-
-		/// <summary>
 		/// Plays a sound effect at a specific volume, pan and pitch
 		/// </summary>
 		/// <param name="sfx">Sound effect to play</param>
@@ -82,12 +46,13 @@ namespace GWNorthEngine.Audio {
 		/// <param name="pan">Pan to play the sound effect at</param>
 		/// <param name="pitch">Pitch to play the sound effect at</param>
 		/// <param name="loop">Determines whether to loop the sound effect</param>
-		public void playSoundEffect(SoundEffect sfx, float volume, float pan, float pitch, bool loop) {
+		public SoundEffectInstance playSoundEffect(SoundEffect sfx, float volume=1f, float pan=0f, float pitch=0f, bool loop=false) {
+			SoundEffectInstance instance = null;
 			// in certain scenarios some SFXs have to be played differently so we pass in vol, pan and pitch
 			if (!base.Muted) {
 				// create an instance of the SFX to play, do not actually play the sfx sense we may crash or exit in the middle of the audio and need to stop the audio
 				// if we do not do this the client will receive an exception up to the UI because the audio will keep trying to play
-				SoundEffectInstance instance = sfx.CreateInstance();
+				instance = sfx.CreateInstance();
 				instance.Volume = volume;
 				instance.Pan = pan;
 				instance.Pitch = pitch;
@@ -95,6 +60,7 @@ namespace GWNorthEngine.Audio {
 				instance.Play();
 				this.activeInstances.Add(new SFXInstanceWrapper(instance, sfx.Name));
 			}
+			return instance;
 		}
 
 		/// <summary>
@@ -155,13 +121,6 @@ namespace GWNorthEngine.Audio {
 		#endregion Support methods
 
 		#region Destructor
-		/// <summary>
-		/// Cleans up the SFXEngines resources
-		/// </summary>
-		~SFXEngine() {
-			dispose();
-		}
-
 		/// <summary>
 		/// Cleans up the SFXEngines resources
 		/// </summary>
