@@ -108,6 +108,8 @@ namespace GWNorthEngine.Logic {
 			}
 
 			if (cockAnimation) {
+				// if we are resetting and setting the animation up to be run, we do not want it to play right away
+				this.animationState = AnimationState.Paused;
 				this.totalElapsed = frameRate;
 			}
 		}
