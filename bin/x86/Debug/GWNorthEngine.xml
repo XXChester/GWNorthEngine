@@ -1348,7 +1348,7 @@
             AnimationState: AnimationState.Paused
             </summary>
         </member>
-        <member name="P:GWNorthEngine.Model.Params.BaseAnimated2DSpriteParams.Texture2D">
+        <member name="P:GWNorthEngine.Model.Params.BaseAnimated2DSpriteParams.Texture">
             <summary>
             Gets or sets the texture for a sprite for externally loaded sprites
             </summary>
@@ -3294,6 +3294,40 @@
             <summary>
             Middle mouse button
             </summary>
+        </member>
+        <member name="T:GWNorthEngine.Model.DeacceleratingParticle">
+            <summary>
+            Models a particle that deaccelerates as its life progresses
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Model.DeacceleratingParticle.#ctor(GWNorthEngine.Model.Params.BaseParticle2DParams)">
+            <summary>
+            Constructs an Deaccelerating particle
+            </summary>
+            <param name="parms">BaseParticle2DParms object</param>
+        </member>
+        <member name="M:GWNorthEngine.Model.DeacceleratingParticle.update(System.Single)">
+            <summary>
+            Updates the particles position, loosing speed as its life progresses
+            </summary>
+            <param name="elapsed">Elapsed time</param>
+        </member>
+        <member name="T:GWNorthEngine.Model.AcceleratingParticle">
+            <summary>
+            Models a particle that accelerates as its life progresses
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Model.AcceleratingParticle.#ctor(GWNorthEngine.Model.Params.BaseParticle2DParams)">
+            <summary>
+            Constructs an Accelerating particle
+            </summary>
+            <param name="parms">BaseParticle2DParms object</param>
+        </member>
+        <member name="M:GWNorthEngine.Model.AcceleratingParticle.update(System.Single)">
+            <summary>
+            Updates the particles position, gaining speed as its life progresses
+            </summary>
+            <param name="elapsed">Elapsed time</param>
         </member>
     </members>
 </doc>

@@ -55,18 +55,18 @@ namespace GWNorthEngine.Model {
 			: base(parms) {
 			if (typeof(Animated2DSpriteLoadSingleCustomRow) == parms.GetType()) {
 				Animated2DSpriteLoadSingleCustomRow realParms = (Animated2DSpriteLoadSingleCustomRow)parms;
-				initSprite(realParms.Texture2D, realParms.AnimationParams, realParms.FramesWidth, realParms.FramesHeight, 
+				initSprite(realParms.Texture, realParms.AnimationParams, realParms.FramesWidth, realParms.FramesHeight, 
 					realParms.SpaceBetweenFrames,  realParms.FramesStartWidth, realParms.FramesStartHeight);
 			} else if (typeof(Animated2DSpriteLoadSingleRowBasedOnTexture) == parms.GetType()) {
-				parms.FramesWidth = parms.Texture2D.Width / parms.AnimationParams.TotalFrameCount;
-				parms.FramesHeight = parms.Texture2D.Height;
-				initSprite(parms.Texture2D, parms.AnimationParams, parms.FramesWidth, parms.FramesHeight);
+				parms.FramesWidth = parms.Texture.Width / parms.AnimationParams.TotalFrameCount;
+				parms.FramesHeight = parms.Texture.Height;
+				initSprite(parms.Texture, parms.AnimationParams, parms.FramesWidth, parms.FramesHeight);
 			} else if (typeof(Animated2DSpriteLoadMultipleRows) == parms.GetType()) {
 				Animated2DSpriteLoadMultipleRows realParms = (Animated2DSpriteLoadMultipleRows)parms;
-				initSprite(realParms.Texture2D, realParms.AnimationParams, realParms.FramesWidth, realParms.FramesHeight,
+				initSprite(realParms.Texture, realParms.AnimationParams, realParms.FramesWidth, realParms.FramesHeight,
 				maxColumnsToARow: realParms.MaxColumnsToARow);
 			} else {
-				initSprite(parms.Texture2D, parms.AnimationParams, parms.FramesWidth, parms.FramesHeight);
+				initSprite(parms.Texture, parms.AnimationParams, parms.FramesWidth, parms.FramesHeight);
 			}
 		}
 		#endregion Constructor

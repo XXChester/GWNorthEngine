@@ -36,7 +36,7 @@ namespace GWNorthEngine.Model.Params {
 		/// <summary>
 		/// Gets or sets the texture for a sprite for externally loaded sprites
 		/// </summary>
-		public Texture2D Texture2D { get; set; }
+		public Texture2D Texture { get; set; }
 		/// <summary>
 		/// Gets or sets the sprites width for the frame loading.
 		/// </summary>

@@ -132,6 +132,8 @@
     <Compile Include="Model\2D\BaseParticle2D.cs" />
     <Compile Include="Model\2D\BaseParticle2DEmitter.cs" />
     <Compile Include="Model\2D\ColouredButton.cs" />
+    <Compile Include="Model\2D\AcceleratingParticle.cs" />
+    <Compile Include="Model\2D\DeacceleratingParticle.cs" />
     <Compile Include="Model\2D\IButton.cs" />
     <Compile Include="Model\2D\Params\Animated2DSpriteLoadSingleRow.cs" />
     <Compile Include="Model\2D\Params\BaseParticle2DEmitterParams.cs" />
