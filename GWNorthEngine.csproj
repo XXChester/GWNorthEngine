@@ -113,6 +113,8 @@
     <Compile Include="Audio\SFXEngine.cs" />
     <Compile Include="Audio\SFXInstanceWrapper.cs" />
     <Compile Include="Audio\BaseSoundEngine.cs" />
+    <Compile Include="Audio\SoundEmitter.cs" />
+    <Compile Include="Audio\Params\SoundEmitterParams.cs" />
     <Compile Include="Logic\Camera2D.cs" />
     <Compile Include="Logic\Camera3D.cs" />
     <Compile Include="Logic\ClampableCamera2D.cs" />
@@ -128,6 +130,7 @@
     <Compile Include="Input\MouseButton.cs" />
     <Compile Include="Logic\AnimationState.cs" />
     <Compile Include="Logic\KeyFrameData.cs" />
+    <Compile Include="Logic\PulseDirection.cs" />
     <Compile Include="Model\2D\Animated2DSprite.cs" />
     <Compile Include="Model\2D\BaseParticle2D.cs" />
     <Compile Include="Model\2D\BaseParticle2DEmitter.cs" />

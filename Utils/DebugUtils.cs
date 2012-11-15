@@ -164,6 +164,22 @@ namespace GWNorthEngine.Utils {
 			right.render(spriteBatch, positionOffset);
 			bottom.render(spriteBatch, positionOffset);
 		}
+
+		/// <summary>
+		/// Draws a radius using a SpriteDrawable2D
+		/// </summary>
+		/// <param name="spriteBatch">SpriteBatch object used to draw</param>
+		/// <param name="position">Position to draw the radius around</param>
+		/// <param name="debugColour">Colour to draw the rectangle in</param>
+		/// <param name="radiusSpecificTexture">Texture2D used for drawing the radius</param>
+		public static void drawRadius(SpriteBatch spriteBatch, Vector2 position, Texture2D radiusSpecificTexture, Color debugColour) {
+			StaticDrawable2DParams parms = new StaticDrawable2DParams();
+			parms.Position = position;
+			parms.LightColour = debugColour;
+			parms.Texture = radiusSpecificTexture;
+			parms.Origin = new Vector2(radiusSpecificTexture.Height / 2);
+			new StaticDrawable2D(parms).render(spriteBatch);
+		}
 		#endregion Support methods
 	}
 

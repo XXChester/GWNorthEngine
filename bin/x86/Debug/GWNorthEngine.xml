@@ -9,7 +9,7 @@
             Models the basis of every SpriteBatch drawable object
             </summary>
         </member>
-        <member name="F:GWNorthEngine.Model.Base2DSpriteDrawable.positivePulse">
+        <member name="F:GWNorthEngine.Model.Base2DSpriteDrawable.pulseDirection">
             <summary>
             Used by the scalingPulse(...) effect to determine which way it is scaling
             </summary>
@@ -660,6 +660,107 @@
             <summary>
             Gets or sets the texture used for particle generation
             </summary>
+        </member>
+        <member name="T:GWNorthEngine.Model.DeacceleratingParticle">
+            <summary>
+            Models a particle that deaccelerates as its life progresses
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.Model.BaseParticle2D">
+            <summary>
+            Models the basis of every particle
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.Model.BaseParticle2D.timeAlive">
+            <summary>
+            Time the particle is alive
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.Model.BaseParticle2D.timeToLive">
+            <summary>
+            Time the particle dies at
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.Model.BaseParticle2D.acceleration">
+            <summary>
+            Acceleration of the particle
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.Model.BaseParticle2D.direction">
+            <summary>
+            Direction the particle is headed in
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.Model.BaseParticle2D.texture">
+            <summary>
+            Texture of the particle
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.Model.BaseParticle2D.originalPosition">
+            <summary>
+            Original position of the particle
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Model.BaseParticle2D.#ctor(GWNorthEngine.Model.Params.BaseParticle2DParams)">
+            <summary>
+            Builds the base particle
+            </summary>
+            <param name="parms">BaseParticle2DParams object containing the data required to build the particle</param>
+        </member>
+        <member name="M:GWNorthEngine.Model.BaseParticle2D.fadeOutAsLifeProgresses">
+            <summary>
+            Fades the particle out over its life time to eventually invisible
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Model.BaseParticle2D.update(System.Single)">
+            <summary>
+            Updates the particle. Be default it just updates the particles life
+            </summary>
+            <param name="elapsed">Time since the last time the method was called</param>
+        </member>
+        <member name="M:GWNorthEngine.Model.BaseParticle2D.render(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Renders the sprite to the screen
+            </summary>
+            <param name="spriteBatch">SpriteBatch object used to render the sprite</param>
+            <param name="positionOffset">Offset to render the object at</param>
+        </member>
+        <member name="P:GWNorthEngine.Model.BaseParticle2D.TimeAlive">
+            <summary>
+            Gets or sets the time the particle is alive
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.BaseParticle2D.TimeToLive">
+            <summary>
+            Gets or sets the maximum time the particle can live for
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.BaseParticle2D.Acceleration">
+            <summary>
+            Gets or sets the acceleration of the particle
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.BaseParticle2D.Direction">
+            <summary>
+            Gets or sets the directional value of the particle
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.BaseParticle2D.Texture">
+            <summary>
+            Gets or sets the texture for the particle
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Model.DeacceleratingParticle.#ctor(GWNorthEngine.Model.Params.BaseParticle2DParams)">
+            <summary>
+            Constructs an Deaccelerating particle
+            </summary>
+            <param name="parms">BaseParticle2DParms object</param>
+        </member>
+        <member name="M:GWNorthEngine.Model.DeacceleratingParticle.update(System.Single)">
+            <summary>
+            Updates the particles position, loosing speed as its life progresses
+            </summary>
+            <param name="elapsed">Elapsed time</param>
         </member>
         <member name="T:GWNorthEngine.Model.Params.ColouredButtonParams">
             <summary>
@@ -1611,90 +1712,6 @@
             Gets or sets the projection matrix of the camera
             </summary>
         </member>
-        <member name="T:GWNorthEngine.Model.BaseParticle2D">
-            <summary>
-            Models the basis of every particle
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.Model.BaseParticle2D.timeAlive">
-            <summary>
-            Time the particle is alive
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.Model.BaseParticle2D.timeToLive">
-            <summary>
-            Time the particle dies at
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.Model.BaseParticle2D.acceleration">
-            <summary>
-            Acceleration of the particle
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.Model.BaseParticle2D.direction">
-            <summary>
-            Direction the particle is headed in
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.Model.BaseParticle2D.texture">
-            <summary>
-            Texture of the particle
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.Model.BaseParticle2D.originalPosition">
-            <summary>
-            Original position of the particle
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.Model.BaseParticle2D.#ctor(GWNorthEngine.Model.Params.BaseParticle2DParams)">
-            <summary>
-            Builds the base particle
-            </summary>
-            <param name="parms">BaseParticle2DParams object containing the data required to build the particle</param>
-        </member>
-        <member name="M:GWNorthEngine.Model.BaseParticle2D.fadeOutAsLifeProgresses">
-            <summary>
-            Fades the particle out over its life time to eventually invisible
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.Model.BaseParticle2D.update(System.Single)">
-            <summary>
-            Updates the particle. Be default it just updates the particles life
-            </summary>
-            <param name="elapsed">Time since the last time the method was called</param>
-        </member>
-        <member name="M:GWNorthEngine.Model.BaseParticle2D.render(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2)">
-            <summary>
-            Renders the sprite to the screen
-            </summary>
-            <param name="spriteBatch">SpriteBatch object used to render the sprite</param>
-            <param name="positionOffset">Offset to render the object at</param>
-        </member>
-        <member name="P:GWNorthEngine.Model.BaseParticle2D.TimeAlive">
-            <summary>
-            Gets or sets the time the particle is alive
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.BaseParticle2D.TimeToLive">
-            <summary>
-            Gets or sets the maximum time the particle can live for
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.BaseParticle2D.Acceleration">
-            <summary>
-            Gets or sets the acceleration of the particle
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.BaseParticle2D.Direction">
-            <summary>
-            Gets or sets the directional value of the particle
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.BaseParticle2D.Texture">
-            <summary>
-            Gets or sets the texture for the particle
-            </summary>
-        </member>
         <member name="T:GWNorthEngine.Utils.PickingUtils">
             <summary>
             Class containg usefull methods for picking different types of objects
@@ -2097,6 +2114,15 @@
             <param name="debugColour">Colour to draw the Vectors in</param>
             <param name="lineTexture">Texture2D used for drawing the vectors</param>
             <param name="positionOffset">Offset to render the object at</param>
+        </member>
+        <member name="M:GWNorthEngine.Utils.DebugUtils.drawRadius(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Draws a radius using a SpriteDrawable2D
+            </summary>
+            <param name="spriteBatch">SpriteBatch object used to draw</param>
+            <param name="position">Position to draw the radius around</param>
+            <param name="debugColour">Colour to draw the rectangle in</param>
+            <param name="radiusSpecificTexture">Texture2D used for drawing the radius</param>
         </member>
         <member name="T:GWNorthEngine.Model.Text2D">
             <summary>
@@ -3133,6 +3159,23 @@
             Gets or sets whether the model is to be drawn
             </summary>
         </member>
+        <member name="T:GWNorthEngine.Model.AcceleratingParticle">
+            <summary>
+            Models a particle that accelerates as its life progresses
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Model.AcceleratingParticle.#ctor(GWNorthEngine.Model.Params.BaseParticle2DParams)">
+            <summary>
+            Constructs an Accelerating particle
+            </summary>
+            <param name="parms">BaseParticle2DParms object</param>
+        </member>
+        <member name="M:GWNorthEngine.Model.AcceleratingParticle.update(System.Single)">
+            <summary>
+            Updates the particles position, gaining speed as its life progresses
+            </summary>
+            <param name="elapsed">Elapsed time</param>
+        </member>
         <member name="T:GWNorthEngine.Audio.Params.MusicEngineParams">
             <summary>
             Object containing the required data to build a MusicEngine instance
@@ -3295,39 +3338,93 @@
             Middle mouse button
             </summary>
         </member>
-        <member name="T:GWNorthEngine.Model.DeacceleratingParticle">
+        <member name="T:GWNorthEngine.Logic.PulseDirection">
             <summary>
-            Models a particle that deaccelerates as its life progresses
+            Direction we are pulsing in
             </summary>
         </member>
-        <member name="M:GWNorthEngine.Model.DeacceleratingParticle.#ctor(GWNorthEngine.Model.Params.BaseParticle2DParams)">
+        <member name="F:GWNorthEngine.Logic.PulseDirection.Up">
             <summary>
-            Constructs an Deaccelerating particle
-            </summary>
-            <param name="parms">BaseParticle2DParms object</param>
-        </member>
-        <member name="M:GWNorthEngine.Model.DeacceleratingParticle.update(System.Single)">
-            <summary>
-            Updates the particles position, loosing speed as its life progresses
-            </summary>
-            <param name="elapsed">Elapsed time</param>
-        </member>
-        <member name="T:GWNorthEngine.Model.AcceleratingParticle">
-            <summary>
-            Models a particle that accelerates as its life progresses
+            Pulse up
             </summary>
         </member>
-        <member name="M:GWNorthEngine.Model.AcceleratingParticle.#ctor(GWNorthEngine.Model.Params.BaseParticle2DParams)">
+        <member name="F:GWNorthEngine.Logic.PulseDirection.Down">
             <summary>
-            Constructs an Accelerating particle
+            Pulse down
             </summary>
-            <param name="parms">BaseParticle2DParms object</param>
         </member>
-        <member name="M:GWNorthEngine.Model.AcceleratingParticle.update(System.Single)">
+        <member name="T:GWNorthEngine.Audio.SoundEmitter">
             <summary>
-            Updates the particles position, gaining speed as its life progresses
+            Models a SoundEmitter that plays sounds dynamic to a position
             </summary>
-            <param name="elapsed">Elapsed time</param>
+        </member>
+        <member name="M:GWNorthEngine.Audio.SoundEmitter.#ctor(GWNorthEngine.Audio.Params.SoundEmitterParams)">
+            <summary>
+            Creates a SoundEmitter object based on the params
+            </summary>
+            <param name="parms">SoundEmitterParams object</param>
+        </member>
+        <member name="M:GWNorthEngine.Audio.SoundEmitter.playSoundEffect(Microsoft.Xna.Framework.Audio.SoundEffect,Microsoft.Xna.Framework.Vector2,System.Single,System.Boolean)">
+            <summary>
+            Plays a sound effect in relation to a listening position
+            </summary>
+            <param name="sfx">SoundEffect to play</param>
+            <param name="listenersPosition">Position the listener is currently at</param>
+            <param name="pitch">Pitch of the sound effect</param>
+            <param name="loop">Whether we are looping the sound effect or not</param>
+        </member>
+        <member name="M:GWNorthEngine.Audio.SoundEmitter.update(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Updates the emitter based on the listeners position
+            </summary>
+            <param name="listenersPosition"></param>
+        </member>
+        <member name="P:GWNorthEngine.Audio.SoundEmitter.Position">
+            <summary>
+            Position of the Sound Emitter
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Audio.SoundEmitter.EmittRadius">
+            <summary>
+            Emission radius
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.Audio.Params.SoundEmitterParams">
+            <summary>
+            Models the data required to create a Sound Emitter
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Audio.Params.SoundEmitterParams.#ctor">
+            <summary>
+            Builds a default SoundEmitterParams object with the following values\n
+            Pan:		0f(Centered)
+            Pitch:		0f(Unity)
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Audio.Params.SoundEmitterParams.Position">
+            <summary>
+            Position the emitter is to be located at
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Audio.Params.SoundEmitterParams.Pan">
+            <summary>
+            Pan of the emitter
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Audio.Params.SoundEmitterParams.Pitch">
+            <summary>
+            Pitch of the emitter
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Audio.Params.SoundEmitterParams.EmittRadius">
+            <summary>
+            Emission raidus
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Audio.Params.SoundEmitterParams.SFXEngine">
+            <summary>
+            Reference to the SFXEngine that will be used to emitt the sounds
+            </summary>
         </member>
     </members>
 </doc>

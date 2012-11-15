@@ -9,8 +9,11 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+
 using GWNorthEngine.Model.Params;
 using GWNorthEngine.Utils;
+using GWNorthEngine.Logic;
+
 namespace GWNorthEngine.Model {
 	/// <summary>
 	/// Models the basis of every SpriteBatch drawable object
@@ -20,7 +23,7 @@ namespace GWNorthEngine.Model {
 		/// <summary>
 		/// Used by the scalingPulse(...) effect to determine which way it is scaling
 		/// </summary>
-		private bool positivePulse;
+		private PulseDirection pulseDirection;
 		/// <summary>
 		/// Position of the sprite
 		/// </summary>
@@ -147,15 +150,15 @@ namespace GWNorthEngine.Model {
 		/// <param name="endScale">Highest scale value we want to grow to</param>
 		/// <param name="scaleSpeed">Speed in which we want to pulse at</param>
 		public virtual void scalingPulse(float startScale, float endScale, Vector2 scaleSpeed) {
-			if (this.positivePulse) {
+			if (this.pulseDirection == PulseDirection.Up) {
 				scaleAsLifeProgresses(scaleSpeed);
 				if (this.Scale.X >= endScale) {
-					this.positivePulse = false;
+					this.pulseDirection = PulseDirection.Down;
 				}
 			} else {
 				scaleAsLifeProgresses(-scaleSpeed);
 				if (this.Scale.X <= startScale) {
-					this.positivePulse = true;
+					this.pulseDirection = PulseDirection.Up;
 				}
 			}
 		}
