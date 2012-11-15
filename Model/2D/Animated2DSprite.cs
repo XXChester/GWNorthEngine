@@ -134,6 +134,7 @@ namespace GWNorthEngine.Model {
 		public override void update(float elapsed) {
 			this.animationManager.update(elapsed, this.frames.Length - 1);
 			base.renderingRectangle = this.frames[this.animationManager.CurrentFrame];
+			base.update(elapsed);
 		}
 
 		/// <summary>

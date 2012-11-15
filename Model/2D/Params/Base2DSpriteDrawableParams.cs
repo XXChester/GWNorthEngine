@@ -9,6 +9,10 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+
+using GWNorthEngine.Engine;
+using GWNorthEngine.Model.Effects;
+
 namespace GWNorthEngine.Model.Params {
 	/// <summary>
 	/// Object containing the required data for the basis to build any SpriteBatch drawable object
@@ -17,7 +21,7 @@ namespace GWNorthEngine.Model.Params {
 		#region Class variables
 		private Vector2 position;
 		private Vector2 origin;
-		private Vector2 scale;
+		private Vector2D scale;
 		private float rotation;
 		private float layer;
 		private Color lightColour;
@@ -35,7 +39,7 @@ namespace GWNorthEngine.Model.Params {
 		/// <summary>
 		/// Gets or Sets the startign scale of the sprite
 		/// </summary>
-		public Vector2 Scale { get { return this.scale; } set { this.scale = value; } }
+		public Vector2D Scale { get { return this.scale; } set { this.scale = value; } }
 		/// <summary>
 		/// Gets or sets the starting rotation of the sprite
 		/// </summary>
@@ -56,6 +60,10 @@ namespace GWNorthEngine.Model.Params {
 		/// Gets or sets the Rectangle used to render portions of the Texture
 		/// </summary>
 		public Rectangle RenderingRectangle { get; set; }
+		/// <summary>
+		/// Effects applied to this object
+		/// </summary>
+		public List<BaseEffect> Effects { get; set; }
 		#endregion Class properties
 
 		#region Constructor
@@ -72,7 +80,7 @@ namespace GWNorthEngine.Model.Params {
 			// defaults
 			this.lightColour = Color.White;
 			this.origin = Vector2.Zero;
-			this.scale = new Vector2(1f, 1f);
+			this.scale = new Vector2D(1f, 1f);
 			this.rotation = 0f;
 			this.layer = 0f;
 			this.SpriteEffect = SpriteEffects.None;

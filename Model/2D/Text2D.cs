@@ -47,14 +47,6 @@ namespace GWNorthEngine.Model {
 
 		#region Support methods
 		/// <summary>
-		/// Updates the text
-		/// </summary>
-		/// <param name="elapsed">time elapsed sense the last method call</param>
-		public override void update(float elapsed) {
-			// TODO: could write a fade in and out routine here later
-		}
-
-		/// <summary>
 		/// Renders the sprite to the screen
 		/// </summary>
 		/// <param name="spriteBatch">SpriteBatch object used to render the sprite</param>

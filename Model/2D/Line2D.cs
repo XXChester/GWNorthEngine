@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using GWNorthEngine.Engine;
 using GWNorthEngine.Model.Params;
 namespace GWNorthEngine.Model {
 	/// <summary>
@@ -90,15 +91,7 @@ namespace GWNorthEngine.Model {
 		/// </summary>
 		public void recalculateScale() {
 			Vector2 difference = this.endPosition - base.position;
-			base.scale = new Vector2(1.0f, difference.Length() / this.texture.Height);
-		}
-
-		/// <summary>
-		/// NOT IMPLEMENTED
-		/// </summary>
-		/// <param name="elapsed">Time passed sense the last time the method was called</param>
-		public override void update(float elapsed) {
-			throw new NotImplementedException();
+			base.scale = new Vector2D(1.0f, difference.Length() / this.texture.Height);
 		}
 
 		/// <summary>

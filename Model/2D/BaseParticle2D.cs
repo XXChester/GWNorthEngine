@@ -96,6 +96,7 @@ namespace GWNorthEngine.Model {
 		/// <param name="elapsed">Time since the last time the method was called</param>
 		public override void update(float elapsed) {
 			this.timeAlive += elapsed;
+			base.update(elapsed);
 		}
 
 		/// <summary>

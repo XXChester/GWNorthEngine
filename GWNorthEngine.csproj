@@ -115,6 +115,7 @@
     <Compile Include="Audio\BaseSoundEngine.cs" />
     <Compile Include="Audio\SoundEmitter.cs" />
     <Compile Include="Audio\Params\SoundEmitterParams.cs" />
+    <Compile Include="Engine\Vector2D.cs" />
     <Compile Include="Logic\Camera2D.cs" />
     <Compile Include="Logic\Camera3D.cs" />
     <Compile Include="Logic\ClampableCamera2D.cs" />
@@ -163,6 +164,8 @@
     <Compile Include="Model\2D\Params\Text2DParams.cs" />
     <Compile Include="Model\2D\Text2D.cs" />
     <Compile Include="Logic\Params\KeyFrameAnimationManagerParams.cs" />
+    <Compile Include="Model\Effects\BaseEffect.cs" />
+    <Compile Include="Model\Effects\PulseEffect.cs" />
     <Compile Include="Scripting\AlphaComparer.cs" />
     <Compile Include="Scripting\Utils\ObjectTranslator.cs" />
     <Compile Include="Scripting\Model\RegisteredObject.cs" />

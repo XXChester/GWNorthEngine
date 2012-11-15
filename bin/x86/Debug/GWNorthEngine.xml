@@ -9,11 +9,6 @@
             Models the basis of every SpriteBatch drawable object
             </summary>
         </member>
-        <member name="F:GWNorthEngine.Model.Base2DSpriteDrawable.pulseDirection">
-            <summary>
-            Used by the scalingPulse(...) effect to determine which way it is scaling
-            </summary>
-        </member>
         <member name="F:GWNorthEngine.Model.Base2DSpriteDrawable.position">
             <summary>
             Position of the sprite
@@ -71,29 +66,15 @@
             </summary>
             <param name="texture">Texture to base the Rendering Rectangle on</param>
         </member>
-        <member name="M:GWNorthEngine.Model.Base2DSpriteDrawable.scaleAsLifeProgresses(Microsoft.Xna.Framework.Vector2)">
-            <summary>
-            Scales the object over time
-            </summary>
-            <param name="scaleBy"></param>
-        </member>
         <member name="M:GWNorthEngine.Model.Base2DSpriteDrawable.rotateAsLifeProgresses(System.Single)">
             <summary>
             Rotates the object over time
             </summary>
             <param name="rotationSpeed"></param>
         </member>
-        <member name="M:GWNorthEngine.Model.Base2DSpriteDrawable.scalingPulse(System.Single,System.Single,Microsoft.Xna.Framework.Vector2)">
-            <summary>
-            Pulse effect by scaling the object between to pre-defined scales
-            </summary>
-            <param name="startScale">Lowest scale value we want to shrink too</param>
-            <param name="endScale">Highest scale value we want to grow to</param>
-            <param name="scaleSpeed">Speed in which we want to pulse at</param>
-        </member>
         <member name="M:GWNorthEngine.Model.Base2DSpriteDrawable.update(System.Single)">
             <summary>
-            Abstract method that forces the children objects to implement update
+            Runs the Effects applied to the object
             </summary>
             <param name="elapsed">Time elapsed sense the last call</param>
         </member>
@@ -145,6 +126,11 @@
             Gets or sets the Rectangle used for rendering the texture
             </summary>
         </member>
+        <member name="P:GWNorthEngine.Model.Base2DSpriteDrawable.Effects">
+            <summary>
+            Effects applied to this object
+            </summary>
+        </member>
         <member name="T:GWNorthEngine.Model.Line2D">
             <summary>
             Line class that simply draws a line to the screen
@@ -175,12 +161,6 @@
             <summary>
             Recalculates the scale based on the current starting and end positions of the line
             </summary>
-        </member>
-        <member name="M:GWNorthEngine.Model.Line2D.update(System.Single)">
-            <summary>
-            NOT IMPLEMENTED
-            </summary>
-            <param name="elapsed">Time passed sense the last time the method was called</param>
         </member>
         <member name="M:GWNorthEngine.Model.Line2D.render(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2)">
             <summary>
@@ -1423,6 +1403,11 @@
             Gets or sets the Rectangle used to render portions of the Texture
             </summary>
         </member>
+        <member name="P:GWNorthEngine.Model.Params.Base2DSpriteDrawableParams.Effects">
+            <summary>
+            Effects applied to this object
+            </summary>
+        </member>
         <member name="F:GWNorthEngine.Model.Params.BaseAnimated2DSpriteParams.framesStartWidth">
             <summary>
             Where to start in the sprites width for loading
@@ -2144,12 +2129,6 @@
             Builds an object that can write text to the screen
             </summary>
             <param name="parms">TextParams object</param>
-        </member>
-        <member name="M:GWNorthEngine.Model.Text2D.update(System.Single)">
-            <summary>
-            Updates the text
-            </summary>
-            <param name="elapsed">time elapsed sense the last method call</param>
         </member>
         <member name="M:GWNorthEngine.Model.Text2D.render(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2)">
             <summary>
@@ -2895,12 +2874,6 @@
             </summary>
             <param name="parms">StaticDrawable2DParams object</param>
         </member>
-        <member name="M:GWNorthEngine.Model.StaticDrawable2D.update(System.Single)">
-            <summary>
-            Updates the texture
-            </summary>
-            <param name="elapsed">time elapsed sense the last method call</param>
-        </member>
         <member name="M:GWNorthEngine.Model.StaticDrawable2D.render(Microsoft.Xna.Framework.Graphics.SpriteBatch,Microsoft.Xna.Framework.Vector2)">
             <summary>
             Renders the sprite to the screen
@@ -3424,6 +3397,109 @@
         <member name="P:GWNorthEngine.Audio.Params.SoundEmitterParams.SFXEngine">
             <summary>
             Reference to the SFXEngine that will be used to emitt the sounds
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:GWNorthEngine.Engine.Vector2D.#ctor" -->
+        <member name="M:GWNorthEngine.Engine.Vector2D.#ctor(System.Single)">
+            <summary>
+            Constructor for "square" vector.
+            </summary>
+            <param name="value">
+            A <see cref="T:System.Single"/>
+            </param>
+        </member>
+        <member name="M:GWNorthEngine.Engine.Vector2D.#ctor(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Constructs a Vector2D from an XNA Vector
+            </summary>
+            <param name="vector">XNA Vector to create from</param>
+        </member>
+        <member name="M:GWNorthEngine.Engine.Vector2D.#ctor(System.Single,System.Single)">
+            <summary>
+            Constructor foe standard 2D vector.
+            </summary>
+            <param name="x">
+            A <see cref="T:System.Single"/>
+            </param>
+            <param name="y">
+            A <see cref="T:System.Single"/>
+            </param>
+        </member>
+        <member name="M:GWNorthEngine.Engine.Vector2D.Distance(GWNorthEngine.Engine.Vector2D,GWNorthEngine.Engine.Vector2D)">
+            <summary>
+            Returns float precison distanve between two vectors
+            </summary>
+            <param name="value1">
+            A <see cref="T:GWNorthEngine.Engine.Vector2D"/>
+            </param>
+            <param name="value2">
+            A <see cref="T:GWNorthEngine.Engine.Vector2D"/>
+            </param>
+            <returns>
+            A <see cref="T:System.Single"/>
+            </returns>
+        </member>
+        <member name="M:GWNorthEngine.Engine.Vector2D.Divide(GWNorthEngine.Engine.Vector2D,GWNorthEngine.Engine.Vector2D)">
+            <summary>
+            Devide first vector with the secund vector
+            </summary>
+            <param name="value1">
+            A <see cref="T:GWNorthEngine.Engine.Vector2D"/>
+            </param>
+            <param name="value2">
+            A <see cref="T:GWNorthEngine.Engine.Vector2D"/>
+            </param>
+            <returns>
+            A <see cref="T:GWNorthEngine.Engine.Vector2D"/>
+            </returns>
+        </member>
+        <member name="T:GWNorthEngine.Model.Effects.PulseEffect">
+            <summary>
+            Models the data required for a pulse effect
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.Model.Effects.BaseEffect">
+            <summary>
+            Models the manditory fields for an effect
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Model.Effects.BaseEffect.update">
+            <summary>
+            Every effect must implement the update method
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.Model.Effects.PulseEffect.#ctor(GWNorthEngine.Engine.Vector2D,System.Single,System.Single,System.Single)">
+            <summary>
+            Constructs a PulseEffect object
+            </summary>
+            <param name="scale">Reference's scale that we are going to control</param>
+            <param name="scaleUpTo">Value to scale up to</param>
+            <param name="scaleDownTo">Value to sclae down to</param>
+            <param name="scaleBy">Amount to scale by</param>
+        </member>
+        <member name="M:GWNorthEngine.Model.Effects.PulseEffect.update">
+            <summary>
+            Runs the effect
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Effects.PulseEffect.ScaleDownTo">
+            <summary>
+            Amount to scale down to
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Effects.PulseEffect.ScaleUpTo">
+            <summary>
+            Amount to scale up to
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Effects.PulseEffect.ScaleBy">
+            <summary>
+            Amount to scale by
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Effects.PulseEffect.Scale">
+            <summary>
+            Reference to the objects scale that the effect is to apply to
             </summary>
         </member>
     </members>

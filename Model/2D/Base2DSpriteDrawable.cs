@@ -10,7 +10,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+using GWNorthEngine.Engine;
 using GWNorthEngine.Model.Params;
+using GWNorthEngine.Model.Effects;
 using GWNorthEngine.Utils;
 using GWNorthEngine.Logic;
 
@@ -20,10 +22,6 @@ namespace GWNorthEngine.Model {
 	/// </summary>
 	public abstract class Base2DSpriteDrawable {
 		#region Class variables
-		/// <summary>
-		/// Used by the scalingPulse(...) effect to determine which way it is scaling
-		/// </summary>
-		private PulseDirection pulseDirection;
 		/// <summary>
 		/// Position of the sprite
 		/// </summary>
@@ -35,7 +33,7 @@ namespace GWNorthEngine.Model {
 		/// <summary>
 		/// Scale of the sprite
 		/// </summary>
-		protected Vector2 scale;
+		protected Vector2D scale;
 		/// <summary>
 		/// Rotation of the sprite
 		/// </summary>
@@ -74,7 +72,7 @@ namespace GWNorthEngine.Model {
 		/// <summary>
 		/// Gets or sets the scale of the sprite
 		/// </summary>
-		public virtual Vector2 Scale { get { return this.scale; } set { this.scale = value; } }
+		public virtual Vector2D Scale { get { return this.scale; } set { this.scale = value; } }
 		/// <summary>
 		/// Gets or sets the Colour in which the sprite is to be rendered in
 		/// </summary>
@@ -91,6 +89,10 @@ namespace GWNorthEngine.Model {
 		/// Gets or sets the Rectangle used for rendering the texture
 		/// </summary>
 		public Rectangle RenderingRectangle { get { return this.renderingRectangle; } set { this.renderingRectangle = value; } }
+		/// <summary>
+		/// Effects applied to this object
+		/// </summary>
+		public List<BaseEffect> Effects { get; set; }
 		#endregion Class properties
 
 		#region Constructor
@@ -108,6 +110,7 @@ namespace GWNorthEngine.Model {
 			this.originalLightColour = parms.LightColour;
 			this.spriteEffect = parms.SpriteEffect;
 			this.renderingRectangle = parms.RenderingRectangle;
+			this.Effects = parms.Effects;
 		}
 		#endregion Constructor
 
@@ -128,14 +131,6 @@ namespace GWNorthEngine.Model {
 		}
 
 		/// <summary>
-		/// Scales the object over time
-		/// </summary>
-		/// <param name="scaleBy"></param>
-		public virtual void scaleAsLifeProgresses(Vector2 scaleBy) {
-			this.scale += scaleBy;
-		}
-
-		/// <summary>
 		/// Rotates the object over time
 		/// </summary>
 		/// <param name="rotationSpeed"></param>
@@ -144,30 +139,16 @@ namespace GWNorthEngine.Model {
 		}
 
 		/// <summary>
-		/// Pulse effect by scaling the object between to pre-defined scales
+		/// Runs the Effects applied to the object
 		/// </summary>
-		/// <param name="startScale">Lowest scale value we want to shrink too</param>
-		/// <param name="endScale">Highest scale value we want to grow to</param>
-		/// <param name="scaleSpeed">Speed in which we want to pulse at</param>
-		public virtual void scalingPulse(float startScale, float endScale, Vector2 scaleSpeed) {
-			if (this.pulseDirection == PulseDirection.Up) {
-				scaleAsLifeProgresses(scaleSpeed);
-				if (this.Scale.X >= endScale) {
-					this.pulseDirection = PulseDirection.Down;
-				}
-			} else {
-				scaleAsLifeProgresses(-scaleSpeed);
-				if (this.Scale.X <= startScale) {
-					this.pulseDirection = PulseDirection.Up;
+		/// <param name="elapsed">Time elapsed sense the last call</param>
+		public virtual void update(float elapsed) {
+			if (this.Effects != null) {
+				foreach (BaseEffect effect in this.Effects) {
+					effect.update();
 				}
 			}
 		}
-
-		/// <summary>
-		/// Abstract method that forces the children objects to implement update
-		/// </summary>
-		/// <param name="elapsed">Time elapsed sense the last call</param>
-		public abstract void update(float elapsed);
 
 		/// <summary>
 		/// Abstract method that forces the children objects to implement render
