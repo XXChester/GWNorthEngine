@@ -7,6 +7,9 @@ using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework;
 
 namespace GWNorthEngine.Engine {
+	/// <summary>
+	/// Models a reference type Vector2
+	/// </summary>
 	[Serializable]
 	[StructLayout(LayoutKind.Sequential)]
 	[TypeConverter(typeof(Vector2Converter))]
@@ -19,14 +22,32 @@ namespace GWNorthEngine.Engine {
 		#endregion Private Fields
 
 		#region Public Fields
+		/// <summary>
+		/// X value
+		/// </summary>
 		public float X;
+		/// <summary>
+		/// Y value
+		/// </summary>
 		public float Y;
 		#endregion Public Fields
 
 		#region Properties
+		/// <summary>
+		/// Zero Vector2D
+		/// </summary>
 		public static Vector2D Zero { get { return zeroVector; } }
+		/// <summary>
+		/// Vector2D of 1f,1f
+		/// </summary>
 		public static Vector2D One { get { return unitVector; } }
+		/// <summary>
+		/// Vector2D of 1f, 0f
+		/// </summary>
 		public static Vector2D UnitX { get { return unitXVector; } }
+		/// <summary>
+		/// Vector2D of 0f, 1f
+		/// </summary>
 		public static Vector2D UnitY { get { return unitYVector; } }
 		#endregion Properties
 
