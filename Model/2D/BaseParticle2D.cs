@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using GWNorthEngine.Engine;
 using GWNorthEngine.Model.Params;
 using GWNorthEngine.Utils;
 namespace GWNorthEngine.Model {
@@ -83,13 +84,6 @@ namespace GWNorthEngine.Model {
 		#endregion Initialization
 
 		#region Support methods
-		/// <summary>
-		/// Fades the particle out over its life time to eventually invisible
-		/// </summary>
-		public virtual void fadeOutAsLifeProgresses() {
-			this.lightColour = TransitionUtils.fadeOut(base.originalLightColour, this.timeToLive, this.timeAlive);
-		}
-
 		/// <summary>
 		/// Updates the particle. Be default it just updates the particles life
 		/// </summary>

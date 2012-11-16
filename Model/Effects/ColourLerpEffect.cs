@@ -11,37 +11,38 @@ using GWNorthEngine.Model.Effects.Params;
 
 namespace GWNorthEngine.Model.Effects {
 	/// <summary>
-	/// Models the data required for a pulse effect
+	/// Models the data required for a Color lerping effect
 	/// </summary>
-	public class PulseEffect : BaseEffect {
+	public class ColorLerpEffect : BaseEffect {
 		#region Class variables
+		private float lerp;
 		private PulseDirection pulseDirection;
 		#endregion Class variables
 
 		#region Class properties
 		/// <summary>
-		/// Amount to scale down to
+		/// Color to lerp down to
 		/// </summary>
-		public float ScaleDownTo { get; set; }
+		public Color LerpUpTo { get; set; }
 		/// <summary>
-		/// Amount to scale up to
+		/// Color to lerp up to
 		/// </summary>
-		public float ScaleUpTo { get; set; }
+		public Color LerpDownTo { get; set; }
 		/// <summary>
-		/// Amount to scale by
+		/// Amount to lerp by
 		/// </summary>
-		public float ScaleBy { get; set; }
+		public float LerpBy { get; set; }
 		#endregion Class properties
 
 		#region Constructor
 		/// <summary>
 		/// Constructs a PulseEffect object
 		/// </summary>
-		/// <param name="parms">PulseEffectParams object</param>
-		public PulseEffect(PulseEffectParams parms) : base(parms) {
-			this.ScaleBy = parms.ScaleBy;
-			this.ScaleDownTo = parms.ScaleDownTo;
-			this.ScaleUpTo = parms.ScaleUpTo;
+		/// <param name="parms">ColourLerpEffectParms object used to build the effect</param>
+		public ColorLerpEffect(ColourLerpEffectParams parms) : base(parms) {
+			this.LerpDownTo = parms.LerpDownTo;
+			this.LerpUpTo = parms.LerpUpTo;
+			this.LerpBy = parms.LerpBy;
 		}
 		#endregion Constructor
 
@@ -51,16 +52,17 @@ namespace GWNorthEngine.Model.Effects {
 		/// </summary>
 		public override void update(float elapsed) {
 			if (this.pulseDirection == PulseDirection.Up) {
-				this.reference.Scale += new Vector2(this.ScaleBy);
-				if (this.reference.Scale.X >= this.ScaleUpTo) {
+				this.lerp += this.LerpBy;
+				if (this.lerp >= 1) {
 					this.pulseDirection = PulseDirection.Down;
 				}
 			} else {
-				this.reference.Scale -= new Vector2(this.ScaleBy);
-				if (this.reference.Scale.X <= this.ScaleDownTo) {
+				this.lerp -= this.LerpBy;
+				if (this.lerp <= 0) {
 					this.pulseDirection = PulseDirection.Up;
 				}
 			}
+			this.reference.LightColour = Color.Lerp(this.LerpUpTo, this.LerpDownTo, this.lerp);
 		}
 		#endregion Support methods
 	}

@@ -77,7 +77,6 @@ namespace GWNorthEngine.Utils {
 			Vector2 positionOffset) {
 			Vector3 min = boundingBox.Min;
 			Vector3 max = boundingBox.Max;
-			Line2DParams parms = new Line2DParams();
 			drawVector3s(spriteBatch, max, min, debugColour, lineTexture, positionOffset);
 		}
 
@@ -149,14 +148,16 @@ namespace GWNorthEngine.Utils {
 			parms.EndPosition = new Vector2(min.X, max.Y);
 			Line2D left = new Line2D(parms);
 			//top
+			parms.StartPosition = new Vector2(min.X, min.Y);
 			parms.EndPosition = new Vector2(max.X, min.Y);
 			Line2D top = new Line2D(parms);
 			//right
-			parms.StartPosition = parms.EndPosition;
+			parms.StartPosition = new Vector2(max.X, min.Y);
 			parms.EndPosition = new Vector2(max.X, max.Y);
 			Line2D right = new Line2D(parms);
 			//bottom
 			parms.StartPosition = new Vector2(min.X, max.Y);
+			parms.EndPosition = new Vector2(max.X, max.Y);
 			Line2D bottom = new Line2D(parms);
 
 			left.render(spriteBatch, positionOffset);

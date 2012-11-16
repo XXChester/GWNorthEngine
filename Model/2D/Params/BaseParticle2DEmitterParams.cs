@@ -21,5 +21,14 @@ namespace GWNorthEngine.Model.Params {
 		/// </summary>
 		public Texture2D ParticleTexture { get; set; }
 		#endregion Class properties
+
+		#region Constructor
+		/// <summary>
+		/// Constructs a basic BaseParticle2DEmitterParams object
+		/// </summary>
+		public BaseParticle2DEmitterParams() {
+			this.SpawnDelay = -1f;// do this so if a delay isn't specified no particles are emitted
+		}
+		#endregion Constructor
 	}
 }

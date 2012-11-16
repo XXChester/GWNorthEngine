@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using GWNorthEngine.Engine;
 using GWNorthEngine.Utils;
 namespace GWNorthEngine.Input {
 	/// <summary>

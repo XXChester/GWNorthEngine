@@ -115,7 +115,6 @@
     <Compile Include="Audio\BaseSoundEngine.cs" />
     <Compile Include="Audio\SoundEmitter.cs" />
     <Compile Include="Audio\Params\SoundEmitterParams.cs" />
-    <Compile Include="Engine\Vector2D.cs" />
     <Compile Include="Logic\Camera2D.cs" />
     <Compile Include="Logic\Camera3D.cs" />
     <Compile Include="Logic\ClampableCamera2D.cs" />
@@ -137,6 +136,8 @@
     <Compile Include="Model\2D\BaseParticle2DEmitter.cs" />
     <Compile Include="Model\2D\ColouredButton.cs" />
     <Compile Include="Model\2D\AcceleratingParticle.cs" />
+    <Compile Include="Model\2D\ConstantSpeedParticle.cs" />
+    <Compile Include="Model\2D\AutoParticle2DEmitter.cs" />
     <Compile Include="Model\2D\DeacceleratingParticle.cs" />
     <Compile Include="Model\2D\IButton.cs" />
     <Compile Include="Model\2D\Params\Animated2DSpriteLoadSingleRow.cs" />
@@ -165,7 +166,19 @@
     <Compile Include="Model\2D\Text2D.cs" />
     <Compile Include="Logic\Params\KeyFrameAnimationManagerParams.cs" />
     <Compile Include="Model\Effects\BaseEffect.cs" />
+    <Compile Include="Model\Effects\ColourLerpEffect.cs" />
+    <Compile Include="Model\Effects\FadeEffect.cs" />
+    <Compile Include="Model\Effects\Params\FadeEffectParams.cs" />
+    <Compile Include="Model\Effects\Params\RotateOverTimeEffectParams.cs" />
+    <Compile Include="Model\Effects\RotateOverTimeEffect.cs" />
+    <Compile Include="Model\Effects\Params\BaseEffectParams.cs" />
+    <Compile Include="Model\Effects\Params\ColourLerpEffectParams.cs" />
+    <Compile Include="Model\Effects\Params\PulseEffectParams.cs" />
+    <Compile Include="Model\Effects\Params\ScaleOverTimeEffectParams.cs" />
+    <Compile Include="Model\Effects\Params\SwayEffectParms.cs" />
     <Compile Include="Model\Effects\PulseEffect.cs" />
+    <Compile Include="Model\Effects\ScaleOverTimeEffect.cs" />
+    <Compile Include="Model\Effects\SwayEffect.cs" />
     <Compile Include="Scripting\AlphaComparer.cs" />
     <Compile Include="Scripting\Utils\ObjectTranslator.cs" />
     <Compile Include="Scripting\Model\RegisteredObject.cs" />

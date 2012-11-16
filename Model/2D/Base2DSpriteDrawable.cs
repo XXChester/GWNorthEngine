@@ -33,7 +33,7 @@ namespace GWNorthEngine.Model {
 		/// <summary>
 		/// Scale of the sprite
 		/// </summary>
-		protected Vector2D scale;
+		protected Vector2 scale;
 		/// <summary>
 		/// Rotation of the sprite
 		/// </summary>
@@ -72,7 +72,7 @@ namespace GWNorthEngine.Model {
 		/// <summary>
 		/// Gets or sets the scale of the sprite
 		/// </summary>
-		public virtual Vector2D Scale { get { return this.scale; } set { this.scale = value; } }
+		public virtual Vector2 Scale { get { return this.scale; } set { this.scale = value; } }
 		/// <summary>
 		/// Gets or sets the Colour in which the sprite is to be rendered in
 		/// </summary>
@@ -110,7 +110,6 @@ namespace GWNorthEngine.Model {
 			this.originalLightColour = parms.LightColour;
 			this.spriteEffect = parms.SpriteEffect;
 			this.renderingRectangle = parms.RenderingRectangle;
-			this.Effects = parms.Effects;
 		}
 		#endregion Constructor
 
@@ -131,11 +130,14 @@ namespace GWNorthEngine.Model {
 		}
 
 		/// <summary>
-		/// Rotates the object over time
+		/// Adds an effect to the list of effects
 		/// </summary>
-		/// <param name="rotationSpeed"></param>
-		public virtual void rotateAsLifeProgresses(float rotationSpeed) {
-			this.rotation += rotationSpeed;
+		/// <param name="effect">Effect object to add</param>
+		public void addEffect(BaseEffect effect) {
+			if (this.Effects == null) {
+				this.Effects = new List<BaseEffect>();
+			}
+			this.Effects.Add(effect);
 		}
 
 		/// <summary>
@@ -145,7 +147,7 @@ namespace GWNorthEngine.Model {
 		public virtual void update(float elapsed) {
 			if (this.Effects != null) {
 				foreach (BaseEffect effect in this.Effects) {
-					effect.update();
+					effect.update(elapsed);
 				}
 			}
 		}

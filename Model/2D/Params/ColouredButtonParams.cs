@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using GWNorthEngine.Engine;
 namespace GWNorthEngine.Model.Params {
 	/// <summary>
 	/// Params object containing the data required to build a coloured button

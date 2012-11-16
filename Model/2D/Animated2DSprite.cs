@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using GWNorthEngine.Engine;
 using GWNorthEngine.Model.Params;
 using GWNorthEngine.Utils;
 using GWNorthEngine.Logic;

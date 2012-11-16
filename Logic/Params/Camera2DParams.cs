@@ -5,6 +5,7 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 
+using GWNorthEngine.Engine;
 namespace GWNorthEngine.Logic.Params {
 	/// <summary>
 	/// Models the data required to build a Camera2D object

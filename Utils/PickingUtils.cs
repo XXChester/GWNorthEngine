@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+
 namespace GWNorthEngine.Utils {
 	/// <summary>
 	/// Class containg usefull methods for picking different types of objects

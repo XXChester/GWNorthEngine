@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Reflection;
 using Microsoft.Xna.Framework;
+using GWNorthEngine.Engine;
 using GWNorthEngine.Utils;
 using GWNorthEngine.Scripting.Utils;
 using GWNorthEngine.Scripting.Model;

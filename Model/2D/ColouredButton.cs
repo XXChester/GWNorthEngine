@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using GWNorthEngine.Engine;
 using GWNorthEngine.Model;
 using GWNorthEngine.Model.Params;
 using GWNorthEngine.Utils;

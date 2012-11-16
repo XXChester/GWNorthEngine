@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using GWNorthEngine.Engine;
 namespace GWNorthEngine.Model {
 	/// <summary>
 	///  Button interface defining what every button must implement

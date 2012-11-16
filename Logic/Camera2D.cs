@@ -5,6 +5,7 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 
+using GWNorthEngine.Engine;
 using GWNorthEngine.Logic.Params;
 
 namespace GWNorthEngine.Logic {

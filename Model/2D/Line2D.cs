@@ -91,7 +91,7 @@ namespace GWNorthEngine.Model {
 		/// </summary>
 		public void recalculateScale() {
 			Vector2 difference = this.endPosition - base.position;
-			base.scale = new Vector2D(1.0f, difference.Length() / this.texture.Height);
+			base.scale = new Vector2(1.0f, difference.Length() / this.texture.Height);
 		}
 
 		/// <summary>

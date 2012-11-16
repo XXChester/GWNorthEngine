@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using GWNorthEngine.Engine;
 using GWNorthEngine.Model.Params;
 using GWNorthEngine.Utils;
 namespace GWNorthEngine.Model {

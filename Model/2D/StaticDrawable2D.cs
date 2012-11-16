@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using GWNorthEngine.Engine;
 using GWNorthEngine.Model.Params;
 namespace GWNorthEngine.Model {
 	/// <summary>
