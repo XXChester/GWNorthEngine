@@ -141,15 +141,23 @@ namespace GWNorthEngine.Model {
 		}
 
 		/// <summary>
-		/// Runs the Effects applied to the object
+		/// Updates the effects applied to a BaseStatic2DSpriteDrawable
 		/// </summary>
 		/// <param name="elapsed">Time elapsed sense the last call</param>
-		public virtual void update(float elapsed) {
+		public virtual void updateEffects(float elapsed) {
 			if (this.Effects != null) {
 				foreach (BaseEffect effect in this.Effects) {
 					effect.update(elapsed);
 				}
 			}
+		}
+
+		/// <summary>
+		/// Runs the Effects applied to the object
+		/// </summary>
+		/// <param name="elapsed">Time elapsed sense the last call</param>
+		public virtual void update(float elapsed) {
+			updateEffects(elapsed);
 		}
 
 		/// <summary>

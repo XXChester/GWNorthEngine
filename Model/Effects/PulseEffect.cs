@@ -51,12 +51,12 @@ namespace GWNorthEngine.Model.Effects {
 		/// </summary>
 		public override void update(float elapsed) {
 			if (this.pulseDirection == PulseDirection.Up) {
-				this.reference.Scale += new Vector2(this.ScaleBy);
+				this.reference.Scale += new Vector2((this.ScaleBy / 1000f) * elapsed);
 				if (this.reference.Scale.X >= this.ScaleUpTo) {
 					this.pulseDirection = PulseDirection.Down;
 				}
 			} else {
-				this.reference.Scale -= new Vector2(this.ScaleBy);
+				this.reference.Scale -= new Vector2((this.ScaleBy / 1000f) * elapsed);
 				if (this.reference.Scale.X <= this.ScaleDownTo) {
 					this.pulseDirection = PulseDirection.Up;
 				}

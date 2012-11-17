@@ -11,10 +11,17 @@ namespace GWNorthEngine.Model.Effects {
 	/// </summary>
 	public abstract class BaseEffect {
 		#region Class variables
+		/// <summary>
+		/// Reference object
+		/// </summary>
 		protected Base2DSpriteDrawable reference;
 		#endregion Class variables
 
 		#region Constructor
+		/// <summary>
+		/// Constructs a BaseEffect object based on the parms
+		/// </summary>
+		/// <param name="parms">BaseEffectParams object</param>
 		public BaseEffect(BaseEffectParams parms) {
 			this.reference = parms.Reference;
 		}

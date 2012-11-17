@@ -52,12 +52,12 @@ namespace GWNorthEngine.Model.Effects {
 		/// </summary>
 		public override void update(float elapsed) {
 			if (this.pulseDirection == PulseDirection.Up) {
-				this.lerp += this.LerpBy;
+				this.lerp += (this.LerpBy / 1000f) * elapsed;
 				if (this.lerp >= 1) {
 					this.pulseDirection = PulseDirection.Down;
 				}
 			} else {
-				this.lerp -= this.LerpBy;
+				this.lerp -= (this.LerpBy / 1000f) * elapsed;
 				if (this.lerp <= 0) {
 					this.pulseDirection = PulseDirection.Up;
 				}

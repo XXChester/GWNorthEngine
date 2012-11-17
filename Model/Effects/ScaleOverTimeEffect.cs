@@ -38,7 +38,7 @@ namespace GWNorthEngine.Model.Effects {
 		/// Runs the effect
 		/// </summary>
 		public override void update(float elapsed) {
-			this.reference.Scale += ScaleBy;
+			this.reference.Scale += (ScaleBy / 1000f) * elapsed;
 		}
 		#endregion Support methods
 	}

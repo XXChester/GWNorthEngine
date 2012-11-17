@@ -26,6 +26,10 @@ namespace GWNorthEngine.Model.Effects.Params {
 		/// Amount to sway down to
 		/// </summary>
 		public float SwayDownTo { get; set; }
+		/// <summary>
+		/// Direction we want to start the effect in
+		/// </summary>
+		public PulseDirection Direction { get; set; }
 		#endregion Class properties
 	}
 }
