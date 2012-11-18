@@ -166,18 +166,5 @@ namespace GWNorthEngine.Audio {
 			}
 		}
 		#endregion Support methods
-
-		#region Destructor
-		/// <summary>
-		/// Cleans up resources used by the music engine
-		/// </summary>
-		public override void dispose() {
-			if (this.playList != null) {
-				foreach (MusicWrapper wrapper in this.playList) {
-					wrapper.dispose();
-				}
-			}
-		}
-		#endregion Destructor
 	}
 }

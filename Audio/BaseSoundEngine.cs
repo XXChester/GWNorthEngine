@@ -45,12 +45,5 @@ namespace GWNorthEngine.Audio {
 		/// </summary>
 		public abstract void update();
 		#endregion Support methods
-
-		#region Destructor
-		/// <summary>
-		/// Cleans up resources used by the SoundEngine
-		/// </summary>
-		public abstract void dispose();
-		#endregion
 	}
 }

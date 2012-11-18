@@ -119,22 +119,5 @@ namespace GWNorthEngine.Audio {
 			}
 		}
 		#endregion Support methods
-
-		#region Destructor
-		/// <summary>
-		/// Cleans up the SFXEngines resources
-		/// </summary>
-		public override void dispose() {
-			if (this.activeInstances != null) {
-				lock (this.activeInstances) {
-					foreach (SFXInstanceWrapper wrapper in this.activeInstances) {
-						if (wrapper != null) {
-							wrapper.dispose();
-						}
-					}
-				}
-			}
-		}
-		#endregion Destructor
 	}
 }
