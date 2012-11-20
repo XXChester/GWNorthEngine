@@ -8,9 +8,6 @@ namespace GWNorthEngine.Model.Effects.Params {
 	/// Models the common data between effects
 	/// </summary>
 	public abstract class BaseEffectParams {
-		/// <summary>
-		/// Reference object LightColour that the effect is to apply to
-		/// </summary>
-		public Base2DSpriteDrawable Reference { get; set; }
+
 	}
 }

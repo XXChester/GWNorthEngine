@@ -39,7 +39,7 @@ namespace GWNorthEngine.Model.Effects {
 		/// Runs the effect
 		/// </summary>
 		public override void update(float elapsed) {
-			this.reference.Rotation += (RotateBy / 1000f) * elapsed;
+			this.Reference.Rotation += (RotateBy / 1000f) * elapsed;
 		}
 		#endregion Support methods
 	}

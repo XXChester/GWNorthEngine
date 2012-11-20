@@ -65,10 +65,10 @@ namespace GWNorthEngine.Model.Effects {
 			this.ElapsedTransitionTime += elapsed;
 			if (this.State == FadeState.In) {
 				float alpha = 1f - (this.ElapsedTransitionTime/ this.TotalTransitionTime);
-				base.reference.LightColour = Color.Lerp(this.OriginalColour, Color.Transparent, alpha);
+				base.Reference.LightColour = Color.Lerp(this.OriginalColour, Color.Transparent, alpha);
 			} else if (this.State == FadeState.Out) {
 				float alpha = 1f - (this.ElapsedTransitionTime / this.TotalTransitionTime);
-				base.reference.LightColour = Color.Lerp(Color.Transparent, this.OriginalColour, alpha);
+				base.Reference.LightColour = Color.Lerp(Color.Transparent, this.OriginalColour, alpha);
 			}
 		}
 		#endregion Support methods

@@ -54,13 +54,13 @@ namespace GWNorthEngine.Model.Effects {
 		public override void update(float elapsed) {
 			if (this.direction == PulseDirection.Up) {
 				this.currentSway += ((SwayBy.X + SwayBy.Y) / 1000f) * elapsed;
-				this.reference.Position += (SwayBy / 1000f) * elapsed;
+				this.Reference.Position += (SwayBy / 1000f) * elapsed;
 				if (this.currentSway >= this.SwayUpTo) {
 					this.direction = PulseDirection.Down;
 				}
 			} else if (this.direction == PulseDirection.Down) {
 				this.currentSway -= ((SwayBy.X + SwayBy.Y) / 1000f) * elapsed;
-				this.reference.Position -= (SwayBy / 1000f) * elapsed;
+				this.Reference.Position -= (SwayBy / 1000f) * elapsed;
 				if (this.currentSway <= this.SwayDownTo) {
 					this.direction = PulseDirection.Up;
 				}

@@ -134,9 +134,19 @@ namespace GWNorthEngine.Model {
 		/// </summary>
 		/// <param name="effect">Effect object to add</param>
 		public void addEffect(BaseEffect effect) {
+			addEffect(effect, this);
+		}
+
+		/// <summary>
+		/// Adds an effect to the list of effects
+		/// </summary>
+		/// <param name="effect">Effect object to add</param>
+		/// <param name="reference">Object that the effect applies to</param>
+		public void addEffect(BaseEffect effect, Base2DSpriteDrawable reference) {
 			if (this.Effects == null) {
 				this.Effects = new List<BaseEffect>();
 			}
+			effect.Reference = reference;
 			this.Effects.Add(effect);
 		}
 

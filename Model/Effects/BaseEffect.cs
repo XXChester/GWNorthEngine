@@ -11,11 +11,15 @@ namespace GWNorthEngine.Model.Effects {
 	/// </summary>
 	public abstract class BaseEffect {
 		#region Class variables
-		/// <summary>
-		/// Reference object
-		/// </summary>
-		protected Base2DSpriteDrawable reference;
+
 		#endregion Class variables
+
+		#region Class properties
+		/// <summary>
+		/// Reference object LightColour that the effect is to apply to
+		/// </summary>
+		public Base2DSpriteDrawable Reference { get; set; }
+		#endregion Class properties
 
 		#region Constructor
 		/// <summary>
@@ -23,7 +27,7 @@ namespace GWNorthEngine.Model.Effects {
 		/// </summary>
 		/// <param name="parms">BaseEffectParams object</param>
 		public BaseEffect(BaseEffectParams parms) {
-			this.reference = parms.Reference;
+			
 		}
 		#endregion Constructor
 

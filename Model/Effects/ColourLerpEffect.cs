@@ -62,7 +62,7 @@ namespace GWNorthEngine.Model.Effects {
 					this.pulseDirection = PulseDirection.Up;
 				}
 			}
-			this.reference.LightColour = Color.Lerp(this.LerpUpTo, this.LerpDownTo, this.lerp);
+			this.Reference.LightColour = Color.Lerp(this.LerpUpTo, this.LerpDownTo, this.lerp);
 		}
 		#endregion Support methods
 	}
