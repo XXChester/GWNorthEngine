@@ -3997,9 +3997,19 @@
             BaseSoundEngine that the slider is to control
             </summary>
         </member>
-        <member name="P:GWNorthEngine.GUI.Params.SoundEngineSliderParams.CheckBoxParams">
+        <member name="P:GWNorthEngine.GUI.Params.SoundEngineSliderParams.CheckBoxText">
             <summary>
-            CheckBoxParams object to use to build the CheckBox for muting
+            Text to display beside the CheckBox
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.SoundEngineSliderParams.Checked">
+            <summary>
+            Whether the check box is checked or unchecked
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.SoundEngineSliderParams.CheckBoxPosition">
+            <summary>
+            Position of the CheckBox
             </summary>
         </member>
         <member name="T:GWNorthEngine.GUI.SoundEngineSlider">

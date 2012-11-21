@@ -57,7 +57,15 @@ namespace GWNorthEngine.GUI {
 		/// <param name="parms">SoundEngineSliderParams object</param>
 		public SoundEngineSlider(SoundEngineSliderParams parms):base(parms) {
 			this.soundEngine = parms.SoundEngine;
-			this.checkBox = new CheckBox(parms.CheckBoxParams);
+			CheckBoxParams checkBoxParams = new CheckBoxParams {
+				Checked = parms.Checked,
+				Content = parms.Content,
+				Font = parms.Font,
+				LightColour = parms.LightColour,
+				Position = parms.CheckBoxPosition,
+				Text = parms.CheckBoxText
+			};
+			this.checkBox = new CheckBox(checkBoxParams);
 		}
 		#endregion Constructor
 

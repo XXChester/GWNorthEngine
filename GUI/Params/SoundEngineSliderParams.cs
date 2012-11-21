@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using Microsoft.Xna.Framework;
+
 using GWNorthEngine.Audio;
 
 namespace GWNorthEngine.GUI.Params {
@@ -15,8 +17,16 @@ namespace GWNorthEngine.GUI.Params {
 		/// </summary>
 		public BaseSoundEngine SoundEngine { get; set; }
 		/// <summary>
-		/// CheckBoxParams object to use to build the CheckBox for muting
+		/// Text to display beside the CheckBox
 		/// </summary>
-		public CheckBoxParams CheckBoxParams { get; set; }
+		public string CheckBoxText { get; set; }
+		/// <summary>
+		/// Whether the check box is checked or unchecked
+		/// </summary>
+		public bool Checked { get; set; }
+		/// <summary>
+		/// Position of the CheckBox
+		/// </summary>
+		public Vector2 CheckBoxPosition { get; set; }
 	}
 }
