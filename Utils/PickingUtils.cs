@@ -28,6 +28,17 @@ namespace GWNorthEngine.Utils {
 			return intersection;
 		}
 
+		/// <summary>
+		/// Determines if a Vector2 is within a BoundingBox
+		/// </summary>
+		/// <param name="actorsPosition">Vector2 that we want to check</param>
+		/// <param name="bbox">BoundingBox that we are interogating</param>
+		/// <returns>true if the Vector2 is within the BoundingBox, otherwise false</returns>
+		public static bool pickVector(Vector2 actorsPosition, BoundingBox bbox) {
+			BoundingBox bbox2 = new BoundingBox(new Vector3(actorsPosition, 0f), new Vector3(actorsPosition.X + 1, actorsPosition.Y + 1, 0f));
+			return bbox.Intersects(bbox2);
+		}
+
 		/*
 		The below picking routine has not been tested. It was converted to XNA from Brandon's engine but nothing has been built to use it yet
 

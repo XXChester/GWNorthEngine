@@ -25,16 +25,26 @@ namespace GWNorthEngine.Input {
 		/// Returns the mouses X position
 		/// </summary>
 		public int MouseX { get { return this.currentMouseState.X; } }
-		
+		/// <summary>
+		/// Returns the mouses previous X position
+		/// </summary>
+		public int PreviousMouseX { get { return this.previousMouseState.X; } }
 		/// <summary>
 		/// Returns the mouses Y position
 		/// </summary>
 		public int MouseY { get { return this.currentMouseState.Y; } }
-
+		/// <summary>
+		/// Returns the mouses previous Y position
+		/// </summary>
+		public int PreviousMouseY { get { return this.previousMouseState.Y; } }
 		/// <summary>
 		/// Returns a Vector2 of the mouses position
 		/// </summary>
 		public Vector2 MousePosition { get { return new Vector2(MouseX, MouseY); } }
+		/// <summary>
+		/// Returns a Vector2 of the mouses previous position
+		/// </summary>
+		public Vector2 PreviousMousePosition { get { return new Vector2(PreviousMouseX, PreviousMouseY); } }
 		#endregion Class properties
 
 		#region Constructor

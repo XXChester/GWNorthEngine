@@ -6,6 +6,9 @@ using System.Text;
 using Microsoft.Xna.Framework;
 
 namespace GWNorthEngine.Model.Effects.Params {
+	/// <summary>
+	/// Models the data required to build a ColourLerpEffect
+	/// </summary>
 	public class ColourLerpEffectParams : BaseEffectParams {
 		/// <summary>
 		/// Color to lerp down to
