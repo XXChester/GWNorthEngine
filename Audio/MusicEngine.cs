@@ -64,8 +64,6 @@ namespace GWNorthEngine.Audio {
 		#endregion Class properties
 
 		#region Constructor
-
-		#endregion Constructor
 		/// <summary>
 		/// Builds a MusicEngine based on the data passed in via the parameter object
 		/// </summary>
@@ -84,6 +82,8 @@ namespace GWNorthEngine.Audio {
 				MediaPlayer.Stop();
 			}
 		}
+		#endregion Constructor
+
 		#region Support methods
 		/// <summary>
 		/// Adds a Song object to the play list

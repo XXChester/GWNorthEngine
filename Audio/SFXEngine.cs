@@ -105,9 +105,15 @@ namespace GWNorthEngine.Audio {
 		public override void update() {
 			if (this.activeInstances != null) {
 				List<int> instancesUpForRemoval = new List<int>();
+				SFXInstanceWrapper wrapper = null;
 				for (int i = 0; i < this.activeInstances.Count; i++) {
-					if (this.activeInstances[i].Instance.State == SoundState.Stopped) {
+					wrapper = this.activeInstances[i];
+					if (wrapper.Instance.State == SoundState.Stopped) {
 						instancesUpForRemoval.Add(i);
+					} else {
+						wrapper.Instance.Volume = base.Volume;
+						wrapper.Instance.Pan = this.Pan;
+						wrapper.Instance.Pitch = this.Pitch;
 					}
 				}
 

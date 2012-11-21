@@ -56,11 +56,15 @@ namespace GWNorthEngine.GUI {
 				LightColour = parms.LightColour,
 				Scale = parms.Scale,
 				RenderingRectangle = Constants.CHK_BOX_UNCHECKED,
-				Texture = LoadingUtils.load<Texture2D>(parms.Content, Constants.GUI_FILE_NAME)
+				Texture = LoadingUtils.load<Texture2D>(parms.Content, Constants.GUI_FILE_NAME),
+				Origin = new Vector2(Constants.CHK_BOX_UNCHECKED.Width / 2, Constants.CHK_BOX_UNCHECKED.Height / 2)
 			};
 			this.uncheckedBoxImag = new StaticDrawable2D(imgParms);
-			Vector3 max = new Vector3(parms.Position.X + Constants.CHK_BOX_CHECKED.Width, parms.Position.Y + Constants.CHK_BOX_CHECKED.Height, 0f);
-			this.bbox = new BoundingBox(new Vector3(parms.Position, 0f), max);
+			Vector3 min = new Vector3(parms.Position.X - Constants.CHK_BOX_CHECKED.Width/2,
+				parms.Position.Y - Constants.CHK_BOX_CHECKED.Height/2, 0f);
+			Vector3 max = new Vector3(parms.Position.X + Constants.CHK_BOX_CHECKED.Width/2,
+				parms.Position.Y + Constants.CHK_BOX_CHECKED.Height/2, 0f);
+			this.bbox = new BoundingBox(min, max);
 
 			imgParms.RenderingRectangle = Constants.CHK_BOX_CHECKED;
 			this.checkedBoxImag = new StaticDrawable2D(imgParms);
@@ -70,7 +74,8 @@ namespace GWNorthEngine.GUI {
 				LightColour = parms.LightColour,
 				WrittenText = parms.Text,
 				Scale = parms.Scale,
-				Font = parms.Font
+				Font = parms.Font,
+				Origin = new Vector2(Constants.CHK_BOX_UNCHECKED.Width / 2, Constants.CHK_BOX_UNCHECKED.Height / 2)
 			};
 			this.text = new Text2D(textParms);
 		}

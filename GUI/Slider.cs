@@ -43,7 +43,7 @@ namespace GWNorthEngine.GUI {
 		/// <summary>
 		/// Value of the slider between 0 and 1
 		/// </summary>
-		public float CurrentValue { get { return this.currentValue; } set { this.currentValue = MathHelper.Clamp(value, MIN_VALUE, MAX_VALUE); } }
+		public virtual float CurrentValue { get { return this.currentValue; } set { this.currentValue = MathHelper.Clamp(value, MIN_VALUE, MAX_VALUE); } }
 		#endregion Class properties
 
 		#region Constructor

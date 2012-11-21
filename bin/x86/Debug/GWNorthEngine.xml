@@ -3987,5 +3987,48 @@
             Value of the slider between 0 and 1
             </summary>
         </member>
+        <member name="T:GWNorthEngine.GUI.Params.SoundEngineSliderParams">
+            <summary>
+            Models the data required to build a SoundEngine specific slider
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.SoundEngineSliderParams.SoundEngine">
+            <summary>
+            BaseSoundEngine that the slider is to control
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.SoundEngineSliderParams.CheckBoxParams">
+            <summary>
+            CheckBoxParams object to use to build the CheckBox for muting
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.GUI.SoundEngineSlider">
+            <summary>
+            Models the data of a SoundEngineSlider GUI element
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.GUI.SoundEngineSlider.#ctor(GWNorthEngine.GUI.Params.SoundEngineSliderParams)">
+            <summary>
+            Constructs a SoundEngineSlider object based on the parms
+            </summary>
+            <param name="parms">SoundEngineSliderParams object</param>
+        </member>
+        <member name="M:GWNorthEngine.GUI.SoundEngineSlider.update(System.Single)">
+            <summary>
+            Updates the slider
+            </summary>
+            <param name="elapsed">Time elapsed since the last call</param>
+        </member>
+        <member name="M:GWNorthEngine.GUI.SoundEngineSlider.render(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Renders the Slider
+            </summary>
+            <param name="spriteBatch">SpriteBatch object used for rendering</param>
+        </member>
+        <member name="P:GWNorthEngine.GUI.SoundEngineSlider.CurrentValue">
+            <summary>
+            Changes the volume of the sound engine, value is clamped between 0 and 1
+            </summary>
+        </member>
     </members>
 </doc>

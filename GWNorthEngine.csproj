@@ -121,7 +121,9 @@
     <Compile Include="GUI\Params\BaseGUIElementParams.cs" />
     <Compile Include="GUI\Params\CheckBoxParams.cs" />
     <Compile Include="GUI\Params\SliderParams.cs" />
+    <Compile Include="GUI\Params\SoundEngineSliderParams.cs" />
     <Compile Include="GUI\Slider.cs" />
+    <Compile Include="GUI\SoundEngineSlider.cs" />
     <Compile Include="Logic\Camera2D.cs" />
     <Compile Include="Logic\Camera3D.cs" />
     <Compile Include="Logic\ClampableCamera2D.cs" />
