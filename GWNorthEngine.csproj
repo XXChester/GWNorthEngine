@@ -147,6 +147,9 @@
     <Compile Include="Model\2D\AcceleratingParticle.cs" />
     <Compile Include="Model\2D\ConstantSpeedParticle.cs" />
     <Compile Include="Model\2D\AutoParticle2DEmitter.cs" />
+    <Compile Include="Model\2D\Params\TexturedEffectButtonParams.cs" />
+    <Compile Include="Model\2D\Delegates.cs" />
+    <Compile Include="Model\2D\TexturedEffectButton.cs" />
     <Compile Include="Model\2D\DeacceleratingParticle.cs" />
     <Compile Include="Model\2D\IButton.cs" />
     <Compile Include="Model\2D\Params\Animated2DSpriteLoadSingleRow.cs" />

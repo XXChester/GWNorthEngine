@@ -95,12 +95,26 @@ namespace GWNorthEngine.Audio {
 		/// </summary>
 		/// <param name="listenersPosition"></param>
 		public void update(Vector2 listenersPosition) {
+			update(new Vector2[] { listenersPosition });
+		}
+
+		/// <summary>
+		/// Updates the emitter based on the listeners positions
+		/// </summary>
+		/// <param name="listenersPositions">Vector2[] of the positions that we need to take into account for listening</param>
+		public void update(Vector2[] listenersPositions) {
 			if (this.sfxInstance != null) {
+				float masterVol = 0f;
+				float masterPan = 0f;
 				float volume;
 				float pan;
-				determineEmission(listenersPosition, out volume, out pan);
-				this.sfxInstance.Pan = pan;
-				this.sfxInstance.Volume = volume;
+				foreach (Vector2 listenersPosition in listenersPositions) {
+					determineEmission(listenersPosition, out volume, out pan);
+					masterVol += volume;
+					masterPan += pan;
+				}
+				this.sfxInstance.Pan = masterPan / listenersPositions.Length;
+				this.sfxInstance.Volume = masterVol / listenersPositions.Length;
 			}
 		}
 		#endregion Supoprt methods
