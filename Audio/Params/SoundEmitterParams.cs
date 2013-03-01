@@ -30,6 +30,10 @@ namespace GWNorthEngine.Audio.Params {
 		/// </summary>
 		public Vector2 Position { get; set; }
 		/// <summary>
+		/// Position of the listeners
+		/// </summary>
+		public Vector2[] ListenerPositions { get; set; }
+		/// <summary>
 		/// Pan of the emitter
 		/// </summary>
 		public float Pan { get; set; }

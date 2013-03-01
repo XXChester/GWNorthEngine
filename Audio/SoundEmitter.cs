@@ -29,6 +29,7 @@ namespace GWNorthEngine.Audio {
 		private float pitch;
 		private SoundEffectInstance sfxInstance;
 		private SFXEngine sfxEngine;
+		private Vector2[] lastKnownListenersPositions;
 		#endregion Class variables
 
 		#region Class properties
@@ -53,6 +54,7 @@ namespace GWNorthEngine.Audio {
 			this.EmittRadius = parms.EmittRadius;
 			this.Position = parms.Position;
 			this.sfxEngine = parms.SFXEngine;
+			this.lastKnownListenersPositions = parms.ListenerPositions;
 		}
 		#endregion Constructor
 
@@ -77,16 +79,29 @@ namespace GWNorthEngine.Audio {
 			//Console.WriteLine("Vol: " + volume + "\t\tPan: " + pan);
 		}
 
+		private void determineEmission(Vector2[] listenersPositions, out float masterVol, out float masterPan) {
+			masterVol = 0f;
+			masterPan = 0f;
+			if (listenersPositions != null) {
+				float volume;
+				float pan;
+				foreach (Vector2 listenersPosition in listenersPositions) {
+					determineEmission(listenersPosition, out volume, out pan);
+					masterVol += volume;
+					masterPan += pan;
+				}
+			}
+		}
+
 		/// <summary>
 		/// Plays a sound effect in relation to a listening position
 		/// </summary>
 		/// <param name="sfx">SoundEffect to play</param>
-		/// <param name="listenersPosition">Position the listener is currently at</param>
 		/// <param name="pitch">Pitch of the sound effect</param>
 		/// <param name="loop">Whether we are looping the sound effect or not</param>
-		public void playSoundEffect(SoundEffect sfx, Vector2 listenersPosition, float pitch = 0f, bool loop = false) {
+		public void playSoundEffect(SoundEffect sfx, float pitch = 0f, bool loop = false) {
 			float volume, pan;
-			determineEmission(listenersPosition, out volume, out pan);
+			determineEmission(this.lastKnownListenersPositions, out volume, out pan);
 			this.sfxInstance = this.sfxEngine.playSoundEffect(sfx, volume, pan, pitch, loop);
 		}
 
@@ -104,18 +119,13 @@ namespace GWNorthEngine.Audio {
 		/// <param name="listenersPositions">Vector2[] of the positions that we need to take into account for listening</param>
 		public void update(Vector2[] listenersPositions) {
 			if (this.sfxInstance != null) {
-				float masterVol = 0f;
-				float masterPan = 0f;
-				float volume;
-				float pan;
-				foreach (Vector2 listenersPosition in listenersPositions) {
-					determineEmission(listenersPosition, out volume, out pan);
-					masterVol += volume;
-					masterPan += pan;
-				}
+				float masterVol;
+				float masterPan;
+				determineEmission(listenersPositions, out masterVol, out masterPan);
 				this.sfxInstance.Pan = masterPan / listenersPositions.Length;
 				this.sfxInstance.Volume = masterVol / listenersPositions.Length;
 			}
+			this.lastKnownListenersPositions = listenersPositions;
 		}
 		#endregion Supoprt methods
 	}

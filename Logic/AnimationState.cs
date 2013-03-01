@@ -23,6 +23,10 @@ namespace GWNorthEngine.Logic {
 		/// <summary>
 		/// Animation plays through forward 1 time
 		/// </summary>
-		PlayForwardOnce
+		PlayForwardOnce,
+		/// <summary>
+		/// Animation plays through 1 time
+		/// </summary>
+		PlayReversedOnce,
 	}
 }
