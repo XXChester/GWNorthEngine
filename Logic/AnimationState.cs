@@ -28,5 +28,9 @@ namespace GWNorthEngine.Logic {
 		/// Animation plays through 1 time
 		/// </summary>
 		PlayReversedOnce,
+		/// <summary>
+		/// Animations plays forward then backwards etc etc
+		/// </summary>
+		PulseForwardBack
 	}
 }

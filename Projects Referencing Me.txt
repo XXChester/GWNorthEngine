@@ -9,6 +9,7 @@ Team folder:
 -PhysicsTest
 -CamerasIntegration
 -_2.5DSoundIntegration
+-ImageSubtraction
 
 ========================
 Jason's personal work:

@@ -59,9 +59,13 @@ namespace GWNorthEngine.Logic {
 				} else {
 					this.currentFrame++;
 				}
-			} else if (base.animationState == AnimationState.PlayReversed) {
-				if (base.currentFrame == this.keyFrameData.StartingKeyFrame) {
-					base.currentFrame = this.keyFrameData.EndingKeyFrame;
+			} else if (base.animationState == AnimationState.PlayReversed || this.animationState == AnimationState.PlayReversedOnce) {
+				if (this.currentFrame == 0) {
+					if (this.animationState == AnimationState.PlayReversedOnce) {
+						this.animationState = AnimationState.Paused;
+					} else {
+						base.currentFrame = this.keyFrameData.EndingKeyFrame;
+					}
 				} else {
 					base.currentFrame--;
 				}
@@ -87,7 +91,7 @@ namespace GWNorthEngine.Logic {
 		/// entered or whether we want it set to replay the whole wait time</param>
 		public override void resetAnimation(int maxFrameCount, bool cockAnimation) {
 			base.totalElapsed = 0f;
-			if (base.animationState == AnimationState.PlayReversed) {
+			if (base.animationState == AnimationState.PlayReversed || this.animationState == AnimationState.PlayReversedOnce) {
 				base.currentFrame = this.keyFrameData.EndingKeyFrame;
 			} else {
 				base.currentFrame = this.keyFrameData.StartingKeyFrame;

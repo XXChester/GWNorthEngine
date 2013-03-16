@@ -131,6 +131,7 @@
     <Compile Include="Logic\Params\Camera3DParams.cs" />
     <Compile Include="Engine\BaseRenderer.cs" />
     <Compile Include="Logic\Params\ClampableCamera2DParams.cs" />
+    <Compile Include="Logic\Params\PulseAnimationManagerParams.cs" />
     <Compile Include="Logic\Params\DefaultCamera3DParams.cs" />
     <Compile Include="Engine\Params\BaseRendererParams.cs" />
     <Compile Include="Engine\FrameRate.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Input\MouseButton.cs" />
     <Compile Include="Logic\AnimationState.cs" />
     <Compile Include="Logic\KeyFrameData.cs" />
+    <Compile Include="Logic\PulseAnimationManager.cs" />
     <Compile Include="Logic\PulseDirection.cs" />
     <Compile Include="Model\2D\Animated2DSprite.cs" />
     <Compile Include="Model\2D\BaseParticle2D.cs" />
