@@ -13,7 +13,7 @@ namespace GWNorthEngine.Model.Effects {
 	/// <summary>
 	/// Models the data required for a Color lerping effect
 	/// </summary>
-	public class ColorLerpEffect : BaseEffect {
+	public class ColourLerpEffect : BaseEffect {
 		#region Class variables
 		private float lerp;
 		private PulseDirection pulseDirection;
@@ -39,7 +39,8 @@ namespace GWNorthEngine.Model.Effects {
 		/// Constructs a PulseEffect object
 		/// </summary>
 		/// <param name="parms">ColourLerpEffectParms object used to build the effect</param>
-		public ColorLerpEffect(ColourLerpEffectParams parms) : base(parms) {
+		public ColourLerpEffect(ColourLerpEffectParams parms)
+			: base(parms) {
 			this.LerpDownTo = parms.LerpDownTo;
 			this.LerpUpTo = parms.LerpUpTo;
 			this.LerpBy = parms.LerpBy;

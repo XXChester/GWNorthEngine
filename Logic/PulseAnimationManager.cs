@@ -6,12 +6,22 @@ using System.Text;
 using GWNorthEngine.Logic.Params;
 
 namespace GWNorthEngine.Logic {
+	/// <summary>
+	/// Models a pulse animation manager which plays the animation forward to the end, then plays reversed to the start, rinse and repeat
+	/// </summary>
 	public class PulseAnimationManager : AnimationManager {
 		#region Class properties
+		/// <summary>
+		/// Gets or Sets the direction to pulse in
+		/// </summary>
 		public PulseDirection PulseDirection { get; set; }
 		#endregion Class properties
 
 		#region Constructor
+		/// <summary>
+		/// Constructs a PuleAnimationManager based on the params passed in
+		/// </summary>
+		/// <param name="parms">PulseAnmationManagerParams object</param>
 		public PulseAnimationManager(PulseAnimationManagerParams parms)
 			: base(parms) {
 				this.PulseDirection = PulseDirection;

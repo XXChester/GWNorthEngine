@@ -30,6 +30,8 @@ namespace GWNorthEngine.Audio {
 		private SoundEffectInstance sfxInstance;
 		private SFXEngine sfxEngine;
 		private Vector2[] lastKnownListenersPositions;
+		private const float CLAMP_MIN = -1f;
+		private const float CLAMP_MAX = 1f;
 		#endregion Class variables
 
 		#region Class properties
@@ -73,7 +75,7 @@ namespace GWNorthEngine.Audio {
 				volume = invDelta;
 			}
 
-			pan = MathHelper.Clamp(((this.Position.X - listenersPosition.X) / this.EmittRadius), -1f, 1f);
+			pan = MathHelper.Clamp(((this.Position.X - listenersPosition.X) / this.EmittRadius), CLAMP_MIN, CLAMP_MAX);
 
 			//Console.WriteLine("Delta: " + delta + "\tInverseDelta: " + invDelta);
 			//Console.WriteLine("Vol: " + volume + "\t\tPan: " + pan);
@@ -90,6 +92,8 @@ namespace GWNorthEngine.Audio {
 					masterVol += volume;
 					masterPan += pan;
 				}
+				masterVol = MathHelper.Clamp(masterVol, CLAMP_MIN, CLAMP_MAX);
+				masterPan = MathHelper.Clamp(masterPan, CLAMP_MIN, CLAMP_MAX);
 			}
 		}
 
@@ -103,6 +107,15 @@ namespace GWNorthEngine.Audio {
 			float volume, pan;
 			determineEmission(this.lastKnownListenersPositions, out volume, out pan);
 			this.sfxInstance = this.sfxEngine.playSoundEffect(sfx, volume, pan, pitch, loop);
+		}
+
+		/// <summary>
+		/// Stops the emitters sound effect from playing
+		/// </summary>
+		public void stopSoundEffect() {
+			if (this.sfxInstance != null && !this.sfxInstance.IsDisposed && this.sfxInstance.State != SoundState.Stopped) {
+				this.sfxInstance.Stop();
+			}
 		}
 
 		/// <summary>

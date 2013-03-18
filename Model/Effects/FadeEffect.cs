@@ -71,6 +71,20 @@ namespace GWNorthEngine.Model.Effects {
 				base.Reference.LightColour = Color.Lerp(Color.Transparent, this.OriginalColour, alpha);
 			}
 		}
+
+		/// <summary>
+		/// Resets the effect
+		/// </summary>
+		public virtual void reset() {
+			this.ElapsedTransitionTime = 0f;
+		}
+
+		/// <summary>
+		/// Changes the elapsed time to it's reversed version so that the alpha blending takes place from the current position instead of restarting
+		/// </summary>
+		public virtual void interruptFade() {
+			this.ElapsedTransitionTime = this.TotalTransitionTime - this.ElapsedTransitionTime;
+		}
 		#endregion Support methods
 	}
 }

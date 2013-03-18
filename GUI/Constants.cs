@@ -34,8 +34,13 @@ namespace GWNorthEngine.GUI {
 		/// Location of the Slider's Bar
 		/// </summary>
 		public static Rectangle SLIDER_BAR = new Rectangle(111, SPACE_BETWEEN, 32, 32);
-		/*public static Rectangle TXT_BOX_START = new Rectangle(76, SPACE_BETWEEN, 32, 32);
-		public static Rectangle TXT_BOX_MIDDLE = new Rectangle(114, SPACE_BETWEEN, 32, 32);
-		public static Rectangle TXT_BOX_END = new Rectangle(148, SPACE_BETWEEN, 32, 32);*/
+		/// <summary>
+		/// Location of the Textbox end bar
+		/// </summary>
+		public static Rectangle TXT_BOX_END = new Rectangle(147, SPACE_BETWEEN, 32, 32);
+		/// <summary>
+		/// Location of the Textox middle
+		/// </summary>
+		public static Rectangle TXT_BOX_MIDDLE = new Rectangle(184, SPACE_BETWEEN, 1, 32);
 	}
 }

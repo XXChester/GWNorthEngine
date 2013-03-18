@@ -22,6 +22,9 @@ namespace GWNorthEngine.Model {
 		/// Gets or sets the ID of the button
 		/// </summary>
 		public int ID { get; set; }
+		/// <summary>
+		/// Gets or sets the area of a texturedbutton that is pickable
+		/// </summary>
 		public Rectangle PickableArea { get { return this.pickableArea; } }
 		#endregion Class properties
 

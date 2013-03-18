@@ -9,6 +9,9 @@ namespace GWNorthEngine.Logic.Params {
 	/// </summary>
 	public class PulseAnimationManagerParams : BaseAnimationManagerParams {
 		#region Class properties
+		/// <summary>
+		/// Gets or sets the PulseDirection
+		/// </summary>
 		public PulseDirection PulseDirection { get; set; }
 		#endregion Class properties
 	}

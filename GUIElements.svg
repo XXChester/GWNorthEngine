@@ -16,7 +16,7 @@
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="GUIElements.svg"
-   inkscape:export-filename="C:\Documents and Settings\xxchester\Desktop\GUIGraphics\GUIElements.png"
+   inkscape:export-filename="F:\Team Work\GWNorthEngine\GUIElements.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -64,19 +64,23 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="11.313708"
-     inkscape:cx="99.303537"
+     inkscape:cx="193.4588"
      inkscape:cy="737.84568"
      inkscape:current-layer="layer1"
      inkscape:document-units="px"
      showgrid="false"
      inkscape:window-width="1680"
-     inkscape:window-height="1024"
-     inkscape:window-x="1676"
+     inkscape:window-height="994"
+     inkscape:window-x="-4"
      inkscape:window-y="-4"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
-       id="grid2992" />
+       id="grid2992"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
   </sodipodi:namedview>
   <metadata
      id="metadata2989">
@@ -107,7 +111,8 @@
   <g
      id="layer1"
      inkscape:label="Layer 1"
-     inkscape:groupmode="layer">
+     inkscape:groupmode="layer"
+     style="display:inline">
     <rect
        style="fill:none;stroke:#ffffff;stroke-width:1.57136118;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect3588"
@@ -133,7 +138,7 @@
        d="m 92,19.3125 a 3,12.6875 0 1 1 -6,0 3,12.6875 0 1 1 6,0 z"
        transform="matrix(1,0,0,1.2660099,-10,-4.5123153)" />
     <path
-       transform="matrix(0.58333333,0,0,1.0591133,26.958333,-0.7666256)"
+       transform="matrix(0.58333333,0,0,1.0591133,25.833334,-0.7666256)"
        d="m 92,19.3125 a 3,12.6875 0 1 1 -6,0 3,12.6875 0 1 1 6,0 z"
        sodipodi:ry="12.6875"
        sodipodi:rx="3"
@@ -156,5 +161,29 @@
        width="28.994795"
        id="rect2996"
        style="fill:#f9f9f9;fill-opacity:1;fill-rule:evenodd" />
+    <rect
+       y="-148.92743"
+       x="3.5531244"
+       height="1.902634"
+       width="31.999975"
+       id="rect2997"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd"
+       transform="matrix(-6.7894361e-4,0.99999977,-0.9999955,-0.00300085,0,0)" />
+    <rect
+       transform="matrix(0.99999965,-8.4008082e-4,-0.00159928,0.99999872,0,0)"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd"
+       id="rect2999"
+       width="31.999962"
+       height="1.3031191"
+       x="183.05788"
+       y="34.850712" />
+    <rect
+       y="3.8565364"
+       x="183.00835"
+       height="1.2964219"
+       width="31.999962"
+       id="rect3001"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd"
+       transform="matrix(0.99999965,-8.3576334e-4,-0.00160754,0.99999871,0,0)" />
   </g>
 </svg>

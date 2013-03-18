@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using GWNorthEngine.Engine;
 using GWNorthEngine.Utils;
@@ -45,6 +46,14 @@ namespace GWNorthEngine.Input {
 		/// Returns a Vector2 of the mouses previous position
 		/// </summary>
 		public Vector2 PreviousMousePosition { get { return new Vector2(PreviousMouseX, PreviousMouseY); } }
+		/// <summary>
+		/// Gets the current keyboard state
+		/// </summary>
+		public KeyboardState KeyboardState { get { return this.currentKeyboardState; } }
+		/// <summary>
+		/// Gets the previous keyboard state
+		/// </summary>
+		public KeyboardState PreviousKeyboardState { get { return this.previousKeyboardState; } }
 		#endregion Class properties
 
 		#region Constructor
@@ -136,6 +145,30 @@ namespace GWNorthEngine.Input {
 				}
 			}
 			return result;
+		}
+
+		/// <summary>
+		/// Returns an Keys[] of the keys that were pressed since the last update
+		/// </summary>
+		/// <returns>Keys[] of the new keys</returns>
+		public Keys[] getNewKeys() {
+			Keys[] newKeys = null;
+			List<Keys> oldKeys = new List<Keys>(this.previousKeyboardState.GetPressedKeys());
+			Keys[] currentKeys = this.currentKeyboardState.GetPressedKeys();
+			if (currentKeys != null && currentKeys.Length > 0){
+				if (oldKeys != null && oldKeys.Count > 0) {
+					List<Keys> newestKeys = new List<Keys>();
+					foreach (Keys currentKey in currentKeys) {
+						if (!oldKeys.Contains(currentKey)) {
+							newestKeys.Add(currentKey);
+						}
+					}
+					newKeys = newestKeys.ToArray();
+				} else {
+					newKeys = currentKeys;
+				}
+			}
+			return newKeys;
 		}
 		#endregion Keyboard
 

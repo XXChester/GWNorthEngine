@@ -118,12 +118,17 @@
     <Compile Include="GUI\BaseGUIElement.cs" />
     <Compile Include="GUI\CheckBox.cs" />
     <Compile Include="GUI\Constants.cs" />
+    <Compile Include="GUI\KeyBindingTextBox.cs" />
+    <Compile Include="GUI\KeyLists.cs" />
     <Compile Include="GUI\Params\BaseGUIElementParams.cs" />
     <Compile Include="GUI\Params\CheckBoxParams.cs" />
+    <Compile Include="GUI\Params\KeyBindingTextBoxParams.cs" />
     <Compile Include="GUI\Params\SliderParams.cs" />
     <Compile Include="GUI\Params\SoundEngineSliderParams.cs" />
+    <Compile Include="GUI\Params\TextBoxParams.cs" />
     <Compile Include="GUI\Slider.cs" />
     <Compile Include="GUI\SoundEngineSlider.cs" />
+    <Compile Include="GUI\TextBox.cs" />
     <Compile Include="Logic\Camera2D.cs" />
     <Compile Include="Logic\Camera3D.cs" />
     <Compile Include="Logic\ClampableCamera2D.cs" />
@@ -221,6 +226,7 @@
     <Folder Include="Model\Params\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GUIElements.png" />
     <Content Include="Template.txt" />
     <Content Include="Projects Referencing Me.txt" />
   </ItemGroup>
