@@ -42,7 +42,17 @@ namespace GWNorthEngine.Tools.TilePlacer {
 		/// <param name="index">Index the tile resides at in the array</param>
 		/// <param name="texture">Texture the tile is rendered with</param>
 		public MapTile(Point index, Texture2D texture)
-			: this(index, texture, TileValues.Unknown, new Vector2(1f)) {
+			: this(index, texture, TileValues.Unknown) {
+		}
+
+		/// <summary>
+		/// Construction of the MapTile
+		/// </summary>
+		/// <param name="index">Index the tile resides at in the array</param>
+		/// <param name="texture">Texture the tile is rendered with</param>
+		/// <param name="tileValue">Type of the tile</param>
+		public MapTile(Point index, Texture2D texture, TileValues tileValue)
+			: this(index, texture, tileValue, new Vector2(1f)) {
 		}
 
 		/// <summary>

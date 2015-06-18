@@ -130,5 +130,17 @@ namespace GWNorthEngine.Utils {
 			}
 			return collision;
 		}
+
+		/// <summary>
+		/// Determines if a bounding box is intersected while casting a ray from a position in a direction
+		/// </summary>
+		/// <param name="bbox">Bounding box of the entity we are seeing if we hit</param>
+		/// <param name="position">Position we are casting from</param>
+		/// <param name="direction">Direction we are casting the Ray in</param>
+		/// <returns></returns>
+		public static Nullable<float> castRay(BoundingBox bbox, Vector2 position, Vector2 direction) {
+			Ray ray = new Ray(new Vector3(position, 0f), new Vector3(direction, 0f));
+			return ray.Intersects(bbox);
+		}
 	}
 }
