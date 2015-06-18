@@ -13,7 +13,7 @@
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
-    <XnaProfile>HiDef</XnaProfile>
+    <XnaProfile>Reach</XnaProfile>
     <XnaCrossPlatformGroupID>57d4499c-83dc-4966-aa88-14cda853e7c9</XnaCrossPlatformGroupID>
     <XnaOutputType>Library</XnaOutputType>
   </PropertyGroup>
@@ -45,6 +45,20 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug64|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <DocumentationFile>bin\x64\Debug\GWNorthEngine.xml</DocumentationFile>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
@@ -187,6 +201,8 @@
     <Compile Include="Model\Effects\BaseEffect.cs" />
     <Compile Include="Model\Effects\ColourLerpEffect.cs" />
     <Compile Include="Model\Effects\FadeEffect.cs" />
+    <Compile Include="Model\Effects\FinishableEffect.cs" />
+    <Compile Include="Model\Effects\Params\PartialFadeEffectParams.cs" />
     <Compile Include="Model\Effects\Params\FadeEffectParams.cs" />
     <Compile Include="Model\Effects\Params\RotateOverTimeEffectParams.cs" />
     <Compile Include="Model\Effects\RotateOverTimeEffect.cs" />

@@ -11,7 +11,7 @@ namespace GWNorthEngine.Model.Effects {
 	/// <summary>
 	/// Models the data required for a fade effect
 	/// </summary>
-	public class FadeEffect : BaseEffect {
+	public class FadeEffect : BaseEffect, FinishableEffect {
 		/// <summary>
 		/// Fade State
 		/// </summary>
@@ -21,10 +21,20 @@ namespace GWNorthEngine.Model.Effects {
 			/// </summary>
 			In,
 			/// <summary>
+			/// Partial fade in
+			/// </summary>
+			PartialIn,
+			/// <summary>
 			/// Fade out
 			/// </summary>
-			Out
+			Out,
+			/// <summary>
+			/// Partial fade out
+			/// </summary>
+			PartialOut
 		}
+		private int alphaAmount;
+
 		#region Class properties
 		/// <summary>
 		/// State of the effect
@@ -42,6 +52,24 @@ namespace GWNorthEngine.Model.Effects {
 		/// Original colour to base the effect off of
 		/// </summary>
 		public Color OriginalColour { get; set; }
+		/// <summary>
+		/// Colour we will partially fade out to
+		/// </summary>
+		public Color PartialFadeToColour { get; set; }
+		/// <summary>
+		/// If an effect has run it's course, this flag will be true
+		/// </summary>
+		public bool HasFinished { get {
+			return ElapsedTransitionTime.CompareTo(TotalTransitionTime) == 1;	
+		} }
+
+		public int AlphaAmount {
+			get { return this.alphaAmount; }
+			set {
+				this.alphaAmount = value;
+				//this.PartialFadeToColour = new Color(OriginalColour.R, OriginalColour.G, OriginalColour.B, this.alphaAmount);
+			}
+		}
 		#endregion Class properties
 
 		#region Constructor
@@ -54,6 +82,10 @@ namespace GWNorthEngine.Model.Effects {
 			this.TotalTransitionTime = parms.TotalTransitionTime;
 			this.ElapsedTransitionTime = 0f;
 			this.OriginalColour = parms.OriginalColour;
+			if (parms.GetType().Equals(typeof(PartialFadeEffectParams))) {
+				PartialFadeEffectParams partialParams = (PartialFadeEffectParams)parms;
+				this.AlphaAmount = partialParams.AlphaAmount;
+			}
 		}
 		#endregion Constructor
 
@@ -63,12 +95,21 @@ namespace GWNorthEngine.Model.Effects {
 		/// </summary>
 		public override void update(float elapsed) {
 			this.ElapsedTransitionTime += elapsed;
+			float alpha = 1f - (this.ElapsedTransitionTime / this.TotalTransitionTime);
 			if (this.State == FadeState.In) {
-				float alpha = 1f - (this.ElapsedTransitionTime/ this.TotalTransitionTime);
 				base.Reference.LightColour = Color.Lerp(this.OriginalColour, Color.Transparent, alpha);
+			} else if (this.State == FadeState.PartialIn) {
+				if (base.Reference.LightColour.A < AlphaAmount) {
+					this.PartialFadeToColour = Color.Lerp(this.OriginalColour, this.PartialFadeToColour, alpha);
+					base.Reference.LightColour = this.PartialFadeToColour;
+				}
 			} else if (this.State == FadeState.Out) {
-				float alpha = 1f - (this.ElapsedTransitionTime / this.TotalTransitionTime);
 				base.Reference.LightColour = Color.Lerp(Color.Transparent, this.OriginalColour, alpha);
+			} else if (this.State == FadeState.PartialOut) {
+				if (base.Reference.LightColour.A > AlphaAmount) {
+					this.PartialFadeToColour = Color.Lerp(Color.Transparent, this.OriginalColour, alpha);
+					base.Reference.LightColour = this.PartialFadeToColour;
+				}
 			}
 		}
 

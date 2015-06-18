@@ -703,6 +703,56 @@
             Gets or sets the PulseDirection
             </summary>
         </member>
+        <member name="T:GWNorthEngine.GUI.TextBox">
+            <summary>
+            Models a TextBox
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.GUI.TextBox.#ctor(GWNorthEngine.GUI.Params.TextBoxParams)">
+            <summary>
+            Constructs a Textbox based on the params object passed in
+            </summary>
+            <param name="parms">TextBoxParams object</param>
+        </member>
+        <member name="M:GWNorthEngine.GUI.TextBox.handleTextUpdate">
+            <summary>
+            Handles updating the text of the TextBox
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.GUI.TextBox.checkFocus">
+            <summary>
+            Checks if the textbox has gained focus
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.GUI.TextBox.isActorOver(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Determines if the actor is over the button
+            </summary>
+            <param name="actorsPosition">Actors current position</param>
+            <returns>boolean based on whether the actor is over the button</returns>
+        </member>
+        <member name="M:GWNorthEngine.GUI.TextBox.update(System.Single)">
+            <summary>
+            Updates the TextBox
+            </summary>
+            <param name="elapsed">Time since the last frame</param>
+        </member>
+        <member name="M:GWNorthEngine.GUI.TextBox.render(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Renders the TextBox
+            </summary>
+            <param name="spriteBatch">SpriteBatch object used to render the TextBox</param>
+        </member>
+        <member name="P:GWNorthEngine.GUI.TextBox.Text">
+            <summary>
+            Text written inside of the box
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.TextBox.HasFocus">
+            <summary>
+            Whether or not the textbox has focus
+            </summary>
+        </member>
         <member name="T:GWNorthEngine.Audio.Params.SoundEmitterParams">
             <summary>
             Models the data required to create a Sound Emitter
@@ -1023,6 +1073,116 @@
             Updates the particles position, loosing speed as its life progresses
             </summary>
             <param name="elapsed">Elapsed time</param>
+        </member>
+        <member name="T:GWNorthEngine.GUI.Params.TextBoxParams">
+            <summary>
+            Models the data required to build a textbox
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.GUI.Params.BaseGUIElementParams">
+            <summary>
+            Models the basic information required to build any GUI element
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.GUI.Params.BaseGUIElementParams.#ctor">
+            <summary>
+            Constructs a basic BaseGUIElementParams object
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.BaseGUIElementParams.LightColour">
+            <summary>
+            Colour to render the element in
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.BaseGUIElementParams.Content">
+            <summary>
+            ContentManager object
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.BaseGUIElementParams.Position">
+            <summary>
+            Position the GUI element is to reside at
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.BaseGUIElementParams.Scale">
+            <summary>
+            Scale of the GUI element
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.GUI.Params.TextBoxParams.#ctor">
+            <summary>
+            Constructs a default TextBoxParms object with the following values
+            MaxLength:				20
+            SizePerCharacter:		11f
+            TextScale:				1f,1f
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.TextBoxParams.Text">
+            <summary>
+            Text to set in the Textbox
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.TextBoxParams.Font">
+            <summary>
+            SpriteFont to use for the Textbox
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.TextBoxParams.MaxLength">
+            <summary>
+            Maximum length of the text
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.TextBoxParams.SizePerCharacter">
+            <summary>
+            Size per character
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.TextBoxParams.TextScale">
+            <summary>
+            Scale of the text
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.TextBoxParams.TextColour">
+            <summary>
+            Colour of the text
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.GUI.KeyLists">
+            <summary>
+            Constant representations of List[Keys]
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.GUI.KeyLists.NUMBER_KEYS">
+            <summary>
+            Number keys 0-9
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.GUI.KeyLists.LETTERS_KEYS">
+            <summary>
+            Letters a-z
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.GUI.KeyLists.NUMPAD_KEYS">
+            <summary>
+            Numpad keys Numpad0-Numpad9
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.GUI.KeyLists.DIRECTIONAL_KEYS">
+            <summary>
+            Directional Keys (left,right,up,donw)
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.GUI.KeyLists.TRANSLATIONS">
+            <summary>
+            Translations for keys
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.GUI.KeyLists.translate(Microsoft.Xna.Framework.Input.Keys)">
+            <summary>
+            Translates a Key to a user friendly version if there is one
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
         </member>
         <member name="T:GWNorthEngine.Model.Params.ColouredButtonParams">
             <summary>
@@ -1618,36 +1778,6 @@
         <member name="T:GWNorthEngine.GUI.Params.SliderParams">
             <summary>
             Models the data required to build a GUI Slider
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.GUI.Params.BaseGUIElementParams">
-            <summary>
-            Models the basic information required to build any GUI element
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.GUI.Params.BaseGUIElementParams.#ctor">
-            <summary>
-            Constructs a basic BaseGUIElementParams object
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.Params.BaseGUIElementParams.LightColour">
-            <summary>
-            Colour to render the element in
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.Params.BaseGUIElementParams.Content">
-            <summary>
-            ContentManager object
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.Params.BaseGUIElementParams.Position">
-            <summary>
-            Position the GUI element is to reside at
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.Params.BaseGUIElementParams.Scale">
-            <summary>
-            Scale of the GUI element
             </summary>
         </member>
         <member name="M:GWNorthEngine.GUI.Params.SliderParams.#ctor">
@@ -2313,6 +2443,14 @@
             <param name="index">Index the tile resides at in the array</param>
             <param name="texture">Texture the tile is rendered with</param>
         </member>
+        <member name="M:GWNorthEngine.Tools.TilePlacer.MapTile.#ctor(Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Graphics.Texture2D,GWNorthEngine.Tools.TilePlacer.TileValues)">
+            <summary>
+            Construction of the MapTile
+            </summary>
+            <param name="index">Index the tile resides at in the array</param>
+            <param name="texture">Texture the tile is rendered with</param>
+            <param name="tileValue">Type of the tile</param>
+        </member>
         <member name="M:GWNorthEngine.Tools.TilePlacer.MapTile.#ctor(Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Graphics.Texture2D,GWNorthEngine.Tools.TilePlacer.TileValues,Microsoft.Xna.Framework.Vector2)">
             <summary>
             Construction of the MapTile
@@ -2914,6 +3052,22 @@
             Position of the CheckBox
             </summary>
         </member>
+        <member name="T:GWNorthEngine.GUI.Params.KeyBindingTextBoxParams">
+            <summary>
+            Models the data required to build a key binding textbox
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.GUI.Params.KeyBindingTextBoxParams.#ctor">
+            <summary>
+            Constructs a default KeyBindingTextBoxParams object with the following values
+            MaxLength:				1
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.Params.KeyBindingTextBoxParams.BoundTo">
+            <summary>
+            Key that we are bound to
+            </summary>
+        </member>
         <member name="T:GWNorthEngine.Tools.TilePlacer.Constants">
             <summary>
             Contains common constants for the TilePlacer tool
@@ -3448,6 +3602,37 @@
             Gets or sets the volume of the engine
             </summary>
         </member>
+        <member name="T:GWNorthEngine.GUI.KeyBindingTextBox">
+            <summary>
+            Models a KeyBindingTextBox
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.GUI.KeyBindingTextBox.#ctor(GWNorthEngine.GUI.Params.KeyBindingTextBoxParams)">
+            <summary>
+            Constructs a KeyBindingTextBox
+            </summary>
+            <param name="parms">KeyBindingTextBoxParams object containing the data required to construct the object</param>
+        </member>
+        <member name="M:GWNorthEngine.GUI.KeyBindingTextBox.handleTextUpdate">
+            <summary>
+            handles the text update
+            </summary>
+        </member>
+        <member name="M:GWNorthEngine.GUI.KeyBindingTextBox.checkFocus">
+            <summary>
+            Checks if the textbox has gained focus
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.KeyBindingTextBox.HasFocus">
+            <summary>
+            Override HasFocus
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.GUI.KeyBindingTextBox.BoundTo">
+            <summary>
+            Key that we are bound to
+            </summary>
+        </member>
         <member name="T:GWNorthEngine.AI.AStar.Params.DefaultPathfinderParams">
             <summary>
             Contains data required to build a A* PathFinder
@@ -3487,6 +3672,15 @@
             <param name="bboxes">List of bounding boxes to check a collision for</param>
             <param name="checkWith">Single bounding box to check against</param>
             <returns>True if a collision was found, otherwise false</returns>
+        </member>
+        <member name="M:GWNorthEngine.Utils.CollisionUtils.castRay(Microsoft.Xna.Framework.BoundingBox,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Determines if a bounding box is intersected while casting a ray from a position in a direction
+            </summary>
+            <param name="bbox">Bounding box of the entity we are seeing if we hit</param>
+            <param name="position">Position we are casting from</param>
+            <param name="direction">Direction we are casting the Ray in</param>
+            <returns></returns>
         </member>
         <member name="T:GWNorthEngine.Model.Params.Animated2DSpriteLoadSingleCustomRow">
             <summary>
@@ -4046,6 +4240,16 @@
             Models the data required for a fade effect
             </summary>
         </member>
+        <member name="T:GWNorthEngine.Model.Effects.FinishableEffect">
+            <summary>
+            Effects that can and be removed after certain conditions
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Effects.FinishableEffect.HasFinished">
+            <summary>
+            If an effect has run it's course, this flag will be true
+            </summary>
+        </member>
         <member name="M:GWNorthEngine.Model.Effects.FadeEffect.#ctor(GWNorthEngine.Model.Effects.Params.FadeEffectParams)">
             <summary>
             Constructs a FadeEffect object
@@ -4087,6 +4291,16 @@
             Original colour to base the effect off of
             </summary>
         </member>
+        <member name="P:GWNorthEngine.Model.Effects.FadeEffect.PartialFadeToColour">
+            <summary>
+            Colour we will partially fade out to
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Effects.FadeEffect.HasFinished">
+            <summary>
+            If an effect has run it's course, this flag will be true
+            </summary>
+        </member>
         <member name="T:GWNorthEngine.Model.Effects.FadeEffect.FadeState">
             <summary>
             Fade State
@@ -4097,9 +4311,19 @@
             Fade In
             </summary>
         </member>
+        <member name="F:GWNorthEngine.Model.Effects.FadeEffect.FadeState.PartialIn">
+            <summary>
+            Partial fade in
+            </summary>
+        </member>
         <member name="F:GWNorthEngine.Model.Effects.FadeEffect.FadeState.Out">
             <summary>
             Fade out
+            </summary>
+        </member>
+        <member name="F:GWNorthEngine.Model.Effects.FadeEffect.FadeState.PartialOut">
+            <summary>
+            Partial fade out
             </summary>
         </member>
         <member name="T:GWNorthEngine.Model.Params.Text2DParams">
@@ -4207,181 +4431,14 @@
             Whether or not the check box is checked or unchecked
             </summary>
         </member>
-        <member name="T:GWNorthEngine.GUI.Params.TextBoxParams">
+        <member name="T:GWNorthEngine.Model.Effects.Params.PartialFadeEffectParams">
             <summary>
-            Models the data required to build a textbox
+            Models the data required to build a fade effect
             </summary>
         </member>
-        <member name="M:GWNorthEngine.GUI.Params.TextBoxParams.#ctor">
+        <member name="P:GWNorthEngine.Model.Effects.Params.PartialFadeEffectParams.AlphaAmount">
             <summary>
-            Constructs a default TextBoxParms object with the following values
-            MaxLength:				20
-            SizePerCharacter:		11f
-            TextScale:				1f,1f
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.Params.TextBoxParams.Text">
-            <summary>
-            Text to set in the Textbox
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.Params.TextBoxParams.Font">
-            <summary>
-            SpriteFont to use for the Textbox
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.Params.TextBoxParams.MaxLength">
-            <summary>
-            Maximum length of the text
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.Params.TextBoxParams.SizePerCharacter">
-            <summary>
-            Size per character
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.Params.TextBoxParams.TextScale">
-            <summary>
-            Scale of the text
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.Params.TextBoxParams.TextColour">
-            <summary>
-            Colour of the text
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.GUI.TextBox">
-            <summary>
-            Models a TextBox
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.GUI.TextBox.#ctor(GWNorthEngine.GUI.Params.TextBoxParams)">
-            <summary>
-            Constructs a Textbox based on the params object passed in
-            </summary>
-            <param name="parms">TextBoxParams object</param>
-        </member>
-        <member name="M:GWNorthEngine.GUI.TextBox.handleTextUpdate">
-            <summary>
-            Handles updating the text of the TextBox
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.GUI.TextBox.checkFocus">
-            <summary>
-            Checks if the textbox has gained focus
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.GUI.TextBox.isActorOver(Microsoft.Xna.Framework.Vector2)">
-            <summary>
-            Determines if the actor is over the button
-            </summary>
-            <param name="actorsPosition">Actors current position</param>
-            <returns>boolean based on whether the actor is over the button</returns>
-        </member>
-        <member name="M:GWNorthEngine.GUI.TextBox.update(System.Single)">
-            <summary>
-            Updates the TextBox
-            </summary>
-            <param name="elapsed">Time since the last frame</param>
-        </member>
-        <member name="M:GWNorthEngine.GUI.TextBox.render(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
-            <summary>
-            Renders the TextBox
-            </summary>
-            <param name="spriteBatch">SpriteBatch object used to render the TextBox</param>
-        </member>
-        <member name="P:GWNorthEngine.GUI.TextBox.Text">
-            <summary>
-            Text written inside of the box
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.TextBox.HasFocus">
-            <summary>
-            Whether or not the textbox has focus
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.GUI.KeyLists">
-            <summary>
-            Constant representations of List[Keys]
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.GUI.KeyLists.NUMBER_KEYS">
-            <summary>
-            Number keys 0-9
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.GUI.KeyLists.LETTERS_KEYS">
-            <summary>
-            Letters a-z
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.GUI.KeyLists.NUMPAD_KEYS">
-            <summary>
-            Numpad keys Numpad0-Numpad9
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.GUI.KeyLists.DIRECTIONAL_KEYS">
-            <summary>
-            Directional Keys (left,right,up,donw)
-            </summary>
-        </member>
-        <member name="F:GWNorthEngine.GUI.KeyLists.TRANSLATIONS">
-            <summary>
-            Translations for keys
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.GUI.KeyLists.translate(Microsoft.Xna.Framework.Input.Keys)">
-            <summary>
-            Translates a Key to a user friendly version if there is one
-            </summary>
-            <param name="key"></param>
-            <returns></returns>
-        </member>
-        <member name="T:GWNorthEngine.GUI.KeyBindingTextBox">
-            <summary>
-            Models a KeyBindingTextBox
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.GUI.KeyBindingTextBox.#ctor(GWNorthEngine.GUI.Params.KeyBindingTextBoxParams)">
-            <summary>
-            Constructs a KeyBindingTextBox
-            </summary>
-            <param name="parms">KeyBindingTextBoxParams object containing the data required to construct the object</param>
-        </member>
-        <member name="M:GWNorthEngine.GUI.KeyBindingTextBox.handleTextUpdate">
-            <summary>
-            handles the text update
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.GUI.KeyBindingTextBox.checkFocus">
-            <summary>
-            Checks if the textbox has gained focus
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.KeyBindingTextBox.HasFocus">
-            <summary>
-            Override HasFocus
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.KeyBindingTextBox.BoundTo">
-            <summary>
-            Key that we are bound to
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.GUI.Params.KeyBindingTextBoxParams">
-            <summary>
-            Models the data required to build a key binding textbox
-            </summary>
-        </member>
-        <member name="M:GWNorthEngine.GUI.Params.KeyBindingTextBoxParams.#ctor">
-            <summary>
-            Constructs a default KeyBindingTextBoxParams object with the following values
-            MaxLength:				1
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.GUI.Params.KeyBindingTextBoxParams.BoundTo">
-            <summary>
-            Key that we are bound to
+            Amount to fade in our out
             </summary>
         </member>
     </members>
