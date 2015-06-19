@@ -497,6 +497,11 @@
             Gets or sets the A* readable board representation
             </summary>
         </member>
+        <member name="P:GWNorthEngine.AI.AStar.BasePathFinder.LowestCost">
+            <summary>
+            Keeps track of the lowest cost node in the event we cannot get a path, this will be the end target
+            </summary>
+        </member>
         <member name="T:GWNorthEngine.AI.AStar.BasePathFinder.TypeOfSpace">
             <summary>
             Type of spaces the board can contain

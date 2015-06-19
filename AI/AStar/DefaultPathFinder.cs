@@ -30,6 +30,7 @@ namespace GWNorthEngine.AI.AStar {
 			PathNode newNode = null;
 			bool foundPieceInList;
 			Point newPosition;
+			PathNode lowestCode = null;
 			for (int i = 0; i < base.DIRECTIONS_LENGTH; i++) {
 				y = parent.Position.Y + base.directions[i, 0];
 				x = parent.Position.X + base.directions[i, 1];
@@ -37,6 +38,9 @@ namespace GWNorthEngine.AI.AStar {
 					newPosition = new Point(x, y);
 					getDistance(newPosition, parent, out startDistance, out endDistance);
 					newNode = new PathNode(parent, newPosition, startDistance, endDistance);
+					if (lowestCode == null || lowestCode.FScore > newNode.FScore) {
+						lowestCode = new PathNode(parent, newPosition, startDistance, endDistance);
+					}
 					if (i >= 4) {
 						// if we are not allowing cutting we need to check if this diagonal would cut a corner, if it does do not process it
 						if (!base.allowedToCutCorners) {
@@ -68,6 +72,9 @@ namespace GWNorthEngine.AI.AStar {
 						base.openList.Add(newNode);
 					}
 				}
+			}
+			if (this.LowestCost == null || this.LowestCost.FScore > lowestCode.FScore) {
+				this.LowestCost = lowestCode;
 			}
 			base.openList.RemoveAt(parentsIndex);
 			base.closedList.Add(parent);

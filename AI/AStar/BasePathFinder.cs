@@ -132,6 +132,10 @@ namespace GWNorthEngine.AI.AStar {
 		/// Gets or sets the A* readable board representation
 		/// </summary>
 		public TypeOfSpace[,] Board { get { return this.board; } set { this.board = value; } }
+		/// <summary>
+		/// Keeps track of the lowest cost node in the event we cannot get a path, this will be the end target
+		/// </summary>
+		public PathNode LowestCost { get; set; }
 		#endregion Class properties
 
 		#region Constructor
@@ -272,7 +276,6 @@ namespace GWNorthEngine.AI.AStar {
 			}
 			return result;
 		}
-
 		/// <summary>
 		/// Finds a path from the starting position to the ending position if one exists
 		/// </summary>
@@ -299,7 +302,9 @@ namespace GWNorthEngine.AI.AStar {
 						break;
 					}
 				}
-			}
+			} /*else if (this.LowestCost != null) {
+
+			}*/
 		}
 
 		/// <summary>
