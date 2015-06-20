@@ -55,19 +55,19 @@ namespace GWNorthEngine.Model {
 			lineParams.Texture = parms.LinesTexture;
 			lineParams.LightColour = this.regularColour;
 			
-			lineParams.StartPosition = new Vector2(parms.StartX, parms.StartY);
+			lineParams.Position = new Vector2(parms.StartX, parms.StartY);
 			lineParams.EndPosition = new Vector2(parms.StartX + parms.Width, parms.StartY);
 			this.lines[0] = new Line2D(lineParams);
 
-			lineParams.StartPosition = new Vector2(parms.StartX + parms.Width, parms.StartY);
+			lineParams.Position = new Vector2(parms.StartX + parms.Width, parms.StartY);
 			lineParams.EndPosition = new Vector2(parms.StartX + parms.Width, parms.StartY + parms.Height);
 			this.lines[1] = new Line2D(lineParams);
 
-			lineParams.StartPosition = new Vector2(parms.StartX + parms.Width, parms.StartY + parms.Height);
+			lineParams.Position = new Vector2(parms.StartX + parms.Width, parms.StartY + parms.Height);
 			lineParams.EndPosition = new Vector2(parms.StartX, parms.StartY + parms.Height);
 			this.lines[2] = new Line2D(lineParams);
 
-			lineParams.StartPosition = new Vector2(parms.StartX, parms.StartY + parms.Height);
+			lineParams.Position = new Vector2(parms.StartX, parms.StartY + parms.Height);
 			lineParams.EndPosition = new Vector2(parms.StartX, parms.StartY);
 			this.lines[3] = new Line2D(lineParams);
 

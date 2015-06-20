@@ -144,19 +144,19 @@ namespace GWNorthEngine.Utils {
 			parms.Texture = lineTexture;
 			parms.LightColour = debugColour;
 			//left
-			parms.StartPosition = new Vector2(min.X, min.Y);
+			parms.Position = new Vector2(min.X, min.Y);
 			parms.EndPosition = new Vector2(min.X, max.Y);
 			Line2D left = new Line2D(parms);
 			//top
-			parms.StartPosition = new Vector2(min.X, min.Y);
+			parms.Position = new Vector2(min.X, min.Y);
 			parms.EndPosition = new Vector2(max.X, min.Y);
 			Line2D top = new Line2D(parms);
 			//right
-			parms.StartPosition = new Vector2(max.X, min.Y);
+			parms.Position = new Vector2(max.X, min.Y);
 			parms.EndPosition = new Vector2(max.X, max.Y);
 			Line2D right = new Line2D(parms);
 			//bottom
-			parms.StartPosition = new Vector2(min.X, max.Y);
+			parms.Position = new Vector2(min.X, max.Y);
 			parms.EndPosition = new Vector2(max.X, max.Y);
 			Line2D bottom = new Line2D(parms);
 

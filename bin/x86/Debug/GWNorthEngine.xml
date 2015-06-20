@@ -963,6 +963,16 @@
             Amount to scale by
             </summary>
         </member>
+        <member name="T:GWNorthEngine.Model.Effects.FinishableEffect">
+            <summary>
+            Effects that can and be removed after certain conditions
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Effects.FinishableEffect.HasFinished">
+            <summary>
+            If an effect has run it's course, this flag will be true
+            </summary>
+        </member>
         <member name="T:GWNorthEngine.Model.Params.BaseParticle2DEmitterParams">
             <summary>
             Object containing the data required to build a BaseParticle2DEmitter object
@@ -1188,6 +1198,36 @@
             </summary>
             <param name="key"></param>
             <returns></returns>
+        </member>
+        <member name="T:GWNorthEngine.Model.Effects.Params.PartialFadeEffectParams">
+            <summary>
+            Models the data required to build a fade effect
+            </summary>
+        </member>
+        <member name="T:GWNorthEngine.Model.Effects.Params.FadeEffectParams">
+            <summary>
+            Models the data required to build a fade effect
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Effects.Params.FadeEffectParams.State">
+            <summary>
+            State of the effect
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Effects.Params.FadeEffectParams.TotalTransitionTime">
+            <summary>
+            Total time the fade should take
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Effects.Params.FadeEffectParams.OriginalColour">
+            <summary>
+            Original colour to base the effect off of
+            </summary>
+        </member>
+        <member name="P:GWNorthEngine.Model.Effects.Params.PartialFadeEffectParams.AlphaAmount">
+            <summary>
+            Amount to fade in our out
+            </summary>
         </member>
         <member name="T:GWNorthEngine.Model.Params.ColouredButtonParams">
             <summary>
@@ -3248,11 +3288,6 @@
             Object containing the data required to build a 2D line
             </summary>
         </member>
-        <member name="P:GWNorthEngine.Model.Params.Line2DParams.StartPosition">
-            <summary>
-            Gets or sets the starting position of the line
-            </summary>
-        </member>
         <member name="P:GWNorthEngine.Model.Params.Line2DParams.EndPosition">
             <summary>
             Gets or sets the ending position of the line
@@ -4028,26 +4063,6 @@
             Amount to scale by
             </summary>
         </member>
-        <member name="T:GWNorthEngine.Model.Effects.Params.FadeEffectParams">
-            <summary>
-            Models the data required to build a fade effect
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Effects.Params.FadeEffectParams.State">
-            <summary>
-            State of the effect
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Effects.Params.FadeEffectParams.TotalTransitionTime">
-            <summary>
-            Total time the fade should take
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Effects.Params.FadeEffectParams.OriginalColour">
-            <summary>
-            Original colour to base the effect off of
-            </summary>
-        </member>
         <member name="T:GWNorthEngine.Logic.KeyFrameAnimationManager">
             <summary>
             Animation manager class which handles the animation steps for anything animated between a defined set of frames
@@ -4245,16 +4260,6 @@
             Models the data required for a fade effect
             </summary>
         </member>
-        <member name="T:GWNorthEngine.Model.Effects.FinishableEffect">
-            <summary>
-            Effects that can and be removed after certain conditions
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Effects.FinishableEffect.HasFinished">
-            <summary>
-            If an effect has run it's course, this flag will be true
-            </summary>
-        </member>
         <member name="M:GWNorthEngine.Model.Effects.FadeEffect.#ctor(GWNorthEngine.Model.Effects.Params.FadeEffectParams)">
             <summary>
             Constructs a FadeEffect object
@@ -4434,16 +4439,6 @@
         <member name="P:GWNorthEngine.GUI.CheckBox.Checked">
             <summary>
             Whether or not the check box is checked or unchecked
-            </summary>
-        </member>
-        <member name="T:GWNorthEngine.Model.Effects.Params.PartialFadeEffectParams">
-            <summary>
-            Models the data required to build a fade effect
-            </summary>
-        </member>
-        <member name="P:GWNorthEngine.Model.Effects.Params.PartialFadeEffectParams.AlphaAmount">
-            <summary>
-            Amount to fade in our out
             </summary>
         </member>
     </members>

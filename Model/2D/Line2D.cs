@@ -64,7 +64,7 @@ namespace GWNorthEngine.Model {
 		/// <param name="parms">Line2DParams object containing the data required to build the line</param>
 		public Line2D(Line2DParams parms)
 			:base(parms){
-			base.position = parms.StartPosition;
+			base.position = parms.Position;
 			this.endPosition = parms.EndPosition;
 			this.texture = parms.Texture;
 			

@@ -16,16 +16,11 @@ namespace GWNorthEngine.Model.Params {
 	/// </summary>
 	public class Line2DParams : Base2DSpriteDrawableParams {
 		#region Class variables
-		private Vector2 startPosition;
 		private Vector2 endPosition;
 		private Texture2D texture;
 		#endregion Class variables
 
 		#region Class propeties
-		/// <summary>
-		/// Gets or sets the starting position of the line
-		/// </summary>
-		public Vector2 StartPosition { get { return this.startPosition; } set { this.startPosition = value; } }
 		/// <summary>
 		/// Gets or sets the ending position of the line
 		/// </summary>
